@@ -16,7 +16,7 @@ class TokenSeeder extends Seeder
     {
         $tokens = [
             [
-                'av' => 'XBT',
+                'av' => 'XBPHT',
                 'name' => 'AxieBusToken',
                 'share' => 30,
                 'img' => 'images/card/card1.png',
