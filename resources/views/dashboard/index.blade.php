@@ -177,7 +177,7 @@
             <img src="{{asset($bank->token->img)}}" alt="" class="mw-100">
             <div class="card-header flex-wrap border-0 pb-0">
               <div class="mr-3 mb-2">
-                <p class="fs-14 mb-1">{{$bank->token->av}} ({{$bank->token->name}}) | 1 = &#36;2</p>
+                <p class="fs-14 mb-1">{{$bank->token->av}} ({{$bank->token->name}}) | 1 = &#36;20</p>
                 <span class="fs-16 font-w600">Tokens Available</span><br/>
                 <span class="fs-24 font-w600">{{number_format($bank->balance, 2)}}</span>
               </div>

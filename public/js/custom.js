@@ -416,7 +416,8 @@ jQuery(document).ready(function() {
             lengthChange:false 
             
           });
-  }
+	}
+	
   if($('#example').length > 0) {
     $('#example tbody').on('click', 'tr', function () {
       var data = table.row( this ).data();
@@ -436,21 +437,99 @@ jQuery(document).ready(function() {
 		},
 		container: $('.container-fluid'),
 		dom: function() {
-			this.ref_no = this.container.find('[name=ref_no]')
+			this.tr_no = this.container.find('[name=tr_no]')
 			this.amount = this.container.find('[name=amount]')
 			this.token = this.container.find('[name=token]')
-			this.file = this.container.find('[name=file]')
+			this.token_type = this.container.find('[name=token_type]')
+			this.modal = this.container.find('#buymodal')
+			this.file = this.container.find('[name=file]')[0]
+			this.buyToken = this.container.find('#buy-token')
+		},
+		http: function(options) {
+			$.ajaxSetup({
+					headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+			})
+			
+			return $.ajax(options)
+			.fail(function(err) {
+				swal('Errored!', 'Something went wrong.', 'error');
+			})
 		},
 		events: function() {
 			this.amount.on('change', function(e) {
-				const cal = parseInt(e.target.value)/100;
+				const cal = Math.floor(parseInt(e.target.value)/900);
 				this.token.val(cal).text(cal).trigger('change');
+			}.bind(this))
+
+			this.buyToken.on('submit', function(e) {
+				e.preventDefault()
+
+				const form = new FormData()
+				form.append('tr_no', this.tr_no.val())
+				form.append('amount', this.amount.val())
+				form.append('token', this.token.val())
+				form.append('file', this.file.files[0])
+				form.append('token_type', this.token_type.val())
+
+				const options = {
+					url: '/transactions',
+					method: 'POST',
+					contentType: false,
+					processData: false,
+					data: form
+				}
+
+				this.http(options)
+					.done(function(res) {
+						this.modal.modal('hide')
+						swal('Success!', res.message, 'success')
+							.then(function() {
+								window.location.reload()
+							})
+					}.bind(this))
+
+			}.bind(this))
+
+			$(document).on('click', '.approve', function(e) {
+				const id = e.currentTarget.id
+				const options = {
+					url: `/transactions-approve/${id}`,
+					method: 'POST'
+				}
+
+				this.http(options)
+					.done(function(res) {
+						swal('Success!', res.message, 'success')
+							.then(function() {
+								window.location.reload()
+							})
+					})
 			}.bind(this))
 		}
 	}
 	my_wallets.init()
 
-	console.log(my_wallets)
+	$('#transactions').DataTable({
+		processing: true,
+    serverSide: true,
+		searching: false,
+		paging:true,
+		select: false,
+		info: false,         
+		lengthChange:false,
+		ajax: '/transactions-datatable',
+		columns: [
+			{ data: 'check', name: 'check' },
+			{ data: 'tr_no', name: 'tr_no' },
+			{ data: 'token', name: 'token' },
+			// { data: 'type', name: 'type' },
+			{ data: 'description', name: 'description' },
+			{ data: 'status', name: 'status' },
+			{ data: 'actions', name: 'actions' },
+		]
+	});
 });
 /* Document.ready END */
 

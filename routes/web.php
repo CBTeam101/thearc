@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::post('transactions', 'App\Http\Controllers\TransactionController@store');
+    Route::get('transactions-datatable', 'App\Http\Controllers\TransactionController@index');
+    Route::post('transactions-approve/{id}', 'App\Http\Controllers\TransactionController@approve');
+
     Route::get('/', 'App\Http\Controllers\MophyadminController@dashboard_1');
     Route::get('/cards-center', 'App\Http\Controllers\MophyadminController@cards_center');
 

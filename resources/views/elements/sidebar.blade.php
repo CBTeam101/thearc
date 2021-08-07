@@ -142,12 +142,12 @@
                 </ul>
             </li> -->
         </ul>
-        <div class="fixed-bottom">
+        <!-- <div class="fixed-bottom">
             <div class="copyright">
                 <p><strong>Axiebusiness </strong> © {{\Carbon\Carbon::now()->format('Y')}} All Rights Reserved</p>
                 <p>Made with <span class="heart"></span> by axiebus.ph</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <!--**********************************

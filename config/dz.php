@@ -282,14 +282,16 @@ return [
 							'vendor/apexchart/apexchart.js',
 							'js/dashboard/cards-center.js',
               'js/custom.js',
-              'js/deznav-init.js',
+							'js/deznav-init.js',
+							'https://unpkg.com/sweetalert/dist/sweetalert.min.js',
 				],
 				'transactions' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
 							'vendor/chart.js/Chart.bundle.min.js',
 							'vendor/datatables/js/jquery.dataTables.min.js',
               'js/custom.js',
-              'js/deznav-init.js',
+							'js/deznav-init.js',
+							'https://unpkg.com/sweetalert/dist/sweetalert.min.js',
 				],
 				'transactions_details' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use App\Enums\Role;
+use App\Models\Tokens;
 
 class MophyadminController extends Controller
 {
@@ -62,7 +63,9 @@ class MophyadminController extends Controller
 		
         $action = __FUNCTION__;
 
-        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText'));
+        $tokens = Tokens::all();
+
+        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText','tokens'));
     }
 	    // Transactions
     public function transactions()

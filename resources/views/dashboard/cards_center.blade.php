@@ -10,11 +10,13 @@
 
   <div class="d-sm-flex d-block justify-content-between align-items-center mb-4">
     <h2 class="text-black font-w600 mb-sm-0 mb-2">Wallets Center</h2>
+    @unlessrole('Bank')
     <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#buymodal"><span class="btn-icon-left text-primary"><i class="fa fa-plus" aria-hidden="true"></i> </span>Buy Token</button>
+    @endunlessrole
     <!-- Modal -->
     <div class="modal fade" id="buymodal">
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <form class="modal-content" id="buy-token">
           <div class="modal-header">
             <h5 class="modal-title">Request Form</h5>
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span> </button>
@@ -25,11 +27,19 @@
               Send us photo of your payment we recommend GCash +63 906 602 8287.
             </div>
             <div class="form-group">
-              <label for="">Ref #</label>
-              <input type="text" class="form-control input-rounded" placeholder="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}" name="ref_no" readonly>
+              <label for="">Token Type<span class="text-danger">*</span></label>
+              <select name="token_type" class="form-control rounded">
+                @foreach($tokens as $t)
+                  <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
-              <label for="">Amount</label>
+              <label for="">Transaction #</label>
+              <input type="text" class="form-control input-rounded" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}" name="tr_no" readonly>
+            </div>
+            <div class="form-group">
+              <label for="">Amount<span class="text-danger">*</span></label>
               <input type="number" class="form-control input-rounded" placeholder="100" name="amount">
             </div>
             <div class="form-group">
@@ -37,15 +47,15 @@
               <input type="text" class="form-control input-rounded" placeholder="" name="token" readonly>
             </div>
             <div class="form-group">
-              <label for="">Photo/Screenshot (Proof of Payment)</label>
+              <label for="">Photo/Screenshot (Proof of Payment)<span class="text-danger">*</span></label>
               <input type="file" class="form-control input-rounded" name="file" multiple>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

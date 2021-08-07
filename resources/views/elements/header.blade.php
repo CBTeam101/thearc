@@ -670,7 +670,7 @@
 								<span class="text-black">Hello,<strong>{{auth()->user()->full_name}}</strong></span>
 								<p class="fs-12 mb-0">Account Type <span class="badge badge-pill badge-success badge-xs" style="display: inline-block;">{{auth()->user()->roles[0]->name}}</span></p>
 							</div>
-							<img src="{{ asset('images/profile/17.jpg') }}" width="20" alt="" />
+							<img src="{{ asset('images/avatar/31.png') }}" width="20" alt="" />
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<!-- <a href="{!! url('/app-profile'); !!}" class="dropdown-item ai-icon">
