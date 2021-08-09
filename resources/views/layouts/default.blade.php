@@ -7,25 +7,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('dz.name') }} | @yield('title', $page_title ?? '')</title>
-	
-	<meta name="description" content="@yield('page_description', $page_description ?? '')"/>
+
+    <meta name="description" content="@yield('page_description', $page_description ?? '')" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
-	
-	
-	
-	@if(!empty(config('dz.public.pagelevel.css.'.$action))) 
-		@foreach(config('dz.public.pagelevel.css.'.$action) as $style)
-				<link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
-		@endforeach
-	@endif	
 
-	{{-- Global Theme Styles (used by all pages) --}}
-	@if(!empty(config('dz.public.global.css'))) 
-		@foreach(config('dz.public.global.css') as $style)
-			<link href="{{ asset($style) }}" rel="stylesheet" type="text/css"/>
-		@endforeach
-	@endif	
+
+
+    @if(!empty(config('dz.public.pagelevel.css.'.$action)))
+    @foreach(config('dz.public.pagelevel.css.'.$action) as $style)
+    <link href="{{ asset($style) }}" rel="stylesheet" type="text/css" />
+    @endforeach
+    @endif
+
+    {{-- Global Theme Styles (used by all pages) --}}
+    @if(!empty(config('dz.public.global.css')))
+    @foreach(config('dz.public.global.css') as $style)
+    <link href="{{ asset($style) }}" rel="stylesheet" type="text/css" />
+    @endforeach
+    @endif
 
 
 </head>
@@ -56,18 +56,18 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{!! url('/index'); !!}" class="brand-logo">
-			@if(!empty($logo))
-				<img class="logo-abbr" src="{{ asset($logo) }}" alt="">
-			@else
+                @if(!empty($logo))
+                <img class="logo-abbr" src="{{ asset($logo) }}" alt="">
+                @else
                 <img class="logo-abbr" src="{{ asset('images/logo.png') }}" alt="">
-			@endif
-			@if(!empty($logoText))
+                @endif
+                @if(!empty($logoText))
                 <img class="logo-compact" src="{{ asset($logoText) }}" alt="">
                 <img class="brand-title" src="{{ asset($logoText) }}" alt="">
-			@else
+                @else
                 <img class="logo-compact" src="{{ asset('images/logo-text.png') }}" alt="">
                 <img class="brand-title" src="{{ asset('images/logo-text.png') }}" alt="">
-			@endif	
+                @endif
             </a>
 
             <div class="nav-control">
@@ -83,10 +83,10 @@
         <!--**********************************
             Header start
         ***********************************-->
-        
-		@include('elements.header')
-		
-		
+
+        @include('elements.header')
+
+
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -99,12 +99,23 @@
             Sidebar end
         ***********************************-->
 
-		
-		
+
+
         <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
+            <div class="alert alert-primary alert-dismissible fade show">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg>
+                <strong>Info!</strong> We are working on daily share earning's .
+                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                </button>
+            </div>
             <!-- row -->
             @yield('content')
         </div>
@@ -116,14 +127,14 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        
-		@include('elements.footer')
-		
+
+        @include('elements.footer')
+
         <!--**********************************
             Footer end
         ***********************************-->
 
-		<!--**********************************
+        <!--**********************************
            Support ticket button start
         ***********************************-->
 
@@ -141,6 +152,7 @@
         Scripts
     ***********************************-->
     @yield('script')
-	@include('elements.footer-scripts')
+    @include('elements.footer-scripts')
 </body>
+
 </html>

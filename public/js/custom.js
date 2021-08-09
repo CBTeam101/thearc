@@ -459,7 +459,7 @@ jQuery(document).ready(function() {
 		},
 		events: function() {
 			this.amount.on('change', function(e) {
-				const cal = Math.floor(parseInt(e.target.value)/900);
+				const cal = Math.floor(parseInt(e.target.value)/1000);
 				this.token.val(cal).text(cal).trigger('change');
 			}.bind(this))
 
