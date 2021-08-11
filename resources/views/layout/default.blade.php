@@ -112,7 +112,7 @@
                     <line x1="9" y1="9" x2="9.01" y2="9"></line>
                     <line x1="15" y1="9" x2="15.01" y2="9"></line>
                 </svg>
-                <strong>Info!</strong> We are working on investmenting token's .
+                <strong>Info!</strong> Put in token is under development until tomorrow.
                 <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
                 </button>
             </div>

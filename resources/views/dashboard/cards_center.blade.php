@@ -13,7 +13,7 @@
     @unlessrole('Bank')
     <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#buymodal"><span class="btn-icon-left text-primary"><i class="fa fa-plus" aria-hidden="true"></i> </span>Buy Token</button>
     @endunlessrole
-    <!-- Modal -->
+    <!-- Buy Token -->
     <div class="modal fade" id="buymodal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <form class="modal-content" id="buy-token">
@@ -23,14 +23,18 @@
           </div>
           <div class="modal-body">
             <div class="alert alert-info alert-dismissible fade show">
-              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
               Send us photo of your payment we recommend GCash +63 906 602 8287.
             </div>
             <div class="form-group">
               <label for="">Token Type<span class="text-danger">*</span></label>
               <select name="token_type" class="form-control rounded">
                 @foreach($tokens as $t)
-                  <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
+                <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
                 @endforeach
               </select>
             </div>
@@ -58,51 +62,90 @@
         </form>
       </div>
     </div>
+
+    <!-- Put In -->
+    <div class="modal fade" id="putinmodal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" id="put-in-token">
+          <div class="modal-header">
+            <h5 class="modal-title">Put In Token</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span> </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Token Type<span class="text-danger">*</span></label>
+              <select name="put_in_token_type" class="form-control rounded">
+                @foreach($tokens as $t)
+                <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">#</label>
+              <input type="text" class="form-control input-rounded" value="{{\Carbon\Carbon::now()->format('His')}} - {{strtoupper(\Illuminate\Support\Str::random(4))}}" name="ref" readonly>
+            </div>
+            <div class="form-group">
+              <label for="">Tokens<span class="text-danger">*</span></label>
+              <input type="number" class="form-control input-rounded" placeholder="0" name="put_in_tokens">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <div class="row">
     <div class="col-xl-12">
       <div class="cards owl-carousel mb-sm-5 mb-3">
         @foreach(auth()->user()->wallets as $wallet)
-        <div class="items">
-          <div class="card-bx mb-0">
-            <img src="{{asset($wallet->token->img)}}" alt="">
-            <div class="card-info text-white">
-              <p class="mb-1">{{$wallet->token->av}} ({{$wallet->token->name}})</p>
-              <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}}</h2>
-              <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
-                <img src="images/dual-dot.png" alt="" class="dot-img">
-                <h4 class="fs-20 text-white mb-0">{{$wallet->wallet_no}}</h4>
-              </div>
-              <div class="d-flex">
-                <div class="mr-5">
-                  <p class="fs-14 mb-1 op6">VALID THRU</p>
-                  <span>N/A</span>
+        <a href="{!! url('/transactions-details'); !!}" class="fs-14 btn-link mr-3 pb-3">
+          <div class="items">
+            <div class="card-bx mb-0">
+              <img src="{{asset($wallet->token->img)}}" alt="">
+              <div class="card-info text-white">
+                <p class="mb-1">{{$wallet->token->av}} ({{$wallet->token->name}})</p>
+                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}}</h2>
+                <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
+                  <img src="images/dual-dot.png" alt="" class="dot-img">
+                  <h4 class="fs-20 text-white mb-0">{{$wallet->wallet_no}}</h4>
                 </div>
-                <div>
-                  <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
-                  <span>{{$wallet->user->full_name}}</span>
+                <div class="d-flex">
+                  <div class="mr-5">
+                    <p class="fs-14 mb-1 op6">VALID THRU</p>
+                    <span>N/A</span>
+                  </div>
+                  <div>
+                    <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
+                    <span>{{$wallet->user->full_name}}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
         @endforeach
       </div>
     </div>
-    
+
     <div class="col-xl-9">
       <div class="row">
         <div class="col-xl-12">
           <div class="card">
             <div class="card-header d-sm-flex d-block border-0 pb-0">
               <div>
-                <h4 class="fs-20 text-black">Wallets List</h4>
-                <span class="fs-12">Wallets list view click the "see number" to view wallet in more details.</span>
+                <h4 class="fs-20 text-black">Put In Tokens</h4>
+                <span class="fs-12">List of all tokens that is earning daily.</span>
               </div>
               <div class="dropdown custom-dropdown mb-0 mt-3 mt-sm-0">
-                <div class="btn btn-light btn-rounded" role="button" data-toggle="dropdown" aria-expanded="false"> Newest <i class="fa fa-caret-down text-primary ml-3" aria-hidden="true"></i> </div>
-                <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="javascript:void(0);">Details</a> <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a> </div>
+                <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#putinmodal">
+                  Put In
+                </button>
+                <!-- <div class="btn btn-light btn-rounded" role="button" data-toggle="dropdown" aria-expanded="false"> Newest <i class="fa fa-caret-down text-primary ml-3" aria-hidden="true"></i> </div>
+                <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="javascript:void(0);">Details</a> <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a> </div> -->
               </div>
             </div>
             <div class="card-body pb-0">
@@ -110,21 +153,21 @@
               <div class="d-flex mb-3 border-bottom justify-content-between flex-wrap align-items-center">
                 <div class="d-flex pb-3 align-items-center"> <img src="{{ asset($wallet->token->img) }}" alt="" class="rounded mr-3" width="130">
                   <div class="mr-3">
-                    <p class="fs-14 mb-1">Wallet Type</p>
-                    <span class="text-black font-w500">TOKEN</span>
+                    <p class="fs-14 mb-1">Token Type</p>
+                    <span class="text-black font-w500">{{$wallet->token->av}}</span>
                   </div>
                 </div>
                 <div class="mr-3 pb-3">
-                  <p class="fs-14 mb-1">Token</p>
-                  <span class="text-black font-w500">{{$wallet->token->av}}</span>
+                  <p class="fs-14 mb-1">Tokens</p>
+                  <span class="text-black font-w500">100</span>
                 </div>
                 <div class="mr-3 pb-3">
-                  <p class="fs-14 mb-1">Wallet Number</p>
-                  <span class="text-black font-w500">{{$wallet->wallet_no}}</span>
+                  <p class="fs-14 mb-1">Current Price</p>
+                  <span class="text-black font-w500">1 => $20</span>
                 </div>
                 <div class="mr-3 pb-3">
-                  <p class="fs-14 mb-1">Name in Wallet</p>
-                  <span class="text-black font-w500">{{$wallet->user->full_name}}</span>
+                  <p class="fs-14 mb-1">Shares by month</p>
+                  <span class="text-black font-w500 text-center">25%</span>
                 </div>
                 <a href="{!! url('/transactions-details'); !!}" class="fs-14 btn-link mr-3 pb-3">See Number</a>
                 <div class="dropdown pb-3">

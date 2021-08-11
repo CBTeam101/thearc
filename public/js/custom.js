@@ -442,8 +442,13 @@ jQuery(document).ready(function() {
 			this.token = this.container.find('[name=token]')
 			this.token_type = this.container.find('[name=token_type]')
 			this.modal = this.container.find('#buymodal')
+			this.putInModal = this.container.find('#putinmodal')
 			this.file = this.container.find('[name=file]')[0]
 			this.buyToken = this.container.find('#buy-token')
+			this.putInToken = this.container.find('#put-in-token')
+			this.putInTokenType = this.container.find('[name=put_in_token_type]')
+			this.putInRef = this.container.find('[name=ref]')
+			this.puntInTokens = this.container.find('[name=put_in_tokens]')
 		},
 		http: function(options) {
 			$.ajaxSetup({
@@ -484,6 +489,32 @@ jQuery(document).ready(function() {
 				this.http(options)
 					.done(function(res) {
 						this.modal.modal('hide')
+						swal('Success!', res.message, 'success')
+							.then(function() {
+								window.location.reload()
+							})
+					}.bind(this))
+
+			}.bind(this))
+
+			this.putInToken.on('submit', function(e) {
+				e.preventDefault()
+
+				const options = {
+					url: '/put-in-tokens',
+					method: 'POST',
+					data: {
+						token_id: this.putInTokenType.val(),
+						ref: this.putInRef.val(),
+						tokens: this.puntInTokens.val()
+					}
+				}
+
+				// return console.log(options)
+
+				this.http(options)
+					.done(function(res) {
+						this.putInModal.modal('hide')
 						swal('Success!', res.message, 'success')
 							.then(function() {
 								window.location.reload()
