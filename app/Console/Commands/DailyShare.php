@@ -34,7 +34,7 @@ class DailyShare extends Command
     {
         parent::__construct();
 
-        $this->bank = User::role(Role::BANK)->first();
+        // $this->bank = User::role(Role::BANK)->first();
     }
 
     /**
@@ -51,7 +51,7 @@ class DailyShare extends Command
         $grossPerMonth = $tokenOnInvested*$sharesPerMonth;
         $dailyEarnings = round($grossPerMonth/30, 2);
 
-        dd($dailyEarnings);
+        // dd($dailyEarnings);
 
         return ;
     }
