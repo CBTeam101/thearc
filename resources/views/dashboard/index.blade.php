@@ -177,9 +177,9 @@
             <img src="{{asset($bank->token->img)}}" alt="" class="mw-100">
             <div class="card-header flex-wrap border-0 pb-0">
               <div class="mr-3 mb-2">
-                <p class="fs-14 mb-1">{{$bank->token->av}} ({{$bank->token->name}}) | 1 = &#36;20</p>
+                <p class="fs-14 mb-1">{{$bank->token->av}} ({{$bank->token->name}}) | 1 = ₱{{number_format($bank->token->price, 2)}}</p>
                 <span class="fs-16 font-w600">Tokens Available</span><br/>
-                <span class="fs-24 font-w600">{{number_format($bank->balance, 2)}}</span>
+                <span class="fs-24 font-w600">{{number_format($bank->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($bank->balance*$bank->token->price, 2)}})</small></span>
               </div>
               <span class="fs-12 mb-2">
               <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">

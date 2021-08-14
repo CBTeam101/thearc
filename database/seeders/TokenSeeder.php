@@ -20,21 +20,21 @@ class TokenSeeder extends Seeder
                 'name' => 'AxieBusToken',
                 'share' => 30,
                 'img' => 'images/card/card1.png',
-                'price' => 100
+                'price' => 1000
             ],
             [
                 'av' => 'BTT',
                 'name' => 'BethylTradeToken',
                 'share' => 30,
                 'img' => 'images/card/card2.png',
-                'price' => 100
+                'price' => 1000
             ],
             [
                 'av' => 'WWT',
                 'name' => 'WonderWhiteToken',
                 'share' => 30,
                 'img' => 'images/card/card3.png',
-                'price' => 100
+                'price' => 1000
             ],
             // [
             //     'av' => 'WWT',

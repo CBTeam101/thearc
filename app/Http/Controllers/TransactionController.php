@@ -10,6 +10,7 @@ use App\Enums\TransactionType;
 use App\Enums\Description;
 use App\Enums\Role;
 use App\Enums\Status;
+use App\Enums\Increment;
 use App\Models\User;
 use Illuminate\Support\Str;
 use DataTables;
@@ -155,8 +156,6 @@ class TransactionController extends Controller
 
             return response()->json(['message' => $bug], 500);
         }
-
-
     }
 
     /**
@@ -220,6 +219,10 @@ class TransactionController extends Controller
                 $bankWallet = $bank->wallets()->where('token_id', $transaction->token_id)->first();
                 $bankWallet->balance = ($bankWallet->balance-$transaction->token);
                 $bankWallet->save();
+
+                $bankToken = $bankWallet->token()->findOrFail($transaction->token_id);
+                $bankToken->price = $bankToken->price+Increment::ADD_PRICE;
+                $bankToken->save();
             });
 
             return response()->json(['message' => 'Successfully updated.'], 200);
