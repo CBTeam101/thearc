@@ -62,6 +62,11 @@ return [
 							'vendor/chartist/css/chartist.min.css',
 							'vendor/datatables/css/jquery.dataTables.min.css',
 				],
+					'users' => [
+						'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+						'vendor/chartist/css/chartist.min.css',
+						'vendor/datatables/css/jquery.dataTables.min.css',
+					],
 				'transactions_details' => [
 							'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/jqvmap/css/jqvmap.min.css',
@@ -255,8 +260,8 @@ return [
 							'vendor/peity/jquery.peity.min.js',
 							'vendor/apexchart/apexchart.js',
 							'js/dashboard/dashboard-1.js',
-              'js/custom.js',
-              'js/deznav-init.js',
+							'js/custom.js',
+							'js/deznav-init.js',
 				],
 				 'my_wallet' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
@@ -264,8 +269,8 @@ return [
 							'vendor/peity/jquery.peity.min.js',
 							'vendor/apexchart/apexchart.js',
 							'js/dashboard/my-wallet.js',
-              'js/custom.js',
-              'js/deznav-init.js',
+							'js/custom.js',
+							'js/deznav-init.js',
 				],
 				'invoices' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
@@ -290,6 +295,14 @@ return [
 							'vendor/chart.js/Chart.bundle.min.js',
 							'vendor/datatables/js/jquery.dataTables.min.js',
               'js/custom.js',
+							'js/deznav-init.js',
+							'https://unpkg.com/sweetalert/dist/sweetalert.min.js',
+				],
+				'users' => [
+					'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+					'vendor/chart.js/Chart.bundle.min.js',
+					'vendor/datatables/js/jquery.dataTables.min.js',
+				'js/custom.js',
 							'js/deznav-init.js',
 							'https://unpkg.com/sweetalert/dist/sweetalert.min.js',
 				],

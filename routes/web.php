@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('transactions-datatable', 'App\Http\Controllers\TransactionController@index');
     Route::post('transactions-approve/{id}', 'App\Http\Controllers\TransactionController@approve');
     Route::post('put-in-tokens', 'App\Http\Controllers\PutInTokenController@store');
+    Route::resource('user','App\Http\Controllers\UserController');
 
     Route::get('/', 'App\Http\Controllers\MophyadminController@dashboard_1');
     Route::get('/cards-center', 'App\Http\Controllers\MophyadminController@cards_center');
