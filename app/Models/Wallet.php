@@ -31,12 +31,14 @@ class Wallet extends Model
     public function getWalletNoAttribute($value)
     {
         $w_no = str_split($value, 4);
-        $formatted_no = '';
+        $formatted_no = implode(' - ', $w_no);
+
+        return $formatted_no;
         foreach($w_no as $key => $value)
         {
             if($key !== 3)
             {
-                $formatted_no .= '**** ';
+                $formatted_no .= ' ';
             } else {
                 $formatted_no .= $value;
             }

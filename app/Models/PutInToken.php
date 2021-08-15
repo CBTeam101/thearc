@@ -27,4 +27,8 @@ class PutInToken extends Model
     public function wallet() {
         return $this->hasOne(Wallet::class, 'id', 'wallet_id');
     }
+
+    public function user() {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

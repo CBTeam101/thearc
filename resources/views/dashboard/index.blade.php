@@ -238,8 +238,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#AC39D4"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Investment</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$1,415</span>/$2,000</span>
+                        <p class="fs-14 mb-2">Put In ABT / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -247,8 +247,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#40D4A8"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Installment</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$1,567</span>/$5,000</span>
+                        <p class="fs-14 mb-2">ABIT / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -256,8 +256,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#1EB6E7"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Restaurant</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$487</span>/$10,000</span>
+                        <p class="fs-14 mb-2">Restaurant Spend / Total </p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -265,8 +265,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#461EE7"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Property</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$3,890</span>/$4,000</span>
+                        <p class="fs-14 mb-2">Gass Station Spend / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                   </div>
@@ -279,7 +279,7 @@
                           <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>5/8</span>
                           <small class="text-white">71%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Investment</span>
+                        <span class="fs-14 text-white d-block">Put In ABT</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-4">
@@ -288,7 +288,7 @@
                           <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>3/8</span>
                           <small class="text-white">30%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Installment</span>
+                        <span class="fs-14 text-white d-block">ABIT</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-sm-0 mb-4">
@@ -297,7 +297,7 @@
                           <span class="donut1" data-peity='{ "fill": ["rgb(30, 170, 231)", "rgba(234, 234, 234, 1)"],   "innerRadius": 33, "radius": 10}'>1/8</span>
                           <small class="text-black">5%</small>
                         </div>
-                        <span class="fs-14 text-black d-block">Restaurant</span>
+                        <span class="fs-14 text-black d-block">Restaurant Spend</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-sm-0 mb-4">
@@ -306,7 +306,7 @@
                           <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>9/10</span>
                           <small class="text-white">96%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Property</span>
+                        <span class="fs-14 text-white d-block">Gass S. Spend</span>
                       </div>
                     </div>
                   </div>

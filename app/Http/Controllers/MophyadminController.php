@@ -6,13 +6,20 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use App\Enums\Role;
+use App\Enums\Token;
 use App\Models\Tokens;
 use App\Models\Transaction;
 use App\Models\PutInToken;
 
 class MophyadminController extends Controller
 {
-    
+
+    private $bank;
+
+    public function __construct()
+    {
+        $this->bank = User::role(Role::BANK)->first();
+    }
     
 	// Dashboard
     public function dashboard_1()
@@ -26,7 +33,7 @@ class MophyadminController extends Controller
         $button_class="btn-primary";
         $action = __FUNCTION__;
 
-        $banks = User::role(Role::BANK)->first()->wallets;
+        $banks = $this->bank->wallets()->where('token_id','<>',Token::ABIT)->get();
         $banks->load('token');
 		
         return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText','active','event_class','button_class', 'banks'));
@@ -69,8 +76,11 @@ class MophyadminController extends Controller
 
         $tokens = Tokens::all();
         $putins = PutInToken::where('user_id', auth()->user()->id)->limit(5)->latest()->get();
+        $abt = $this->bank->wallets()->where('token_id', Token::XBT)->first()->token;
+        $abtWallet = auth()->user()->wallets()->where('token_id', Token::XBT)->first();
+        $abitWallet = auth()->user()->wallets()->where('token_id', Token::ABIT)->first();
 
-        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText','tokens', 'putins'));
+        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText','tokens', 'putins', 'abt', 'abtWallet', 'abitWallet'));
     }
 	    // Transactions
     public function transactions()

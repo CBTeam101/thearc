@@ -449,6 +449,7 @@ jQuery(document).ready(function() {
 			this.putInTokenType = this.container.find('[name=put_in_token_type]')
 			this.putInRef = this.container.find('[name=ref]')
 			this.puntInTokens = this.container.find('[name=put_in_tokens]')
+			this.currentPrice = this.container.find('[name=current_price]')
 		},
 		http: function(options) {
 			$.ajaxSetup({
@@ -464,7 +465,7 @@ jQuery(document).ready(function() {
 		},
 		events: function() {
 			this.amount.on('change', function(e) {
-				const cal = Math.floor(parseInt(e.target.value)/1000);
+				const cal = (parseFloat(e.target.value)/parseFloat(this.currentPrice.val()));
 				this.token.val(cal).text(cal).trigger('change');
 			}.bind(this))
 

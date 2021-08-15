@@ -23,7 +23,7 @@ class TokenSeeder extends Seeder
                 'price' => 1000
             ],
             [
-                'av' => 'WWT',
+                'av' => 'ABIT',
                 'name' => 'WonderWhiteToken',
                 'share' => 30,
                 'img' => 'images/card/card3.png',

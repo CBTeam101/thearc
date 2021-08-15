@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\PutInToken;
 use App\Enums\Role;
+use App\Enums\Token;
 use App\Enums\Increment;
 
 class DailyShare extends Command
@@ -37,7 +38,7 @@ class DailyShare extends Command
     {
         parent::__construct();
 
-        // $this->bank = User::role(Role::BANK)->first();
+        $this->bank = User::role(Role::BANK)->first();
     }
 
     /**
@@ -53,23 +54,30 @@ class DailyShare extends Command
         foreach($putins as $p)
         {
             DB::transaction(function() use ($p, $bank) {
-                $tokenOnInvested = (float)$p->tokens;
-                $sharesPerMonth = round($p->token->share/100, 2);//.25;
-                $dailyGross = round($sharesPerMonth/30, 2);
-                $totalGross = $tokenOnInvested*$dailyGross;
+                $abitWallet = $p->user->wallets()->where('token_id', Token::ABIT)->first();
+                $days = 30;
+                $currentPrice= $p->token->price;
+                $tokenOnInvested = (float)$p->tokens; // 4
+                $sharesPerMonth = $p->token->share/100; // shares per month
+                // dd($sharesPerMonth*$tokenOnInvested);
+                $dailyGross = round($sharesPerMonth/$days*$tokenOnInvested, 2); // .66 or .67
+                $deductionPerday = $currentPrice*Increment::DAILY_EARNING/$days;
+                // dd($totalGross);
+                // dd($dailyGross);
+                // dd($p->token->price-(Increment::DAILY_EARNING*$dailyGross));
 
-                // Increase token price
-                $p->token->price = $p->token->price+(Increment::DAILY_EARNING*$p->tokens);
+                // Update per token price
+                $p->token->price = $currentPrice-$deductionPerday;
                 $p->token->save();
 
                 // Subtract from the bank wallet
                 $b = $bank->wallets()->where('token_id', $p->token_id)->first();
-                $b->balance = $b->balance-$totalGross;
+                $b->balance = $b->balance-$dailyGross;
                 $b->save();
 
                 // Add to wallet
-                $p->wallet->balance = $p->wallet->balance + $totalGross;
-                $p->wallet->save();
+                $abitWallet->balance = $abitWallet->balance + $dailyGross;
+                $abitWallet->save();
             });
         }
     }
