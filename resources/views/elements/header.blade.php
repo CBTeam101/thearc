@@ -571,8 +571,8 @@
 				<ul class="navbar-nav header-right">
 					<li class="nav-item">
 						<div class="d-flex weather-detail">
-							<span><i class="las la-cloud"></i>21</span>
-							Medan, IDN
+							<span><i class="las la-calendar"></i>{{ \Carbon\Carbon::now()->format('d') }}</span>
+							{{\Carbon\Carbon::now()->format('M')}}, {{\Carbon\Carbon::now()->format('D')}}
 						</div>
 					</li>
 					<li class="nav-item dropdown notification_dropdown">

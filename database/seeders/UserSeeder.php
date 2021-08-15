@@ -34,13 +34,13 @@ class UserSeeder extends Seeder
                 'wallet_no' => rand(9000000000000000, 9999999999999999),
                 'balance' => 1000000
             ],
-            [
-                'token_id' => Token::BTT,
-                'uuid' => Str::uuid(),
-                'wallet_address' => Str::random(30),
-                'wallet_no' => rand(9000000000000000, 9999999999999999),
-                'balance' => 0
-            ],
+            // [
+            //     'token_id' => Token::BTT,
+            //     'uuid' => Str::uuid(),
+            //     'wallet_address' => Str::random(30),
+            //     'wallet_no' => rand(9000000000000000, 9999999999999999),
+            //     'balance' => 0
+            // ],
             [
                 'token_id' => Token::WWT,
                 'uuid' => Str::uuid(),

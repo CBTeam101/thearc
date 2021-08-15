@@ -19,4 +19,12 @@ class PutInToken extends Model
         'shares',
         'stop_at'
     ];
+
+    public function token() {
+        return $this->hasOne(Tokens::class, 'id', 'token_id');
+    }
+
+    public function wallet() {
+        return $this->hasOne(Wallet::class, 'id', 'wallet_id');
+    }
 }

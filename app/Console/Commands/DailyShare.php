@@ -3,8 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\PutInToken;
 use App\Enums\Role;
+use App\Enums\Increment;
 
 class DailyShare extends Command
 {
@@ -44,15 +47,30 @@ class DailyShare extends Command
      */
     public function handle()
     {
+        $putins = PutInToken::whereNull('stop_at')->get();
+        $bank = $this->bank;
 
-        // Invested tokens
-        $tokenOnInvested = 100;
-        $sharesPerMonth = .25;
-        $grossPerMonth = $tokenOnInvested*$sharesPerMonth;
-        $dailyEarnings = round($grossPerMonth/30, 2);
+        foreach($putins as $p)
+        {
+            DB::transaction(function() use ($p, $bank) {
+                $tokenOnInvested = (float)$p->tokens;
+                $sharesPerMonth = round($p->token->share/100, 2);//.25;
+                $dailyGross = round($sharesPerMonth/30, 2);
+                $totalGross = $tokenOnInvested*$dailyGross;
 
-        // dd($dailyEarnings);
+                // Increase token price
+                $p->token->price = $p->token->price+(Increment::DAILY_EARNING*$p->tokens);
+                $p->token->save();
 
-        return ;
+                // Subtract from the bank wallet
+                $b = $bank->wallets()->where('token_id', $p->token_id)->first();
+                $b->balance = $b->balance-$totalGross;
+                $b->save();
+
+                // Add to wallet
+                $p->wallet->balance = $p->wallet->balance + $totalGross;
+                $p->wallet->save();
+            });
+        }
     }
 }

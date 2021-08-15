@@ -97,7 +97,7 @@ class TransactionController extends Controller
                 return $buttons;
             })
             ->addColumn('tr_no', function($q) {
-                return '<a href="javascript:void(0);" target="_blank">'.$q->tr_no.'</a>';
+                return '<a href="'.url('/transactions-details', $q->id).'" target="_blank">'.$q->tr_no.'</a>';
             })
             ->rawColumns(['recipient', 'type', 'status','check', 'actions', 'tr_no'])
             ->make(true);
@@ -142,9 +142,9 @@ class TransactionController extends Controller
                 {
                     $ext = $request->file->getClientOriginalExtension();
                     $uuid = Str::uuid();
-                    $path = public_path('/uploads/'.$uuid.'.'.$ext);
-                    $request->file->move($path);
-                    $transaction->file()->create(['image' => $path]);
+                    $path = public_path('/uploads');
+                    $request->file->move($path, $uuid.'.'.$ext);
+                    $transaction->file()->create(['image' => $uuid.'.'.$ext]);
                 }
             });
 
@@ -210,6 +210,7 @@ class TransactionController extends Controller
             DB::transaction(function() use ($id, $bank) {
                 $transaction = Transaction::findOrFail($id);
                 $transaction->status_id = Status::COMPLETED;
+                $transaction->approved_at = \Carbon\Carbon::now();
                 $transaction->save();
 
                 $userWallet = $transaction->wallet;
@@ -221,7 +222,7 @@ class TransactionController extends Controller
                 $bankWallet->save();
 
                 $bankToken = $bankWallet->token()->findOrFail($transaction->token_id);
-                $bankToken->price = $bankToken->price+Increment::ADD_PRICE;
+                $bankToken->price = $bankToken->price+(Increment::ADD_PRICE*$transaction->token);
                 $bankToken->save();
             });
 

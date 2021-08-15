@@ -11,7 +11,7 @@
           <div class="col-xl-12">
               <div class="auth-form">
                   <div class="text-center mb-3">
-                    <a href="{!! url('/index'); !!}"><img src="{{ asset('images/logo-full.png') }}" alt=""></a>
+                    <a href="{!! url('/index'); !!}"><img src="{{ asset('img/axie-blockcolor_03.png') }}" alt=""></a>
                   </div>
                   <h4 class="text-center mb-4 text-white">Sign in your account</h4>
                   <form action="{!! url('/index'); !!}">

@@ -56,17 +56,17 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{!! url('/index'); !!}" class="brand-logo">
-                @if(!empty($logo))
+                {{--@if(!empty($logo))
                 <img class="logo-abbr" src="{{ asset($logo) }}" alt="">
                 @else
                 <img class="logo-abbr" src="{{ asset('images/logo.png') }}" alt="">
-                @endif
+                @endif--}}
                 @if(!empty($logoText))
                 <img class="logo-compact" src="{{ asset($logoText) }}" alt="">
                 <img class="brand-title" src="{{ asset($logoText) }}" alt="">
                 @else
-                <img class="logo-compact" src="{{ asset('images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('images/logo-text.png') }}" alt="">
+                <img class="logo-compact" src="{{ asset('images/225615087_829759777681031_2166921792290384219_n.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('images/225615087_829759777681031_2166921792290384219_n.png') }}" alt="">
                 @endif
             </a>
 
@@ -105,14 +105,14 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-            <div class="alert alert-success alert-dismissible fade show">
+            <div class="alert alert-warning alert-dismissible fade show">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
                     <line x1="9" y1="9" x2="9.01" y2="9"></line>
                     <line x1="15" y1="9" x2="15.01" y2="9"></line>
                 </svg>
-                <strong>Info!</strong> Put in token is under development until tomorrow.
+                <strong>Info!</strong> We are updating buy token to provide billing info.
                 <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
                 </button>
             </div>
