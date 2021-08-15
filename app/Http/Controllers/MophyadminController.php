@@ -27,6 +27,7 @@ class MophyadminController extends Controller
         $action = __FUNCTION__;
 
         $banks = User::role(Role::BANK)->first()->wallets;
+        $banks->load('token');
 		
         return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText','active','event_class','button_class', 'banks'));
     }

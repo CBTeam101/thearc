@@ -22,13 +22,6 @@ class TokenSeeder extends Seeder
                 'img' => 'images/card/card1.png',
                 'price' => 1000
             ],
-            // [
-            //     'av' => 'BTT',
-            //     'name' => 'BethylTradeToken',
-            //     'share' => 30,
-            //     'img' => 'images/card/card2.png',
-            //     'price' => 1000
-            // ],
             [
                 'av' => 'WWT',
                 'name' => 'WonderWhiteToken',
@@ -36,6 +29,13 @@ class TokenSeeder extends Seeder
                 'img' => 'images/card/card3.png',
                 'price' => 1000
             ],
+            // [
+            //     'av' => 'BTT',
+            //     'name' => 'BethylTradeToken',
+            //     'share' => 30,
+            //     'img' => 'images/card/card2.png',
+            //     'price' => 1000
+            // ],
             // [
             //     'av' => 'WWT',
             //     'name' => 'WonderWhiteToken',

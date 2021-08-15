@@ -37,7 +37,7 @@ class DailyShare extends Command
     {
         parent::__construct();
 
-        $this->bank = User::role(Role::BANK)->first();
+        // $this->bank = User::role(Role::BANK)->first();
     }
 
     /**
