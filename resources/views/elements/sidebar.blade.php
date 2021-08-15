@@ -14,7 +14,7 @@
                     <li><a href="{!! url('/invoices'); !!}">Market Place</a></li>
                     <!-- <li><a href="{!! url('/cards-center'); !!}">Cards Center</a></li> -->
                     <li><a href="{!! url('/transactions'); !!}">Transactions</a></li>
-                    <!-- <li><a href="{{route('user.index')}}">Users</a></li> -->
+                    <li><a href="{{route('user.index')}}">Users</a></li>
                     <!-- <li><a href="{!! url('/transactions-details'); !!}">Transactions Details</a></li> -->
                 </ul>
             </li>
