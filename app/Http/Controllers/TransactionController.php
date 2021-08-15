@@ -142,9 +142,9 @@ class TransactionController extends Controller
                 {
                     $ext = $request->file->getClientOriginalExtension();
                     $uuid = Str::uuid();
-                    $path = public_path('/uploads/'.$uuid.'.'.$ext);
-                    $request->file->move($path);
-                    $transaction->file()->create(['image' => $path]);
+                    $path = public_path('/uploads');
+                    $request->file->move($path, $uuid.'.'.$ext);
+                    $transaction->file()->create(['image' => $uuid.'.'.$ext]);
                 }
             });
 

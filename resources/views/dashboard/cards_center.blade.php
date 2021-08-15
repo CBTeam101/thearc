@@ -52,7 +52,7 @@
             </div>
             <div class="form-group">
               <label for="">Photo/Screenshot (Proof of Payment)<span class="text-danger">*</span></label>
-              <input type="file" class="form-control input-rounded" name="file" multiple>
+              <input type="file" class="form-control input-rounded" name="file" multiple required>
             </div>
           </div>
           <div class="modal-footer">
