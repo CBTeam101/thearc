@@ -97,7 +97,7 @@ class TransactionController extends Controller
                 return $buttons;
             })
             ->addColumn('tr_no', function($q) {
-                return '<a href="javascript:void(0);" target="_blank">'.$q->tr_no.'</a>';
+                return '<a href="'.url('/transactions-details', $q->id).'" target="_blank">'.$q->tr_no.'</a>';
             })
             ->rawColumns(['recipient', 'type', 'status','check', 'actions', 'tr_no'])
             ->make(true);
@@ -210,6 +210,7 @@ class TransactionController extends Controller
             DB::transaction(function() use ($id, $bank) {
                 $transaction = Transaction::findOrFail($id);
                 $transaction->status_id = Status::COMPLETED;
+                $transaction->approved_at = \Carbon\Carbon::now();
                 $transaction->save();
 
                 $userWallet = $transaction->wallet;

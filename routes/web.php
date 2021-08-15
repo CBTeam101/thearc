@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/my-wallet', 'App\Http\Controllers\MophyadminController@my_wallet');
     Route::get('/invoices', 'App\Http\Controllers\MophyadminController@invoices');
     Route::get('/transactions', 'App\Http\Controllers\MophyadminController@transactions');
-    Route::get('/transactions-details', 'App\Http\Controllers\MophyadminController@transactions_details');
+    Route::get('/transactions-details/{id}', 'App\Http\Controllers\MophyadminController@transactions_details');
     Route::get('/app-calender', 'App\Http\Controllers\MophyadminController@app_calender');
     Route::get('/app-profile', 'App\Http\Controllers\MophyadminController@app_profile');
     Route::get('/post-details', 'App\Http\Controllers\MophyadminController@post_details');

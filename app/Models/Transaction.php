@@ -20,8 +20,14 @@ class Transaction extends Model
         'uuid',
         'description',
         'token_id',
-        'status_id'
+        'status_id',
+        'approved_at'
     ];
+
+    public function tokenModel()
+    {
+        return $this->hasOne(Tokens::class, 'id', 'token_id');
+    }
 
     public function type()
     {

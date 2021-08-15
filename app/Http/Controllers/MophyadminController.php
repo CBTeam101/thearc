@@ -7,17 +7,20 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Enums\Role;
 use App\Models\Tokens;
+use App\Models\Transaction;
+use App\Models\PutInToken;
 
 class MophyadminController extends Controller
 {
-	
+    
+    
 	// Dashboard
     public function dashboard_1()
     {
         $page_title = 'Dashboard';
         $page_description = 'Some description for the page';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
+        $logo = "images/225615087_829759777681031_2166921792290384219_n.png";
+        $logoText = "images/225615087_829759777681031_2166921792290384219_n.png";
         $active="active";
         $event_class="schedule-event";
         $button_class="btn-primary";
@@ -64,8 +67,9 @@ class MophyadminController extends Controller
         $action = __FUNCTION__;
 
         $tokens = Tokens::all();
+        $putins = PutInToken::where('user_id', auth()->user()->id)->limit(5)->latest()->get();
 
-        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText','tokens'));
+        return view('dashboard.cards_center', compact('page_title', 'page_description','action','logo','logoText','tokens', 'putins'));
     }
 	    // Transactions
     public function transactions()
@@ -80,7 +84,7 @@ class MophyadminController extends Controller
         return view('dashboard.transactions', compact('page_title', 'page_description','action','logo','logoText'));
     }
 	    // Transactions Details
-    public function transactions_details()
+    public function transactions_details($id)
     {
         $page_title = 'Transactions Details';
         $page_description = 'Some description for the page';
@@ -89,7 +93,9 @@ class MophyadminController extends Controller
 		
         $action = __FUNCTION__;
 
-        return view('dashboard.transactions_details', compact('page_title', 'page_description','action','logo','logoText'));
+        $transaction = Transaction::findOrFail($id);
+
+        return view('dashboard.transactions_details', compact('page_title', 'page_description','action','logo','logoText', 'transaction'));
     }
 	    // Calender
     public function app_calender()

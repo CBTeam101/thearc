@@ -149,25 +149,25 @@
               </div>
             </div>
             <div class="card-body pb-0">
-              @foreach(auth()->user()->wallets as $wallet)
+              @foreach($putins as $in)
               <div class="d-flex mb-3 border-bottom justify-content-between flex-wrap align-items-center">
-                <div class="d-flex pb-3 align-items-center"> <img src="{{ asset($wallet->token->img) }}" alt="" class="rounded mr-3" width="130">
+                <div class="d-flex pb-3 align-items-center"> <img src="{{ asset($in->token->img) }}" alt="" class="rounded mr-3" width="130">
                   <div class="mr-3">
                     <p class="fs-14 mb-1">Token Type</p>
-                    <span class="text-black font-w500">{{$wallet->token->av}}</span>
+                    <span class="text-black font-w500">{{$in->token->av}}</span>
                   </div>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Tokens</p>
-                  <span class="text-black font-w500">100</span>
+                  <span class="text-black font-w500">{{$in->tokens}} <small style="font-size:12px;">(₱{{ number_format($in->tokens*1000) }})</small>  </span>
                 </div>
                 <div class="mr-3 pb-3">
-                  <p class="fs-14 mb-1">Current Price</p>
-                  <span class="text-black font-w500">1 => $20</span>
+                  <p class="fs-14 mb-1">Daily Earning</p>
+                  <span class="text-black font-w500">{{((float)$in->token->share/100/30)}}% (₱{{((float)$in->token->share/100/30)*($in->tokens*1000)}})</span>
                 </div>
                 <div class="mr-3 pb-3">
-                  <p class="fs-14 mb-1">Shares by month</p>
-                  <span class="text-black font-w500 text-center">25%</span>
+                  <p class="fs-14 mb-1">Monthly Gross Income</p>
+                  <span class="text-black font-w500 text-center">{{round($in->token->share)}}%</span>
                 </div>
                 <a href="{!! url('/transactions-details'); !!}" class="fs-14 btn-link mr-3 pb-3">See Number</a>
                 <div class="dropdown pb-3">
