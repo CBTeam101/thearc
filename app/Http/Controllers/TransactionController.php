@@ -222,7 +222,7 @@ class TransactionController extends Controller
                 $bankWallet->save();
 
                 $bankToken = $bankWallet->token()->findOrFail($transaction->token_id);
-                $bankToken->price = $bankToken->price+Increment::ADD_PRICE;
+                $bankToken->price = $bankToken->price+(Increment::ADD_PRICE*$transaction->token);
                 $bankToken->save();
             });
 

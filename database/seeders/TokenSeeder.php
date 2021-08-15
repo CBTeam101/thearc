@@ -16,19 +16,19 @@ class TokenSeeder extends Seeder
     {
         $tokens = [
             [
-                'av' => 'XBPHT',
+                'av' => 'ABT',
                 'name' => 'AxieBusToken',
-                'share' => 30,
+                'share' => 20,
                 'img' => 'images/card/card1.png',
                 'price' => 1000
             ],
-            [
-                'av' => 'BTT',
-                'name' => 'BethylTradeToken',
-                'share' => 30,
-                'img' => 'images/card/card2.png',
-                'price' => 1000
-            ],
+            // [
+            //     'av' => 'BTT',
+            //     'name' => 'BethylTradeToken',
+            //     'share' => 30,
+            //     'img' => 'images/card/card2.png',
+            //     'price' => 1000
+            // ],
             [
                 'av' => 'WWT',
                 'name' => 'WonderWhiteToken',

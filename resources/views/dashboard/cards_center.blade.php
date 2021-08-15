@@ -11,7 +11,9 @@
   <div class="d-sm-flex d-block justify-content-between align-items-center mb-4">
     <h2 class="text-black font-w600 mb-sm-0 mb-2">Wallets Center</h2>
     @unlessrole('Bank')
-    <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#buymodal"><span class="btn-icon-left text-primary"><i class="fa fa-plus" aria-hidden="true"></i> </span>Buy Token</button>
+    <button type="button" class="btn btn-rounded btn-success" data-toggle="modal" data-target="#buymodal"><span class="btn-icon-left text-success"><i class="fa fa-plus"></i> </span>Buy Token</button>
+    <button type="button" class="btn btn-rounded btn-warning text-white" data-toggle="modal" data-target="#sellmodal"><span class="btn-icon-left text-warning"><i class="fa fa-share"></i> </span>Sell Token</button>
+    <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#giftmodal"><span class="btn-icon-left text-danger"><i class="fa fa-gift"></i> </span>Gift Token</button>
     @endunlessrole
     <!-- Buy Token -->
     <div class="modal fade" id="buymodal">
@@ -63,6 +65,98 @@
       </div>
     </div>
 
+    <!-- Sell Token -->
+    <div class="modal fade" id="sellmodal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" id="buy-token">
+          <div class="modal-header">
+            <h5 class="modal-title">Selling Form</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span> </button>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="alert alert-info alert-dismissible fade show">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Send us photo of your payment we recommend GCash +63 906 602 8287.
+            </div> -->
+            <div class="form-group">
+              <label for="">Token Type<span class="text-danger">*</span></label>
+              <select name="token_type" class="form-control rounded">
+                @foreach($tokens as $t)
+                <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Transaction #</label>
+              <input type="text" class="form-control input-rounded" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}" name="tr_no" readonly>
+            </div>
+            <div class="form-group">
+              <label for="">Tokens</label>
+              <input type="text" class="form-control input-rounded" placeholder="" name="token">
+            </div>
+            <div class="form-group">
+              <label for="">Amount<span class="text-danger">*</span></label>
+              <input type="number" class="form-control input-rounded" placeholder="" name="amount" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Gift Token -->
+    <div class="modal fade" id="giftmodal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" id="buy-token">
+          <div class="modal-header">
+            <h5 class="modal-title">Gift Form</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span> </button>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="alert alert-info alert-dismissible fade show">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Send us photo of your payment we recommend GCash +63 906 602 8287.
+            </div> -->
+            <div class="form-group">
+              <label for="">Token Type<span class="text-danger">*</span></label>
+              <select name="token_type" class="form-control rounded">
+                @foreach($tokens as $t)
+                <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Transaction #</label>
+              <input type="text" class="form-control input-rounded" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}" name="tr_no" readonly>
+            </div>
+            <div class="form-group">
+              <label for="">Tokens</label>
+              <input type="text" class="form-control input-rounded" placeholder="" name="token">
+            </div>
+            <div class="form-group">
+              <label for="">Wallet No</label>
+              <input type="text" class="form-control input-rounded" placeholder="" name="token">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <!-- Put In -->
     <div class="modal fade" id="putinmodal">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -81,7 +175,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="">#</label>
+              <label for="">Tr #</label>
               <input type="text" class="form-control input-rounded" value="{{\Carbon\Carbon::now()->format('His')}} - {{strtoupper(\Illuminate\Support\Str::random(4))}}" name="ref" readonly>
             </div>
             <div class="form-group">
@@ -107,7 +201,7 @@
             <div class="card-bx mb-0">
               <img src="{{asset($wallet->token->img)}}" alt="">
               <div class="card-info text-white">
-                <p class="mb-1">{{$wallet->token->av}} ({{$wallet->token->name}})</p>
+                <p class="mb-1">{{$wallet->token->av}}</p>
                 <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($wallet->balance*$wallet->token->price, 2)}})</small></h2>
                 <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                   <img src="images/dual-dot.png" alt="" class="dot-img">
@@ -163,7 +257,7 @@
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Daily Earning</p>
-                  <span class="text-black font-w500">{{((float)$in->token->share/100/30)}}% (₱{{((float)$in->token->share/100/30)*($in->tokens*1000)}})</span>
+                  <span class="text-black font-w500">{{round((float)$in->token->share/100/30, 2)}}% (₱{{round((float)$in->token->share/100/30, 2)*($in->tokens*1000)}})</span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Monthly Gross Income</p>
