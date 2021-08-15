@@ -65,8 +65,8 @@
                 <img class="logo-compact" src="{{ asset($logoText) }}" alt="">
                 <img class="brand-title" src="{{ asset($logoText) }}" alt="">
                 @else
-                <img class="logo-compact" src="{{ asset('images/225615087_829759777681031_2166921792290384219_n.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('images/225615087_829759777681031_2166921792290384219_n.png') }}" alt="">
+                <img class="logo-compact" src="{{ asset('images/logo-text.png.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('images/logo-text.png.png') }}" alt="">
                 @endif
             </a>
 

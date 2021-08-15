@@ -19,8 +19,8 @@ class MophyadminController extends Controller
     {
         $page_title = 'Dashboard';
         $page_description = 'Some description for the page';
-        $logo = "images/225615087_829759777681031_2166921792290384219_n.png";
-        $logoText = "images/225615087_829759777681031_2166921792290384219_n.png";
+        $logo = "images/logo-text.png";
+        $logoText = "images/logo-text.png";
         $active="active";
         $event_class="schedule-event";
         $button_class="btn-primary";
