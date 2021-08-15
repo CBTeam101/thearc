@@ -108,7 +108,7 @@
               <img src="{{asset($wallet->token->img)}}" alt="">
               <div class="card-info text-white">
                 <p class="mb-1">{{$wallet->token->av}} ({{$wallet->token->name}})</p>
-                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}}</h2>
+                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($wallet->balance*$wallet->token->price, 2)}})</small></h2>
                 <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                   <img src="images/dual-dot.png" alt="" class="dot-img">
                   <h4 class="fs-20 text-white mb-0">{{$wallet->wallet_no}}</h4>
