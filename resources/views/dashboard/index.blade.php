@@ -181,7 +181,7 @@
                 <span class="fs-16 font-w600">Tokens Available</span><br/>
                 <span class="fs-24 font-w600">{{number_format($bank->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($bank->balance*$bank->token->price, 2)}})</small></span>
               </div>
-              <span class="fs-12 mb-2">
+              <!-- <span class="fs-12 mb-2">
               <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.999939 13.5C1.91791 12.4157 4.89722 9.22772 6.49994 7.5L12.4999 10.5L19.4999 1.5" stroke="#ecf0f1" stroke-width="2"/>
                 <path d="M6.49994 7.5C4.89722 9.22772 1.91791 12.4157 0.999939 13.5H19.4999V1.5L12.4999 10.5L6.49994 7.5Z" fill="url(#paint0_linear)"/>
@@ -192,7 +192,7 @@
                 </linearGradient>
                 </defs>
               </svg>
-              {{$bank->token->share}}% (30 days)</span>
+              {{$bank->token->share}}% (30 days)</span> -->
             </div>
           </div>
         </div>

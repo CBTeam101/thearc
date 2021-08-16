@@ -208,7 +208,7 @@
                   <img src="images/dual-dot.png" alt="" class="dot-img">
                   <h4 class="fs-20 text-white mb-0">{{$abtWallet->wallet_no}}</h4>
                 </div>
-                <div class="d-flex">
+                <!-- <div class="d-flex">
                   <div class="mr-5">
                     <p class="fs-14 mb-1 op6">VALID THRU</p>
                     <span>N/A</span>
@@ -217,7 +217,7 @@
                     <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
                     <span>{{$abtWallet->user->full_name}}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -230,13 +230,13 @@
               <div class="card-info text-white">
                 <p class="mb-1">{{$abitWallet->token->av}}</p>
                 <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($abitWallet->balance, 2)}}
-                  <!--<small class="d-inline" style="font-size: 12px;">(₱{{number_format($abitWallet->balance*$abitWallet->token->price, 2)}})</small>-->
+                  <small class="d-inline" style="font-size: 12px;">(₱{{number_format($abitWallet->balance*$abtWallet->token->price, 2)}})</small>
                 </h2>
                 <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                   <img src="images/dual-dot.png" alt="" class="dot-img">
                   <h4 class="fs-20 text-white mb-0">{{$abitWallet->wallet_no}}</h4>
                 </div>
-                <div class="d-flex">
+                <!-- <div class="d-flex">
                   <div class="mr-5">
                     <p class="fs-14 mb-1 op6">VALID THRU</p>
                     <span>N/A</span>
@@ -245,7 +245,7 @@
                     <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
                     <span>{{$abitWallet->user->full_name}}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -259,12 +259,12 @@
           <div class="card">
             <div class="card-header d-sm-flex d-block border-0 pb-0">
               <div>
-                <h4 class="fs-20 text-black">Put In Tokens</h4>
+                <h4 class="fs-20 text-black">Mine Token</h4>
                 <span class="fs-12">List of all tokens that is earning daily.</span>
               </div>
               <div class="dropdown custom-dropdown mb-0 mt-3 mt-sm-0">
                 <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#putinmodal">
-                  Put In
+                  Mine Token
                 </button>
                 <!-- <div class="btn btn-light btn-rounded" role="button" data-toggle="dropdown" aria-expanded="false"> Newest <i class="fa fa-caret-down text-primary ml-3" aria-hidden="true"></i> </div>
                 <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="javascript:void(0);">Details</a> <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a> </div> -->
@@ -281,11 +281,11 @@
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Tokens</p>
-                  <span class="text-black font-w500">{{$in->tokens}} <small style="font-size:12px;">(₱{{ number_format($in->tokens*1000) }})</small> </span>
+                  <span class="text-black font-w500">{{$in->tokens}} <small style="font-size:12px;">(₱{{ number_format($in->tokens*$in->token->price, 2) }})</small> </span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Daily Earning</p>
-                  <span class="text-black font-w500">{{round((float)$in->token->share/100/30, 2)}}% (₱{{round((float)$in->token->share/100/30, 2)*($in->tokens*1000)}})</span>
+                  <span class="text-black font-w500">{{round(($in->token->share/100/30*$in->tokens), 2)}} (₱{{round($in->token->share/100/30*$in->tokens*$in->token->price, 2)}})</span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Monthly Gross Income</p>

@@ -114,6 +114,7 @@
                 </svg>
                 <strong>Info!</strong>
                 <ul>
+                    <li class="text-warning">We fixed wrong calculation on put in token, to have a hint on daily earning.</li>
                     <li>We are updating buy token to provide billing info more options.</li>
                     <li>We are working on Gift Token.</li>
                     <li>We are working on Sell Token.</li>
