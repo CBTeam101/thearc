@@ -276,16 +276,16 @@
                 <div class="d-flex pb-3 align-items-center"> <img src="{{ asset($in->token->img) }}" alt="" class="rounded mr-3" width="130">
                   <div class="mr-3">
                     <p class="fs-14 mb-1">Token Type</p>
-                    <span class="text-black font-w500">{{$in->token->av}}</span>
+                    <span class="text-black font-w500">{{$in->token->av}} <small style="font-size:12px;">(Current price: ₱{{round($in->token->price, 2)}})</small></span>
                   </div>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Tokens</p>
-                  <span class="text-black font-w500">{{$in->tokens}} <small style="font-size:12px;">(₱{{ number_format($in->tokens*$in->token->price, 2) }})</small> </span>
+                  <span class="text-black font-w500">{{$in->tokens}} </span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Daily Earning</p>
-                  <span class="text-black font-w500">{{round(($in->token->share/100/30*$in->tokens), 2)}} (₱{{round($in->token->share/100/30*$in->tokens*$in->token->price, 2)}})</span>
+                  <span class="text-black font-w500">{{round(($in->token->share/100/30*$in->tokens), 2)}} <small style="font-size:12px;">(₱{{round($in->token->share/100/30*$in->tokens*$in->token->price, 2)}})</small> </span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Monthly Gross Income</p>
