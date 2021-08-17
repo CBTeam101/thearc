@@ -238,8 +238,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#AC39D4"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Put In ABT / Total</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
+                        <p class="fs-14 mb-2">ABT Mining / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">{{ $totalAbtMining }}</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -248,7 +248,7 @@
                       </svg>
                       <div>
                         <p class="fs-14 mb-2">ABIT / Total</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">{{ $totalAbit }}</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -276,17 +276,17 @@
                     <div class="col-sm-6 mb-4">
                       <div class="bg-secondary rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>5/8</span>
-                          <small class="text-white">71%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbtMining)}}/{{round($banks[0]->balance)}}</span>
+                          <small class="text-white">{{round($totalAbtMining/$banks[0]->balance, 2)}}%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Put In ABT</span>
+                        <span class="fs-14 text-white d-block">Mining ABT</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-4">
                       <div class="bg-success rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>3/8</span>
-                          <small class="text-white">30%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbit)}}/{{round($totalAbtMining)}}</span>
+                          <small class="text-white">{{round($totalAbtMining/$totalAbit, 2)}}%</small>
                         </div>
                         <span class="fs-14 text-white d-block">ABIT</span>
                       </div>

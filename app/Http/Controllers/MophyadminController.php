@@ -10,6 +10,7 @@ use App\Enums\Token;
 use App\Models\Tokens;
 use App\Models\Transaction;
 use App\Models\PutInToken;
+use App\Models\Wallet;
 
 class MophyadminController extends Controller
 {
@@ -35,8 +36,10 @@ class MophyadminController extends Controller
 
         $banks = $this->bank->wallets()->where('token_id','<>',Token::ABIT)->get();
         $banks->load('token');
+        $totalAbtMining = PutInToken::whereNull('stop_at')->sum('tokens');
+        $totalAbit = Wallet::where('token_id', Token::ABIT)->sum('balance');
 		
-        return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText','active','event_class','button_class', 'banks'));
+        return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText','active','event_class','button_class', 'banks', 'totalAbtMining', 'totalAbit'));
     }
     // My Wallet
     public function my_wallet()
