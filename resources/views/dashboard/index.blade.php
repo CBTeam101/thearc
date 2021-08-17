@@ -294,8 +294,8 @@
                     <div class="col-sm-6 mb-sm-0 mb-4">
                       <div class="border border-2 border-primary rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(30, 170, 231)", "rgba(234, 234, 234, 1)"],   "innerRadius": 33, "radius": 10}'>1/8</span>
-                          <small class="text-black">5%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(30, 170, 231)", "rgba(234, 234, 234, 1)"],   "innerRadius": 33, "radius": 10}'>0/0</span>
+                          <small class="text-black">0%</small>
                         </div>
                         <span class="fs-14 text-black d-block">Restaurant Spend</span>
                       </div>
@@ -303,8 +303,8 @@
                     <div class="col-sm-6 mb-sm-0 mb-4">
                       <div class="bg-info rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>9/10</span>
-                          <small class="text-white">96%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>0/0</span>
+                          <small class="text-white">0%</small>
                         </div>
                         <span class="fs-14 text-white d-block">Gass S. Spend</span>
                       </div>
