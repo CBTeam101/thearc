@@ -279,14 +279,14 @@
                           <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbtMining)}}/{{round($banks[0]->balance)}}</span>
                           <small class="text-white">{{round($totalAbtMining/$banks[0]->balance, 2)}}%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Mining ABT</span>
+                        <span class="fs-14 text-white d-block">ABT Mining</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-4">
                       <div class="bg-success rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
                           <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbit)}}/{{round($totalAbtMining)}}</span>
-                          <small class="text-white">{{round($totalAbtMining/$totalAbit, 2)}}%</small>
+                          <small class="text-white">{{round($totalAbit/$totalAbtMining, 2)}}%</small>
                         </div>
                         <span class="fs-14 text-white d-block">ABIT</span>
                       </div>
