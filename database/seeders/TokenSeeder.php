@@ -24,7 +24,7 @@ class TokenSeeder extends Seeder
             ],
             [
                 'av' => 'ABIT',
-                'name' => 'WonderWhiteToken',
+                'name' => 'AxieBusinessInterestToken',
                 'share' => 30,
                 'img' => 'images/card/card3.png',
                 'price' => 1000

@@ -16,6 +16,7 @@
     <button type="button" class="btn btn-rounded btn-warning text-white" data-toggle="modal" data-target="#sellmodal"><span class="btn-icon-left text-warning"><i class="fa fa-share"></i> </span>Sell Token</button>
     @endunlessrole
     <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#giftmodal"><span class="btn-icon-left text-danger"><i class="fa fa-gift"></i> </span>Gift Token</button>
+    
     <!-- Buy Token -->
     <div class="modal fade" id="buymodal">
       <div class="modal-dialog modal-dialog-centered" role="document">
