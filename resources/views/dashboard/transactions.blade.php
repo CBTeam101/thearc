@@ -63,6 +63,7 @@
           <thead>
             <tr>
               <th>Check</th>
+              <th>Name</th>
               <th>Tr No</th>
               <th>Tokens</th>
               <th>Description</th>

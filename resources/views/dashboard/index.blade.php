@@ -197,6 +197,30 @@
           </div>
         </div>
         @endforeach
+        <div class="col-xl-6 col-sm-6">
+          <div class="card-bx mb-3 text-white">
+            <img src="{{asset($bank->token->img)}}" alt="" class="mw-100">
+            <div class="card-header flex-wrap border-0 pb-0">
+              <div class="mr-3 mb-2">
+                <p class="fs-14 mb-1">PROS COIN | N/A (coming soon)</p>
+                <span class="fs-16 font-w600">Tokens Available</span><br/>
+                <span class="fs-24 font-w600">100,000.00 <small class="d-inline" style="font-size: 12px;">(N/A)</small></span>
+              </div>
+              <!-- <span class="fs-12 mb-2">
+              <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.999939 13.5C1.91791 12.4157 4.89722 9.22772 6.49994 7.5L12.4999 10.5L19.4999 1.5" stroke="#ecf0f1" stroke-width="2"/>
+                <path d="M6.49994 7.5C4.89722 9.22772 1.91791 12.4157 0.999939 13.5H19.4999V1.5L12.4999 10.5L6.49994 7.5Z" fill="url(#paint0_linear)"/>
+                <defs>
+                <linearGradient id="paint0_linear" x1="10.2499" y1="3" x2="10.9999" y2="13.5" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ecf0f1" stop-opacity="0.73"/>
+                <stop offset="1" stop-color="#ecf0f1" stop-opacity="0"/>
+                </linearGradient>
+                </defs>
+              </svg>
+              {{$bank->token->share}}% (30 days)</span> -->
+            </div>
+          </div>
+        </div>
         <div class="col-xl-12">
           <div class="card overflow-hidden">
             <div class="card-header d-sm-flex d-block border-0 pb-0">

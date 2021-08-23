@@ -546,7 +546,7 @@ jQuery(document).ready(function() {
 	$('#transactions').DataTable({
 		processing: true,
     serverSide: true,
-		searching: false,
+		searching: true,
 		paging:true,
 		select: false,
 		info: false,         
@@ -554,6 +554,7 @@ jQuery(document).ready(function() {
 		ajax: '/transactions-datatable',
 		columns: [
 			{ data: 'check', name: 'check' },
+			{ data: 'name', name: 'name' },
 			{ data: 'tr_no', name: 'tr_no' },
 			{ data: 'token', name: 'token' },
 			// { data: 'type', name: 'type' },

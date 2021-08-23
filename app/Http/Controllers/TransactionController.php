@@ -31,13 +31,13 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::with(['user','tokenInfo','wallet','status','type'])->where('user_id', auth()->user()->id)->latest();
+        $transactions = Transaction::with(['user','tokenInfo','wallet','status','type'])->where('user_id', auth()->user()->id)->latest()->get();
         if(auth()->user()->hasRole(Role::BANK))
         {
-            $transactions = Transaction::with(['user','tokenInfo','wallet','status','type'])->whereIn('transaction_type_id', [TransactionType::CASH_IN_TOKENS])->latest();
+            $transactions = Transaction::with(['user','tokenInfo','wallet','status','type'])->whereIn('transaction_type_id', [TransactionType::CASH_IN_TOKENS])->latest()->get();
         }
 
-        return DataTables::eloquent($transactions)
+        return DataTables::of($transactions)
             ->addColumn('recipient', function($q) {
                 return '<div class="d-flex align-items-center"> <img src='.asset('images/avatar/31.png').' alt="" class="rounded-circle mr-3" width="50">
                 <div>
@@ -99,7 +99,10 @@ class TransactionController extends Controller
             ->addColumn('tr_no', function($q) {
                 return '<a href="'.url('/transactions-details', $q->id).'" target="_blank">'.$q->tr_no.'</a>';
             })
-            ->rawColumns(['recipient', 'type', 'status','check', 'actions', 'tr_no'])
+            ->addColumn('name', function($q) {
+                return $q->user->first_name.' '.$q->user->last_name;
+            })
+            ->rawColumns(['recipient', 'type', 'status','check', 'actions', 'tr_no', 'name'])
             ->make(true);
     }
 
