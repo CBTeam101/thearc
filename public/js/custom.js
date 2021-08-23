@@ -563,6 +563,26 @@ jQuery(document).ready(function() {
 			{ data: 'actions', name: 'actions' },
 		]
 	});
+
+	//kini pod rey
+
+	$('#users').DataTable({
+		processing: true,
+    	serverSide: true,
+		searching: false,
+		paging:true,
+		select: false,
+		info: false,         
+		lengthChange:false,
+		ajax: '/users-datatable',
+		// columns: [
+		// 	{ data: 'fullname', name: 'fullname' },
+		// 	{ data: 'username', name: 'username' },
+		// 	{ data: 'token', name: 'token' },
+		// 	{ data: 'status', name: 'status' },
+		// 	{ data: 'actions', name: 'actions' },
+		// ]
+	});
 });
 /* Document.ready END */
 

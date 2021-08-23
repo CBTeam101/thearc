@@ -97,6 +97,21 @@ class MophyadminController extends Controller
 
         return view('dashboard.transactions', compact('page_title', 'page_description','action','logo','logoText'));
     }
+
+       // Users kini rey
+       public function users()
+       {
+           $page_title = 'Users';
+           $page_description = 'Some description for the page';
+           $logo = "images/logo.png";
+           $logoText = "images/logo-text.png";
+           
+           $action = __FUNCTION__;
+   
+           return view('dashboard.users', compact('page_title', 'page_description','action','logo','logoText'));
+       }
+
+
 	    // Transactions Details
     public function transactions_details($id)
     {
@@ -110,6 +125,20 @@ class MophyadminController extends Controller
         $transaction = Transaction::findOrFail($id);
 
         return view('dashboard.transactions_details', compact('page_title', 'page_description','action','logo','logoText', 'transaction'));
+    }
+
+    public function user()
+    {
+        $page_title = 'User Details';
+        $page_description = 'Some description for the page';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+		
+        $action = __FUNCTION__;
+
+        $user = User::all();
+
+        return view('dashboard.user', compact('page_title', 'page_description','action','logo','logoText', 'user'));
     }
 	    // Calender
     public function app_calender()
