@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function() {
     Route::post('transactions', 'App\Http\Controllers\TransactionController@store');
     Route::get('transactions-datatable', 'App\Http\Controllers\TransactionController@index');
+    Route::get('users-datatable', 'App\Http\Controllers\UserController@index');
     Route::post('transactions-approve/{id}', 'App\Http\Controllers\TransactionController@approve');
     Route::post('put-in-tokens', 'App\Http\Controllers\PutInTokenController@store');
-    Route::resource('user','App\Http\Controllers\UserController');
+    // Route::resource('user','App\Http\Controllers\UserController');
+    // Route::get('user')
 
     Route::get('/', 'App\Http\Controllers\MophyadminController@dashboard_1');
     Route::get('/cards-center', 'App\Http\Controllers\MophyadminController@cards_center');
@@ -30,6 +32,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/my-wallet', 'App\Http\Controllers\MophyadminController@my_wallet');
     Route::get('/invoices', 'App\Http\Controllers\MophyadminController@invoices');
     Route::get('/transactions', 'App\Http\Controllers\MophyadminController@transactions');
+    //kini ra rey
+    Route::get('/users', 'App\Http\Controllers\MophyadminController@users');
     Route::get('/transactions-details/{id}', 'App\Http\Controllers\MophyadminController@transactions_details');
     Route::get('/app-calender', 'App\Http\Controllers\MophyadminController@app_calender');
     Route::get('/app-profile', 'App\Http\Controllers\MophyadminController@app_profile');
