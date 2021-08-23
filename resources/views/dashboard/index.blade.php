@@ -181,7 +181,7 @@
                 <span class="fs-16 font-w600">Tokens Available</span><br/>
                 <span class="fs-24 font-w600">{{number_format($bank->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($bank->balance*$bank->token->price, 2)}})</small></span>
               </div>
-              <span class="fs-12 mb-2">
+              <!-- <span class="fs-12 mb-2">
               <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.999939 13.5C1.91791 12.4157 4.89722 9.22772 6.49994 7.5L12.4999 10.5L19.4999 1.5" stroke="#ecf0f1" stroke-width="2"/>
                 <path d="M6.49994 7.5C4.89722 9.22772 1.91791 12.4157 0.999939 13.5H19.4999V1.5L12.4999 10.5L6.49994 7.5Z" fill="url(#paint0_linear)"/>
@@ -192,7 +192,7 @@
                 </linearGradient>
                 </defs>
               </svg>
-              {{$bank->token->share}}% (30 days)</span>
+              {{$bank->token->share}}% (30 days)</span> -->
             </div>
           </div>
         </div>
@@ -238,8 +238,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#AC39D4"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Investment</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$1,415</span>/$2,000</span>
+                        <p class="fs-14 mb-2">ABT Mining / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">{{ $totalAbtMining }}</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -247,8 +247,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#40D4A8"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Installment</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$1,567</span>/$5,000</span>
+                        <p class="fs-14 mb-2">ABIT / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">{{ $totalAbit }}</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -256,8 +256,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#1EB6E7"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Restaurant</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$487</span>/$10,000</span>
+                        <p class="fs-14 mb-2">Restaurant Spend / Total </p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                     <div class="d-flex col-xl-12 col-xxl-6 col-md-12 col-sm-6 mb-4">
@@ -265,8 +265,8 @@
                         <rect x="-6.10352e-05" width="14" height="54" rx="7" fill="#461EE7"/>
                       </svg>
                       <div>
-                        <p class="fs-14 mb-2">Property</p>
-                        <span class="fs-18 font-w500"><span class="text-black mr-2">$3,890</span>/$4,000</span>
+                        <p class="fs-14 mb-2">Gass Station Spend / Total</p>
+                        <span class="fs-18 font-w500"><span class="text-black mr-2">0.00</span></span>
                       </div>
                     </div>
                   </div>
@@ -276,37 +276,37 @@
                     <div class="col-sm-6 mb-4">
                       <div class="bg-secondary rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>5/8</span>
-                          <small class="text-white">71%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbtMining)}}/{{round($banks[0]->balance)}}</span>
+                          <small class="text-white">{{round($totalAbtMining/$banks[0]->balance, 2)}}%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Investment</span>
+                        <span class="fs-14 text-white d-block">ABT Mining</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-4">
                       <div class="bg-success rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>3/8</span>
-                          <small class="text-white">30%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>{{round($totalAbit)}}/{{round($totalAbtMining)}}</span>
+                          <small class="text-white">{{round($totalAbit/$totalAbtMining, 2)}}%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Installment</span>
+                        <span class="fs-14 text-white d-block">ABIT</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-sm-0 mb-4">
                       <div class="border border-2 border-primary rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(30, 170, 231)", "rgba(234, 234, 234, 1)"],   "innerRadius": 33, "radius": 10}'>1/8</span>
-                          <small class="text-black">5%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(30, 170, 231)", "rgba(234, 234, 234, 1)"],   "innerRadius": 33, "radius": 10}'>0/0</span>
+                          <small class="text-black">0%</small>
                         </div>
-                        <span class="fs-14 text-black d-block">Restaurant</span>
+                        <span class="fs-14 text-black d-block">Restaurant Spend</span>
                       </div>
                     </div>
                     <div class="col-sm-6 mb-sm-0 mb-4">
                       <div class="bg-info rounded text-center p-3">
                         <div class="d-inline-block position-relative donut-chart-sale mb-3">
-                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>9/10</span>
-                          <small class="text-white">96%</small>
+                          <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0.2)"],   "innerRadius": 33, "radius": 10}'>0/0</span>
+                          <small class="text-white">0%</small>
                         </div>
-                        <span class="fs-14 text-white d-block">Property</span>
+                        <span class="fs-14 text-white d-block">Gass S. Spend</span>
                       </div>
                     </div>
                   </div>

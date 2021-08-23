@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             //     'balance' => 0
             // ],
             [
-                'token_id' => Token::WWT,
+                'token_id' => Token::ABIT,
                 'uuid' => Str::uuid(),
                 'wallet_address' => Str::random(30),
                 'wallet_no' => rand(9000000000000000, 9999999999999999),

@@ -10,11 +10,13 @@
 
   <div class="d-sm-flex d-block justify-content-between align-items-center mb-4">
     <h2 class="text-black font-w600 mb-sm-0 mb-2">Wallets Center</h2>
+    <input type="hidden" name="current_price" value="{{(float)$abt->price}}">
     @unlessrole('Bank')
     <button type="button" class="btn btn-rounded btn-success" data-toggle="modal" data-target="#buymodal"><span class="btn-icon-left text-success"><i class="fa fa-plus"></i> </span>Buy Token</button>
     <button type="button" class="btn btn-rounded btn-warning text-white" data-toggle="modal" data-target="#sellmodal"><span class="btn-icon-left text-warning"><i class="fa fa-share"></i> </span>Sell Token</button>
-    <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#giftmodal"><span class="btn-icon-left text-danger"><i class="fa fa-gift"></i> </span>Gift Token</button>
     @endunlessrole
+    <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#giftmodal"><span class="btn-icon-left text-danger"><i class="fa fa-gift"></i> </span>Gift Token</button>
+    
     <!-- Buy Token -->
     <div class="modal fade" id="buymodal">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -30,11 +32,11 @@
                 <line x1="12" y1="16" x2="12" y2="12"></line>
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
-              Send us photo of your payment we recommend GCash +63 906 602 8287.
+              Send us photo of your payment we recommend GCash +63 906 602 8287 <a href="#" target="_blank">more options</a>.
             </div>
             <div class="form-group">
               <label for="">Token Type<span class="text-danger">*</span></label>
-              <select name="token_type" class="form-control rounded">
+              <select name="token_type" class="form-control rounded" readonly>
                 @foreach($tokens as $t)
                 <option value="{{$t->id}}">{{$t->av}} ({{$t->name}})</option>
                 @endforeach
@@ -195,33 +197,60 @@
   <div class="row">
     <div class="col-xl-12">
       <div class="cards owl-carousel mb-sm-5 mb-3">
-        @foreach(auth()->user()->wallets as $wallet)
+
         <a href="{!! url('/transactions-details'); !!}" class="fs-14 btn-link mr-3 pb-3">
           <div class="items">
             <div class="card-bx mb-0">
-              <img src="{{asset($wallet->token->img)}}" alt="">
+              <img src="{{asset($abtWallet->token->img)}}" alt="">
               <div class="card-info text-white">
-                <p class="mb-1">{{$wallet->token->av}}</p>
-                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($wallet->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($wallet->balance*$wallet->token->price, 2)}})</small></h2>
+                <p class="mb-1">{{$abtWallet->token->av}}</p>
+                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($abtWallet->balance, 2)}} <small class="d-inline" style="font-size: 12px;">(₱{{number_format($abtWallet->balance*$abtWallet->token->price, 2)}})</small></h2>
                 <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                   <img src="images/dual-dot.png" alt="" class="dot-img">
-                  <h4 class="fs-20 text-white mb-0">{{$wallet->wallet_no}}</h4>
+                  <h4 class="fs-20 text-white mb-0">{{$abtWallet->wallet_no}}</h4>
                 </div>
-                <div class="d-flex">
+                <!-- <div class="d-flex">
                   <div class="mr-5">
                     <p class="fs-14 mb-1 op6">VALID THRU</p>
                     <span>N/A</span>
                   </div>
                   <div>
                     <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
-                    <span>{{$wallet->user->full_name}}</span>
+                    <span>{{$abtWallet->user->full_name}}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </a>
-        @endforeach
+
+        <a href="{!! url('/transactions-details'); !!}" class="fs-14 btn-link mr-3 pb-3">
+          <div class="items">
+            <div class="card-bx mb-0">
+              <img src="{{asset($abitWallet->token->img)}}" alt="">
+              <div class="card-info text-white">
+                <p class="mb-1">{{$abitWallet->token->av}}</p>
+                <h2 class="fs-36 text-white mb-sm-4 mb-3">{{number_format($abitWallet->balance, 2)}}
+                  <small class="d-inline" style="font-size: 12px;">(₱{{number_format($abitWallet->balance*$abtWallet->token->price, 2)}})</small>
+                </h2>
+                <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
+                  <img src="images/dual-dot.png" alt="" class="dot-img">
+                  <h4 class="fs-20 text-white mb-0">{{$abitWallet->wallet_no}}</h4>
+                </div>
+                <!-- <div class="d-flex">
+                  <div class="mr-5">
+                    <p class="fs-14 mb-1 op6">VALID THRU</p>
+                    <span>N/A</span>
+                  </div>
+                  <div>
+                    <p class="fs-14 mb-1 op6">WALLET HOLDER</p>
+                    <span>{{$abitWallet->user->full_name}}</span>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -231,12 +260,12 @@
           <div class="card">
             <div class="card-header d-sm-flex d-block border-0 pb-0">
               <div>
-                <h4 class="fs-20 text-black">Put In Tokens</h4>
+                <h4 class="fs-20 text-black">Mine Token</h4>
                 <span class="fs-12">List of all tokens that is earning daily.</span>
               </div>
               <div class="dropdown custom-dropdown mb-0 mt-3 mt-sm-0">
                 <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#putinmodal">
-                  Put In
+                  Mine Token
                 </button>
                 <!-- <div class="btn btn-light btn-rounded" role="button" data-toggle="dropdown" aria-expanded="false"> Newest <i class="fa fa-caret-down text-primary ml-3" aria-hidden="true"></i> </div>
                 <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="javascript:void(0);">Details</a> <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a> </div> -->
@@ -248,16 +277,16 @@
                 <div class="d-flex pb-3 align-items-center"> <img src="{{ asset($in->token->img) }}" alt="" class="rounded mr-3" width="130">
                   <div class="mr-3">
                     <p class="fs-14 mb-1">Token Type</p>
-                    <span class="text-black font-w500">{{$in->token->av}}</span>
+                    <span class="text-black font-w500">{{$in->token->av}} <small style="font-size:12px;">(Current price: ₱{{round($in->token->price, 2)}})</small></span>
                   </div>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Tokens</p>
-                  <span class="text-black font-w500">{{$in->tokens}} <small style="font-size:12px;">(₱{{ number_format($in->tokens*1000) }})</small>  </span>
+                  <span class="text-black font-w500">{{$in->tokens}} </span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Daily Earning</p>
-                  <span class="text-black font-w500">{{round((float)$in->token->share/100/30, 2)}}% (₱{{round((float)$in->token->share/100/30, 2)*($in->tokens*1000)}})</span>
+                  <span class="text-black font-w500">{{round(($in->token->share/100/30*$in->tokens), 2)}} <small style="font-size:12px;">(₱{{round($in->token->share/100/30*$in->tokens*$in->token->price, 2)}})</small> </span>
                 </div>
                 <div class="mr-3 pb-3">
                   <p class="fs-14 mb-1">Monthly Gross Income</p>
