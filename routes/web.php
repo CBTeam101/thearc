@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,5 +97,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/ui-typography', 'App\Http\Controllers\MophyadminController@ui_typography');
     Route::get('/widget-basic', 'App\Http\Controllers\MophyadminController@widget_basic');
 });
+
+Route::get('/forgot-password', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Auth::routes();

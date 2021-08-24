@@ -92,8 +92,6 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $action = __FUNCTION__;
-
-        return view('auth.register', compact('action'));
+        return view('unipro.auth.register');
     }
 }

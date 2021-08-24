@@ -47,9 +47,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        $action = __FUNCTION__;
-
-        return view('auth.login', compact('action'));
+        return view('unipro.auth.login');
     }
 
     /**
