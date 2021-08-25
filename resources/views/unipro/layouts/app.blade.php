@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
     @include('unipro.layouts.shared.meta-app')
     @include('unipro.layouts.shared.app.styles')

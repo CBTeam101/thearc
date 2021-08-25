@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Services\RoleService;
 
-class DashboardController extends Controller
+class RoleController extends Controller
 {
-    public function __construct()
+    private $service;
+    public function __construct(RoleService $service)
     {
-        view()->share('page_title', 'Dashboards');
+        view()->share('page_title', 'Roles');
+        $this->service = $service;
     }
 
     /**
@@ -18,32 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('unipro.pages.dashboards.index');
-    }
-
-    public function analytics()
-    {
-        return view('unipro.pages.dashboards.analytics');
-    }
-
-    public function crm()
-    {
-        return view('unipro.pages.dashboards.crm');
-    }
-
-    public function reports()
-    {
-        return view('unipro.pages.dashboards.reports');
-    }
-
-    public function saas()
-    {
-        return view('unipro.pages.dashboards.saas');
-    }
-
-    public function sales()
-    {
-        return view('unipro.pages.dashboards.sales');
+        return view('unipro.pages.roles.index');
     }
 
     /**
@@ -64,16 +43,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required']);
+
+        return $this->service->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
         //
     }
@@ -81,34 +62,39 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        return $this->service->destroy($id);
+    }
+
+    public function datatable()
+    {
+        return $this->service->datatable();
     }
 }

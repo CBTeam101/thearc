@@ -21,3 +21,9 @@
 <!-- Search Filter JS -->
 <link rel="stylesheet" href="{{asset('unipro/vendor/search-filter/search-filter.css')}}">
 <link rel="stylesheet" href="{{asset('unipro/vendor/search-filter/custom-search-filter.css')}}">
+
+<!-- Data Tables -->
+<link rel="stylesheet" href="{{asset('unipro/vendor/datatables/dataTables.bs4.css')}}" />
+<link rel="stylesheet" href="{{asset('unipro/vendor/datatables/dataTables.bs4-custom.css')}}" />
+<link rel="stylesheet" href="{{asset('unipro/vendor/datatables/buttons.bs.css')}}" />
+@yield('styles')

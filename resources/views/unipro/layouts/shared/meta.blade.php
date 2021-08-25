@@ -8,4 +8,4 @@
 <link rel="shortcut icon" href="img/fav.png" />
 
 <!-- Title -->
-<title>UniPro Login</title>
+<title>{{env('APP_NAME')}}</title>

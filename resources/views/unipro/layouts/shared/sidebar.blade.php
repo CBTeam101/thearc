@@ -9,6 +9,10 @@
     <a href="{{url('/')}}" class="logo">
       <img src="{{asset('shared/img/logo.png')}}" alt="logo-img">
     </a>
+    <a class="nav-link" id="menu-tab" data-bs-toggle="tab" href="#tab-menus" role="tab" aria-controls="tab-menus" aria-selected="false">
+      <i class="icon-sliders"></i>
+      <span class="nav-link-text">Menus</span>
+    </a>
     <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
       <i class="icon-home2"></i>
       <span class="nav-link-text">Dashboards</span>
@@ -46,6 +50,56 @@
 
   <!-- Tabs content start -->
   <div class="tab-content">
+
+    <!-- Chat tab -->
+    <div class="tab-pane fade show" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
+
+      <!-- Tab content header start -->
+      <div class="tab-pane-header">
+        Menus
+      </div>
+      <!-- Tab content header end -->
+
+      <!-- Sidebar menu starts -->
+      <div class="sidebarMenuScroll">
+        <div class="sidebar-menu">
+          <ul>
+            <li>
+              <a href="{{url('/menu')}}" class="{{\Request::is('menu') ? 'current-page' : ''}}">Menus</a>
+            </li>
+            <li>
+              <a href="{{url('/sub-menu')}}" class="{{\Request::is('sub-menu') ? 'current-page' : ''}}">Sub Menus</a>
+            </li>
+            <li class="list-heading">Access</li>
+            <li>
+              <a href="{{url('/roles')}}" class="{{\Request::is('roles/*') ? 'current-page' : ''}}">Roles</a>
+            </li>
+            <li>
+              <a href="{{url('/permissions')}}" class="{{\Request::is('permissions/*') ? 'current-page' : ''}}">Permissions</a>
+            </li>
+            <li class="list-heading">Others</li>
+            <li>
+              <a href="{{url('/tokens')}}" class="{{\Request::is('tokens/*') ? 'current-page' : ''}}">Tokens</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Sidebar menu ends -->
+
+      <!-- Sidebar actions starts -->
+      <!-- <div class="sidebar-actions">
+        <a href="orders.html" class="red">
+          <div class="bg-avatar">12</div>
+          <h5>New Orders</h5>
+        </a>
+        <a href="invoices-list.html" class="blue">
+          <div class="bg-avatar">24</div>
+          <h5>Bills Pending</h5>
+        </a>
+      </div> -->
+      <!-- Sidebar actions ends -->
+
+    </div>
         
     <!-- Chat tab -->
     <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
@@ -61,22 +115,22 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="{{url('/dashboard')}}" class="current-page">Dashboard</a>
+              <a href="{{url('/dashboard')}}" class="{{\Request::is('dashboard') ? 'current-page' : ''}}">Dashboard</a>
             </li>
             <li>
-              <a href="{{url('/dashboard/analytics')}}">Analytics</a>
+              <a href="{{url('/analytics')}}" class="{{\Request::is('analytics') ? 'current-page' : ''}}">Analytics</a>
             </li>
             <li>
-              <a href="sales.html">Sales</a>
+              <a href="{{(url('/sales'))}}" class="{{\Request::is('sales') ? 'current-page' : ''}}">Sales</a>
             </li>
             <li>
-              <a href="crm.html">CRM</a>
+              <a href="{{url('/crm')}}" class="{{\Request::is('crm') ? 'current-page' : ''}}">CRM</a>
             </li>
             <li>
-              <a href="reports.html">Reports</a>
+              <a href="{{url('/reports')}}" class="{{\Request::is('reports') ? 'current-page' : ''}}">Reports</a>
             </li>
             <li>
-              <a href="saas.html">Saas</a>
+              <a href="{{url('/saas')}}" class="{{\Request::is('saas') ? 'current-page' : ''}}">Saas</a>
             </li>
           </ul>
         </div>
