@@ -9,11 +9,11 @@
     <a href="{{url('/')}}" class="logo">
       <img src="{{asset('shared/img/logo.png')}}" alt="logo-img">
     </a>
-    <a class="nav-link" id="menu-tab" data-bs-toggle="tab" href="#tab-menus" role="tab" aria-controls="tab-menus" aria-selected="false">
+    <a class="nav-link {{\Request::is('settings/*') ? 'active' : ''}}" id="menu-tab" data-bs-toggle="tab" href="#tab-menus" role="tab" aria-controls="tab-menus" aria-selected="false">
       <i class="icon-sliders"></i>
       <span class="nav-link-text">Menus</span>
     </a>
-    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
+    <a class="nav-link {{\Request::is('dashboard/*') || \Request::is('dashboard') ? 'active' : ''}}" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
       <i class="icon-home2"></i>
       <span class="nav-link-text">Dashboards</span>
     </a>
@@ -52,7 +52,7 @@
   <div class="tab-content">
 
     <!-- Chat tab -->
-    <div class="tab-pane fade show" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
+    <div class="tab-pane fade show {{\Request::is('settings/*') ? 'active' : ''}}" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
 
       <!-- Tab content header start -->
       <div class="tab-pane-header">
@@ -65,21 +65,24 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="{{url('/menu')}}" class="{{\Request::is('menu') ? 'current-page' : ''}}">Menus</a>
+              <a href="{{url('/settings/menu')}}" class="{{\Request::is('settings/menu') ? 'current-page' : ''}}">Menus</a>
             </li>
             <li>
-              <a href="{{url('/sub-menu')}}" class="{{\Request::is('sub-menu') ? 'current-page' : ''}}">Sub Menus</a>
+              <a href="{{url('/settings/sub-menu')}}" class="{{\Request::is('settings/sub-menu') ? 'current-page' : ''}}">Sub Menus</a>
             </li>
             <li class="list-heading">Access</li>
             <li>
-              <a href="{{url('/roles')}}" class="{{\Request::is('roles/*') ? 'current-page' : ''}}">Roles</a>
+              <a href="{{url('/settings/roles')}}" class="{{\Request::is('settings/roles') ? 'current-page' : ''}}">Roles</a>
             </li>
             <li>
-              <a href="{{url('/permissions')}}" class="{{\Request::is('permissions/*') ? 'current-page' : ''}}">Permissions</a>
+              <a href="{{url('/settings/permissions')}}" class="{{\Request::is('settings/permissions') ? 'current-page' : ''}}">Permissions</a>
             </li>
             <li class="list-heading">Others</li>
             <li>
-              <a href="{{url('/tokens')}}" class="{{\Request::is('tokens/*') ? 'current-page' : ''}}">Tokens</a>
+              <a href="{{url('/settings/tokens')}}" class="{{\Request::is('settings/tokens') ? 'current-page' : ''}}">Tokens</a>
+            </li>
+            <li>
+              <a href="{{url('/settings/users')}}" class="{{\Request::is('settings/users') ? 'current-page' : ''}}">Users</a>
             </li>
           </ul>
         </div>
@@ -102,7 +105,7 @@
     </div>
         
     <!-- Chat tab -->
-    <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show {{\Request::is('dashboard/*') || \Request::is('dashboard') ? 'active' : ''}}" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
 
       <!-- Tab content header start -->
       <div class="tab-pane-header">
@@ -118,19 +121,19 @@
               <a href="{{url('/dashboard')}}" class="{{\Request::is('dashboard') ? 'current-page' : ''}}">Dashboard</a>
             </li>
             <li>
-              <a href="{{url('/analytics')}}" class="{{\Request::is('analytics') ? 'current-page' : ''}}">Analytics</a>
+              <a href="{{url('/dashboard/analytics')}}" class="{{\Request::is('dashboard/analytics') ? 'current-page' : ''}}">Analytics</a>
             </li>
             <li>
-              <a href="{{(url('/sales'))}}" class="{{\Request::is('sales') ? 'current-page' : ''}}">Sales</a>
+              <a href="{{(url('/dashboard/sales'))}}" class="{{\Request::is('dashboard/sales') ? 'current-page' : ''}}">Sales</a>
             </li>
             <li>
-              <a href="{{url('/crm')}}" class="{{\Request::is('crm') ? 'current-page' : ''}}">CRM</a>
+              <a href="{{url('/dashboard/crm')}}" class="{{\Request::is('dashboard/crm') ? 'current-page' : ''}}">CRM</a>
             </li>
             <li>
-              <a href="{{url('/reports')}}" class="{{\Request::is('reports') ? 'current-page' : ''}}">Reports</a>
+              <a href="{{url('/dashboard/reports')}}" class="{{\Request::is('dashboard/reports') ? 'current-page' : ''}}">Reports</a>
             </li>
             <li>
-              <a href="{{url('/saas')}}" class="{{\Request::is('saas') ? 'current-page' : ''}}">Saas</a>
+              <a href="{{url('/dashboard/saas')}}" class="{{\Request::is('dashboard/saas') ? 'current-page' : ''}}">Saas</a>
             </li>
           </ul>
         </div>

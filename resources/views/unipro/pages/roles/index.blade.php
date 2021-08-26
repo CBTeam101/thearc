@@ -81,16 +81,17 @@
     container: $('.content-wrapper'),
     variables: function() {
       this.current_id = null
-      this.current_url = '/roles';
-      this.saveUrl = `/roles`;
-      this.updateUrl = null;
+      this.current_url = '/settings/roles'
+      this.saveUrl = `/settings/roles`
+      this.updateUrl = null
+      this.method = 'POST'
     },
     plugin: function() {
-      this.table.DataTable({
+      this.datatable = this.table.DataTable({
         processing: true,
         serverSide: true,
         fixedHeader: true,
-        ajax: '/roles/datatable',
+        ajax: '/settings/roles/datatable',
         "lengthMenu": [
           [5, 10, 25, 50],
           [5, 10, 25, 50, "All"]
@@ -106,7 +107,8 @@
           {
             data: 'options',
             name: 'options'
-          }]
+          }
+        ]
       });
     },
     cache: function() {
@@ -147,7 +149,7 @@
         if (!valid) return
         const options = {
           url: this.current_url,
-          method: typeof this.current_id === null ? 'POST' : 'PUT',
+          method: this.method,
           data: {
             name: this.name.val()
           }
@@ -158,10 +160,12 @@
               .then(function() {
                 this.clear()
                 this.current_id = null
+                this.method = 'POST'
                 this.current_url = this.saveUrl
                 this.btnSubmit.removeClass('d-none')
                 this.btnUpdate.addClass('d-none')
                 this.btnCancel.addClass('d-none')
+                this.datatable.ajax.reload() // reload datatable
               }.bind(this))
           }.bind(this))
       }.bind(this))
@@ -169,10 +173,11 @@
       this.container.on('click', '.role-edit', function(e) {
         this.btnSubmit.addClass('d-none')
         this.current_id = e.currentTarget.id
-        this.updateUrl = `/roles/${this.current_id}`;
+        this.updateUrl = `/settings/roles/${this.current_id}`;
         this.current_url = this.updateUrl
+        this.method = 'PUT'
         const options = {
-          url: `/roles/${this.current_id}`,
+          url: `/settings/roles/${this.current_id}`,
           method: 'GET'
         }
         this.http(options)
@@ -184,19 +189,36 @@
       }.bind(this))
 
       this.container.on('click', '.role-delete', function(e) {
-        const option = {
-          url: `/roles/${e.currentTarget.id}`,
+        const options = {
+          url: `/settings/roles/${e.currentTarget.id}`,
           method: 'DELETE'
         }
 
-        this.http(options)
-          .done(function(res) {
-            swal('Success!', res.message, 'success')
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
           })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.http(options)
+                .done(function(res) {
+                  swal('Success!', res.message, 'success')
+                    .then(function() {
+                      this.datatable.ajax.reload()
+                    }.bind(this))
+                }.bind(this))
+            } else {
+              swal("Operation cancelled!");
+            }
+          });
       }.bind(this))
 
       this.btnCancel.on('click', function(e) {
         this.current_id = null
+        this.method = 'POST'
         this.current_url = this.saveUrl
         this.btnSubmit.removeClass('d-none')
         this.btnUpdate.addClass('d-none')
