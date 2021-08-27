@@ -91,6 +91,7 @@
         processing: true,
         serverSide: true,
         fixedHeader: true,
+        responsive: true,
         ajax: '/settings/roles/datatable',
         "lengthMenu": [
           [5, 10, 25, 50],

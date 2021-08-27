@@ -65,4 +65,7 @@
 <!-- Main Js Required -->
 <script src="{{asset('unipro/js/main.js')}}"></script>
 
+<!-- Dropzone JS -->
+<script src="{{asset('unipro/vendor/dropzone/dropzone.min.js')}}"></script>
+
 @yield('scripts')

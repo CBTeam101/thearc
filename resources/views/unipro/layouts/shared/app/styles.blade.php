@@ -26,4 +26,6 @@
 <link rel="stylesheet" href="{{asset('unipro/vendor/datatables/dataTables.bs4.css')}}" />
 <link rel="stylesheet" href="{{asset('unipro/vendor/datatables/dataTables.bs4-custom.css')}}" />
 <link rel="stylesheet" href="{{asset('unipro/vendor/datatables/buttons.bs.css')}}" />
+<!-- Uploader CSS -->
+<link rel="stylesheet" href="{{asset('unipro/vendor/dropzone/dropzone.min.css')}}" />
 @yield('styles')
