@@ -9,7 +9,9 @@
     container: $('.content-wrapper'),
     variables: function() {},
     plugin: function() {},
-    cache: function() {},
+    cache: function() {
+      
+    },
     http: function(options) {
       $.ajaxSetup({
         headers: {

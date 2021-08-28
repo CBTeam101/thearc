@@ -89,7 +89,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email">
                         <div class="field-placeholder">Email</div>
                       </div>
                       <!-- Field wrapper end -->
