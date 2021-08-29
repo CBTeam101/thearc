@@ -45,7 +45,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'middle_name'=> 'required',
+            'last_name' => 'required',
+            'contact_no' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed'
+        ]);
+
+        return $this->service->store($request);
     }
 
     /**
@@ -67,7 +77,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
@@ -79,7 +89,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
@@ -90,7 +100,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->service->destroy($id);
     }
 
     public function datatable()

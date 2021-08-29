@@ -17,7 +17,7 @@
             <span>Simple.</span>
           </div>
           <div class="about-desc">
-            UniPro a data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators (KPI), metrics and key data points to monitor the health of a business, department or specific process.
+            ACBUS a data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators (KPI), metrics and key data points to monitor the health of a business, department or specific process.
           </div>
           <a href="crm.html" class="know-more">Know More <img src="{{asset('unipro/img/right-arrow.svg')}}" alt="img-logo"></a>
 

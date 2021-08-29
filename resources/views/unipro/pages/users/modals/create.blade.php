@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="needs-validation was-validated" novalidate="">
+        <form class="needs-validation was-validated" novalidate="" id="user-create-form">
           <div class="row gutters">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
               <!-- Card start -->
@@ -24,7 +24,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required="" name="first_name">
+                        <input type="text" class="form-control" required="" name="create-first_name" autofocus>
                         <div class="field-placeholder">First Name</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -35,7 +35,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required="" name="middle_name">
+                        <input type="text" class="form-control" required="" name="create-middle_name">
                         <div class="field-placeholder">Middle Name</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -46,7 +46,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required="" name="last_name">
+                        <input type="text" class="form-control" required="" name="create-last_name">
                         <div class="field-placeholder">Last Name</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -57,7 +57,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" id="inputPwd" required="" name="contact_no">
+                        <input type="text" class="form-control" id="inputPwd" required="" name="create-contact_no">
                         <div class="field-placeholder">Phone</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -89,7 +89,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="create-email">
                         <div class="field-placeholder">Email</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -99,7 +99,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" name="username" required="">
+                        <input type="text" class="form-control" name="create-username" required="">
                         <div class="field-placeholder">Username</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -109,7 +109,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="password" class="form-control" name="password" required="">
+                        <input type="password" class="form-control" name="create-password" required="">
                         <div class="field-placeholder">Password</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -119,7 +119,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="password" class="form-control" name="password_confirmation" required="">
+                        <input type="password" class="form-control" name="create-password_confirmation" required="">
                         <div class="field-placeholder">Confirm Password</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -150,7 +150,7 @@
                         <div class="noti-block">
                           <div>Active</div>
                           <div class="form-switch">
-                            <input class="form-check-input" type="checkbox" id="showAlertss" checked="" name="is_active">
+                            <input class="form-check-input" type="checkbox" id="showAlertss" checked name="create-is_active">
                             <label class="form-check-label" for="showAlertss"></label>
                           </div>
                         </div>
@@ -160,7 +160,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                       <div class="field-wrapper mt-4">
-                        <input type="file" class="" name="profile">
+                        <input type="file" class="" name="create-upload-profile">
                         <div class="field-placeholder">Profile</div>
                       </div>
 

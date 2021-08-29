@@ -102,31 +102,43 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 //     Route::get('/widget-basic', 'App\Http\Controllers\MophyadminController@widget_basic');
 // });
 
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm']);
-
-Route::group(['prefix' => 'dashboard'], function() {
-    Route::get('/', [DashboardController::class, 'index'])->name('Dashboard');
-    Route::get('/analytics', [DashboardController::class, 'analytics'])->name('Analytics');
-    Route::get('/crm', [DashboardController::class, 'crm'])->name('CRM');
-    Route::get('/reports', [DashboardController::class, 'reports'])->name('Reports');
-    Route::get('/saas', [DashboardController::class, 'saas'])->name('SaaS');
-    Route::get('/sales', [DashboardController::class, 'sales'])->name('Sales');
+Route::get('/', function() {
+    return redirect('/dashboard');
 });
 
-Route::group(['prefix' => 'settings'], function() {
-    Route::group(['prefix' => 'roles'], function() {
-        Route::get('/', [RoleController::class, 'index'])->name('Roles');
-        Route::get('datatable', [RoleController::class, 'datatable']);
-        Route::post('/', [RoleController::class, 'store']);
-        Route::get('/{id}', [RoleController::class, 'edit']);
-        Route::put('/{id}', [RoleController::class, 'update']);
-        Route::delete('/{id}', [RoleController::class, 'destroy']);
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm']);
+
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::get('/', [DashboardController::class, 'index'])->name('Dashboard');
+        Route::get('/analytics', [DashboardController::class, 'analytics'])->name('Analytics');
+        Route::get('/crm', [DashboardController::class, 'crm'])->name('CRM');
+        Route::get('/reports', [DashboardController::class, 'reports'])->name('Reports');
+        Route::get('/saas', [DashboardController::class, 'saas'])->name('SaaS');
+        Route::get('/sales', [DashboardController::class, 'sales'])->name('Sales');
+    });
+    
+    Route::group(['prefix' => 'settings'], function() {
+        Route::group(['prefix' => 'roles'], function() {
+            Route::get('/', [RoleController::class, 'index'])->name('Roles');
+            Route::get('datatable', [RoleController::class, 'datatable']);
+            Route::post('/', [RoleController::class, 'store']);
+            Route::get('/{id}', [RoleController::class, 'edit']);
+            Route::put('/{id}', [RoleController::class, 'update']);
+            Route::delete('/{id}', [RoleController::class, 'destroy']);
+        });
+    
+        Route::group(['prefix' => 'users'], function() {
+            Route::get('datatable', [UserController::class, 'datatable']);
+            Route::get('/', [UserController::class, 'index'])->name('Users');
+            Route::post('/', [UserController::class, 'store']);
+            Route::get('/{id}', [UserController::class, 'edit']);
+            Route::post('/{id}', [UserController::class, 'update']);
+            Route::delete('/{id}', [UserController::class, 'destroy']);
+        });
     });
 
-    Route::group(['prefix' => 'users'], function() {
-        Route::get('/', [UserController::class, 'index'])->name('Users');
-        Route::get('datatable', [UserController::class, 'datatable']);
-    });
 });
 
 Auth::routes();

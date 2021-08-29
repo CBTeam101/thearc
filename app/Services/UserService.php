@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Exception;
 use DataTables;
 
@@ -11,7 +12,21 @@ class UserService {
 
   public function store(Request $request)
   {
-    try {}
+    $randomName = Str::random(30);
+
+    try {
+      if($request->hasFile('profile'))
+      {
+        $renamed = $randomName.'.'.$request->profile->getClientOriginalExtension();
+        $path = public_path('/profiles');
+        $request->profile->move($path, $renamed);
+        $request['profile'] = isset($renamed) ? $path.'/'.$renamed : null;
+      }
+      $request['password'] = bcrypt($request->password);
+      User::create($request->toArray());
+
+      return response()->json(['message' => 'Successfully created.'], 200);
+    }
     catch (Exception $e)
     {
       $bug = $e->getMessage();
@@ -21,7 +36,10 @@ class UserService {
 
   public function edit($id)
   {
-    try {}
+    try {
+      $user = User::findOrFail($id);
+      return response()->json($user, 200);
+    }
     catch (Exception $e)
     {
       $bug = $e->getMessage();
@@ -31,7 +49,24 @@ class UserService {
 
   public function update(Request $request, $id)
   {
-    try {}
+    try {
+      $randomName = Str::random(30);
+      if($request->hasFile('profile'))
+      {
+        $renamed = $randomName.'.'.$request->profile->getClientOriginalExtension();
+        $path = public_path('/profiles');
+        $request->profile->move($path, $renamed);
+        $request['profile'] = isset($renamed) ? $path.'/'.$renamed : null;
+      }
+      if($request->has('password'))
+      {
+        $request['password'] = bcrypt($request->password);
+      }
+      $user = User::findOrFail($id);
+      $user->update($request->toArray());
+
+      return response()->json(['message' => 'Successfully updated.'], 200);
+    }
     catch (Exception $e)
     {
       $bug = $e->getMessage();
@@ -41,7 +76,12 @@ class UserService {
 
   public function destroy($id)
   {
-    try {}
+    try {
+      $user = User::findOrFail($id);
+      $user->delete();
+
+      return response()->json(['message' => 'Successfully deleted.'], 200);
+    }
     catch (Exception $e)
     {
       $bug = $e->getMessage();

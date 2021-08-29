@@ -8,4 +8,4 @@
 <link rel="shortcut icon" href="img/fav.png" />
 
 <!-- Title -->
-<title>{{env('APP_NAME')}}</title>
+<title>{{env('APP_NAME')}} - {{ucfirst(\Route::currentRouteName())}}</title>

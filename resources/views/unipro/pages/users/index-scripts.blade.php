@@ -65,9 +65,52 @@
           swal('Errored!', JSON.stringify(err.responseJSON.message), 'error');
         })
     },
-    events: function() {},
-    add: function() {
-      swal('Alert!', 'Sample', 'info')
+    events: function() {
+      this.table.on('click', '.role-edit', function(e) {
+        const options = {
+          url: `/settings/users/${e.currentTarget.id}`,
+          method: 'GET'
+        }
+        this.http(options)
+          .then(function(res) {
+            updateModule.user_id = res.id
+            updateModule.firstname.val(res.first_name)
+            updateModule.middlename.val(res.middle_name)
+            updateModule.lastname.val(res.last_name)
+            updateModule.phone.val(res.contact_no)
+            updateModule.email.val(res.email)
+            updateModule.username.val(res.username)
+            updateModule.active[0].checked = res.is_active > 0
+            updateModule.modal.modal('show')
+          })
+      }.bind(this))
+      this.table.on('click', '.role-delete', function(e) {
+        const options = {
+          url: `/settings/users/${e.currentTarget.id}`,
+          method: 'DELETE'
+        }
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.http(options)
+                .done(function(res) {
+                  swal('Success!', res.message, 'success')
+                    .then(function() {
+                      this.datatable.ajax.reload()
+                    }.bind(this))
+                }.bind(this))
+            } else {
+              swal("Operation cancelled!");
+            }
+          });
+      }.bind(this))
     }
   }
   indexModule.init()

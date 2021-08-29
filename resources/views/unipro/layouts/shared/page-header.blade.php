@@ -343,9 +343,10 @@
               <li>
                 <a href="account-settings.html">Account Settings</a>
               </li>
-              <li>
-                <a href="login.html">Logout</a>
-              </li>
+              <!-- <li>
+                <form action="{{url('/logout')}}" method="POST" id="logout-form">@csrf</form>
+                <a href="javascript:void(0);" onclick="document.querySelector('#logout-form').submit()">Logout</a>
+              </li> -->
               <li>
                 <a href="error-option2.html">Error</a>
               </li>
@@ -520,7 +521,8 @@
             <div class="header-profile-actions">
               <a href="user-profile.html"><i class="icon-user1"></i>Profile</a>
               <a href="account-settings.html"><i class="icon-settings1"></i>Settings</a>
-              <a href="forgot-password.html"><i class="icon-log-out1"></i>Logout</a>
+              <form action="{{url('/logout')}}" method="POST" id="logout-form">@csrf</form>
+              <a href="javascript:void(0);" onclick="document.querySelector('#logout-form').submit()"><i class="icon-log-out1"></i>Logout</a>
             </div>
           </div>
         </li>

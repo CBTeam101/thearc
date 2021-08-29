@@ -38,13 +38,18 @@
                 <a href="{{url('/')}}" class="login-logo">
                   <img src="{{asset('shared/img/logo.png')}}" alt="img-logo">
                 </a>
+                @if(session()->has('account-inactive'))
+                <div class="alert alert-danger" role="alert">
+                  {{session()->get('account-inactive')}}
+                </div>
+                @endif
                 <h6>Welcome back,<br>Please login to your account.</h6>
                 <div class="field-wrapper">
-                  <input type="email" autofocus required>
+                  <input type="text" autofocus required name="username">
                   <div class="field-placeholder">User ID<i class="text-danger">*</i></div>
                 </div>
                 <div class="field-wrapper mb-3">
-                  <input type="password" required>
+                  <input type="password" required name="password">
                   <div class="field-placeholder">Password<i class="text-danger">*</i></div>
                 </div>
                 <div class="actions">
