@@ -18,7 +18,7 @@ var options = {
 			show: false
 		},
 	},
-	colors: ['#4285F4', '#ffc300'],
+	colors: ['#1273eb', '#ffc300'],
 	stroke: {
 		width: [0, 4],
 		curve: 'smooth',
@@ -31,7 +31,7 @@ var options = {
 		}
 	},
 	grid: {
-		borderColor: '#47496f',
+		borderColor: '#e0e6ed',
 		strokeDashArray: 5,
 		xaxis: {
 			lines: {

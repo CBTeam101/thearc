@@ -21,7 +21,7 @@ var options = {
 		data: [2, 8, 25, 7, 20, 20, 51, 35, 42, 20, 33, 67]
 	}],
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {

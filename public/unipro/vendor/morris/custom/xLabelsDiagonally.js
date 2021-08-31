@@ -19,8 +19,8 @@ Morris.Bar({
 	ykeys: ['licensed', 'Nework'],
 	labels: ['Licensed', 'Nework'],
 	xLabelAngle: 45,
-	gridLineColor: "#424665",
+	gridLineColor: "#e1e5f1",
 	resize: true,
 	hideHover: "auto",
-	barColors:['#4285F4', '#63a9ff'],
+	barColors:['#1273eb', '#63a9ff'],
 });

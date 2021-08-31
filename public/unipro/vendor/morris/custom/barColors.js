@@ -19,7 +19,7 @@ Morris.Bar({
 	ykeys: ['Sales'],
 	labels: ['Sales'],
 	resize: true,
-	gridLineColor: "#424665",
+	gridLineColor: "#e4e6e8",
 	hideHover: "auto",
-	barColors:['#4285F4', '#2b86f5', '#63a9ff'],
+	barColors:['#1273eb', '#2b86f5', '#63a9ff'],
 });

@@ -1,7 +1,7 @@
 .notify .note {
   position: relative;
   padding: 21px 20px;
-  background-color: #4285F4;
+  background-color: #1273eb;
   color: #ffffff;
   border-radius: 4px;
   -webkit-transition: all 0.5s ease-in-out;
@@ -9,16 +9,16 @@
   -ms-transition:all 0.5s ease-in-out;
 }
 .notify .note.note-success {
-  background-color: #34a853;
+  background-color: #5dab18;
 }
 .notify .note.note-info {
-  background-color: #4285F4;
+  background-color: #1273eb;
 }
 .notify .note.note-warning {
-  background-color: #fbbc05;
+  background-color: #e4b42b;
 }
 .notify .note.note-danger {
-  background-color: #ea4335;
+  background-color: #ec4f3d;
 }
 .notify .note .image,
 .notify .note .remove {

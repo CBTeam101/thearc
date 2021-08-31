@@ -44,7 +44,7 @@ $(function(){
 		},
 		regionStyle: {
 			initial: {
-				fill: '#4285F4'
+				fill: '#1273eb'
 			},
 			selected: {
 				fill: '#333333'

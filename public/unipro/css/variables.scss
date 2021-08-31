@@ -1,96 +1,88 @@
 // White Shades
 $white: #ffffff;
 $pearl-bg: #e3e7f2;
-$light-grey: #42466b;
-$grey: #adaecc;
+$light-grey: #e3e7ec;
+$grey: #53565a;
 
 // Black Shades
 $black: #000000;
 
 // Font Colors
-$main-font-color: #b0b6d2;
-$font-color: #b0b6d2;
-$font-color-light: #7c83a9;
-$font-color-dark: #495075;
-$font-color-lighter: #8087ad;
+$main-font-color: #454f58;
+$font-color: #111111;
+$font-color-light: #5e6973;
+$font-color-dark: #373e46;
+$font-color-lighter: #9aa5af;
 
 // Light, Dark Colors
-$light-bg: #323456;
+$light-bg: #f2f4f9;
 $light-color: #f5f8fd;
 $lighter-bg: #f6f6fd;
 $dark-bg: #a6b2c5;
 $dark-color: #212c3a;
 
-$content-wrapper-bg: #1a1c33;
+$content-wrapper-bg: #efeff7;
 
 // Border Colors
-$border-bg: #424665;
-$border-bg-dark: #292b45;
-$border-bg-light: #5a5e82;
+$border-bg: #e1e8f3;
+$border-bg-dark: #eaeef7;
+$border-bg-light: #e2e2f1;
 
 // Forms
-$form-border: #424665;
-$input-color: #afb5c9;
+$form-border: #dbdaea;
+$input-color: #8a96a0;
 $input-color-dark: #6c7882;
 $form-label-bg: #f8f8fb;
-$valid-color: #34a853;
-$invalid-color: #ea4335;
+$valid-color: rgba(25,135,84,.9);
+$invalid-color: rgba(220,53,69,.9);
 
 // Primary, Secondary Colors
-$primary-color: #4285F4;
-$primary-color-light: #5697ff;
-$primary-color-dark: #2770e4;
-$primary-text-color: #cddffd;
-$secondary-color: #3e4165;
+$primary-color: #1273eb;
+$primary-color-light: #e5f0ff;
+$primary-color-dark: #0d40a9;
+$primary-text-color: #ffffff;
+$secondary-color: #394758;
 $secondary-color-light: #95a3b5;
 $secondary-text-color: #ffffff;
 
 // Sidebar Color
-$sidebar-bg: #1a1c33;
-$sidebar-hover-bg: #2b2d50;
-$sidebar-active-bg: #4285f4;
-$sidebar-text-color: #7980a2;
-$sidebar-text-color-dark: #3a4265;
-$sidebar-active-link-bg: #242644;
-$sidebar-icon-bg: #36395a;
+$sidebar-bg: #ffffff;
+$sidebar-hover-bg: #f1f4f9;
+$sidebar-active-bg: #e5f0ff;
+$sidebar-text-color: #5e6973;
+$sidebar-icon-bg: #e7ecf3;
 
 // Tab Content Color
-$tab-content-bg: #1e203a;
-$page-wrapper-bg: #090a15;
+$tab-content-bg: #f6f6fd;
 
-// Card
-$card-bg: #292b4a;
-$card-bg-light: #37395d;
-$card-bg-lighten :#333558;
-$card-shadow: #1a1c33;
+// Shadow
+$card-shadow: #eaeef7;
 
 // Navbar Color
 $nav-tooltip-bg: #000000;
 $nav-tooltip-text: #ffffff;
 
 // Table Colors
-$table-bg: #292b4a;
-$table-bg-odd: #323456;
-$table-header: #4285f4;
-$table-td: #292b4a;
-$table-td-hover: #37395d;
-$table-color: #7980a2;
-$table-color-light: #d4d5de;
-$table-border: #383a5d;
-$table-border-dark: #383a5d;
+$table-header: #1273eb;
+$table-td: #ffffff;
+$table-td-hover: #f5f6fa;
+$table-color: #072242;
+$table-color-light: #6f7479;
+$table-border: #e8edf3;
+$table-border-dark: #c8d3df;
 
 // Colors
-$red: #ea4335;
+$red: #ec4f3d;
 $light-red: #ffdbdb;
 $dark-red: #de3e3e;
-$green: #34a853;
+$green: #5dab18;
 $light-green: #d8eccb;
 $dark-green: #4c900f;
-$peacock-green: #7CBB00;
-$yellow: #fbbc05;
+$peacock-green: #83d050;
+$yellow: #e4b42b;
 $light-yellow: #f7e6b5;
 $dark-yellow: #cc9a09;
-$blue: #4285F4;
+$blue: #1273eb;
 $light-blue: #d5eafd;
 $dark-blue: #2d8dec;
 $pink: #e75b62;

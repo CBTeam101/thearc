@@ -24,7 +24,7 @@ var options = {
 			opacity: 1
 		},
 	},
-	colors: ['#4285F4', '#2b86f5', '#63a9ff', '#95c5ff', '#c6e0ff'],
+	colors: ['#1273eb', '#2b86f5', '#63a9ff', '#95c5ff', '#c6e0ff'],
 	stroke: {
 		curve: 'smooth',
 		width: 3,
@@ -43,7 +43,7 @@ var options = {
 		align: 'center'
 	},
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {

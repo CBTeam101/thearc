@@ -41,7 +41,7 @@ var options = {
     },
   },
   grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -66,7 +66,7 @@ var options = {
       }
     }
   },
-  colors: ['#4285F4', '#999999'],
+  colors: ['#1273eb', '#999999'],
 }
 var chart = new ApexCharts(
   document.querySelector("#byCountry"),

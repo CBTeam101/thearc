@@ -7,9 +7,9 @@ $( document ).ready(function() {
 		backgroundBorderWidth: 15,
 		percent: 70,
 		textStyle: 'font-size: 12px;',
-		fontColor: '#FFFFFF',
-		foregroundColor: '#4285F4',
-		backgroundColor: '#47496f',
+		fontColor: '#111111',
+		foregroundColor: '#1273eb',
+		backgroundColor: '#f2f4f9',
 	});
 
 
@@ -20,9 +20,9 @@ $( document ).ready(function() {
 		backgroundBorderWidth: 10,
 		percent: 80,
 		textStyle: 'font-size: 12px;',
-		fontColor: '#4285F4',
-		foregroundColor: '#4285F4',
-		backgroundColor: '#5a6186',
+		fontColor: '#1273eb',
+		foregroundColor: '#1273eb',
+		backgroundColor: '#efeff7',
 		multiPercentage: 1,
 		percentages: [10, 20, 30],
 	});
@@ -35,7 +35,7 @@ $( document ).ready(function() {
 		percent: 70,
 		fontColor: '#ef503f',
 		foregroundColor: '#ef503f',
-		backgroundColor: '#5a6186',
+		backgroundColor: '#efeff7',
 		multiPercentage: 1,
 		percentages: [10, 20, 30]
 	});

@@ -26,14 +26,14 @@ var options = {
 				}
 			},
 			track: {
-        		show: true,
-        		margin: 7, 
-    		},
+        show: true,
+        margin: 7, 
+    	},
 		}
 	},
 	series: [75, 25],
 	labels: ['New', 'Delivered'],
-	colors: ['#4285F4', '#f16a5d'],
+	colors: ['#1273eb', '#f16a5d'],
 }
 
 var chart = new ApexCharts(

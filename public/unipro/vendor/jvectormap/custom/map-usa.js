@@ -13,7 +13,7 @@ $(function(){
 	]
 	$('#us-map2').vectorMap({
 		map: 'us_aea_en',
-		scaleColors: ['#4285F4'],
+		scaleColors: ['#1273eb'],
 		normalizeFunction: 'polynomial',
 		focusOn:{
 			x: 2,
@@ -25,7 +25,7 @@ $(function(){
 		hoverColor: true,
 		regionStyle:{
 			initial: {
-				fill: '#4285F4',
+				fill: '#1273eb',
 			},
 			hover: {
 				"fill-opacity": 0.8

@@ -21,7 +21,7 @@ var options = {
   theme: {
     monochrome: {
       enabled: true,
-      color: '#4285F4',
+      color: '#1273eb',
       shadeIntensity: 0.2
     },
   },
@@ -41,7 +41,7 @@ var options = {
     show: false
   },
   grid: {
-    borderColor: '#47496f',
+    borderColor: '#ced1e0',
     strokeDashArray: 5,
     xaxis: {
       lines: {

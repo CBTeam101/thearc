@@ -29,7 +29,7 @@ var options = {
 		}
 	},
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -62,7 +62,7 @@ var options = {
       }
     }
   },
-  colors: ['#4285F4', '#a0c9fb'],
+  colors: ['#1273eb', '#e5f0ff'],
 }
 var chart = new ApexCharts(
   document.querySelector("#revenue"),

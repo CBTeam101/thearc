@@ -69,7 +69,7 @@ var options = {
 		align: 'center'
 	},
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -101,14 +101,14 @@ var options = {
 	theme: {
 		monochrome: {
 			enabled: true,
-			color: '#4285F4',
+			color: '#1273eb',
 			shadeIntensity: 0.1
 		},
 	},
 	markers: {
 		size: 0,
 		opacity: 0.2,
-		colors: ["#4285F4"],
+		colors: ["#1273eb"],
 		strokeColor: "#fff",
 		strokeWidth: 2,
 		hover: {

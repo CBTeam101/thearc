@@ -16,12 +16,12 @@
 $(function() {
 	$('.sidebarMenuScroll').slimScroll({
 		height: "calc(100vh - 250px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -31,12 +31,12 @@ $(function() {
 $(function() {
 	$('.defaultSidebarMenuScroll').slimScroll({
 		height: "calc(100vh - 140px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -46,12 +46,12 @@ $(function() {
 $(function() {
 	$('.compactSidebarMenuScroll').slimScroll({
 		height: "calc(100vh - 140px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -60,12 +60,12 @@ $(function() {
 $(function() {
 	$('.usersContainerScroll').slimScroll({
 		height: "calc(100vh - 240px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '0px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -74,12 +74,12 @@ $(function() {
 $(function() {
 	$('.megamenu-scroll').slimScroll({
 		height: "calc(100vh - 100px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -87,12 +87,12 @@ $(function() {
 $(function() {
 	$('.chatContainerScroll').slimScroll({
 		height: "calc(100vh - 370px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '0px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -101,23 +101,23 @@ $(function() {
 $(function() {
 	$('.lablesContainerScroll').slimScroll({
 		height: "calc(100vh - 200px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 $(function() {
 	$('.tasksContainerScroll').slimScroll({
 		height: "calc(100vh - 250px)",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -126,12 +126,12 @@ $(function() {
 $(function() {
 	$('.customScroll').slimScroll({
 		height: "210px",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -140,12 +140,12 @@ $(function() {
 $(function() {
 	$('.customScroll250').slimScroll({
 		height: "250px",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -154,12 +154,12 @@ $(function() {
 $(function() {
 	$('.customScroll150').slimScroll({
 		height: "150px",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -168,12 +168,12 @@ $(function() {
 $(function() {
 	$('.customScroll300').slimScroll({
 		height: "300px",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: false,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });
 
@@ -182,11 +182,11 @@ $(function() {
 $(function() {
 	$('.modal-body').slimScroll({
 		height: "95%",
-		color: '#242644',
+		color: '#d6dbe6',
 		alwaysVisible: true,
 		size: "5px",
 		distance: '1px',
 		railVisible: false,
-		railColor: "#242644",
+		railColor: "#d6dbe6",
 	});
 });

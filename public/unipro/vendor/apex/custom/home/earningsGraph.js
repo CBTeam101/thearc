@@ -47,7 +47,7 @@ var options = {
     }
   },
   grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -66,7 +66,7 @@ var options = {
       left: 0
     }, 
   },
-  colors: ['#f16a5d', '#4285F4'],
+  colors: ['#f16a5d', '#1273eb'],
 }
 var chart = new ApexCharts(
   document.querySelector("#earningsGraph"),

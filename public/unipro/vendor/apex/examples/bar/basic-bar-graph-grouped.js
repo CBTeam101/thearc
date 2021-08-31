@@ -43,7 +43,7 @@ var options = {
 		categories: [2010, 2012, 2014, 2016, 2018],
 	},
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -62,7 +62,7 @@ var options = {
       left: 0
     }, 
   },
-	colors: ['#4285F4', '#63a9ff'],
+	colors: ['#1273eb', '#63a9ff'],
 }
 var chart = new ApexCharts(
 	document.querySelector("#basic-bar-graph-grouped"),

@@ -21,7 +21,7 @@ var options = {
     data: [120, 320, 260, 490, 580, 310]
   }],
   grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -57,11 +57,11 @@ var options = {
       stops: [15, 100]
     }
   },
-  colors: ['#4285F4'],
+  colors: ['#1273eb'],
   markers: {
     size: 0,
     opacity: 0.2,
-    colors: ["#4285F4"],
+    colors: ["#1273eb"],
     strokeColor: "#fff",
     strokeWidth: 2,
     hover: {

@@ -15,7 +15,7 @@ var options = {
     enabled: false
   },
   grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -37,7 +37,7 @@ var options = {
   series: [{
     data: [2000, 3000, 4000, 5000, 6000]
   }],
-  colors: ['#4285F4', '#999999'],
+  colors: ['#1273eb', '#999999'],
   xaxis: {
     categories: ["Organic", "Search", "TV Ads", "Social", "Video"],
   },

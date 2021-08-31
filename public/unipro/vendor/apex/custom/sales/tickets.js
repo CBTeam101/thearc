@@ -13,9 +13,9 @@ var options = {
   },
   stroke: {
     width: 2,
-    colors: ['#333558'],
+    colors: ['#ffffff'],
   },
-  colors: ['#4285F4', '#59a2fb', '#8ec0fd'],
+  colors: ['#1273eb', '#59a2fb', '#8ec0fd'],
   tooltip: {
     y: {
       formatter: function(val) {

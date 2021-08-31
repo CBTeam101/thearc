@@ -32,7 +32,7 @@ var options = {
 	},
 	colors: ['#af772b', '#333333', '#e0ac69', '#f1c17d', '#ffdbac'],
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {

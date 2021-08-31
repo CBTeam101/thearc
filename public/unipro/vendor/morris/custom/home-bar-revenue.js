@@ -12,6 +12,6 @@ Morris.Bar({
 	labels: ['Revenue', 'Profit'],
 	resize: true,
 	hideHover: "auto",
-	gridLineColor: "#424665",
-	barColors:['#4285F4', '#7facfa', '#63a9ff'],
+	gridLineColor: "#e1e5f1",
+	barColors:['#1273eb', '#7facfa', '#63a9ff'],
 });

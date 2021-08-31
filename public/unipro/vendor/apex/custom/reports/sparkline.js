@@ -32,7 +32,7 @@ var options1 = {
 		}
 	},
 	grid: {
-		borderColor: '#47496f',
+		borderColor: '#e0e6ed',
 		strokeDashArray: 5,
 		xaxis: {
 			lines: {
@@ -51,7 +51,7 @@ var options1 = {
 			left: 0
 		}, 
 	},
-	colors: ['#4285F4'],
+	colors: ['#1273eb'],
 	xaxis: {
 		categories: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 	},
@@ -112,7 +112,7 @@ var options2 = {
 			show: false
 		}
 	},
-	colors: ['#4285F4'],
+	colors: ['#1273eb'],
 	xaxis: {
 		categories: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 	},
@@ -215,7 +215,7 @@ var options4 = {
 		curve: 'smooth',
 		width: 4,
 	},
-	colors: ['#4285F4'],
+	colors: ['#1273eb'],
 	tooltip: {
 		fixed: {
 			enabled: false
@@ -317,7 +317,7 @@ var options6 = {
 		}
 	},
 	grid: {
-		borderColor: '#47496f',
+		borderColor: '#e0e6ed',
 		strokeDashArray: 5,
 		xaxis: {
 			lines: {

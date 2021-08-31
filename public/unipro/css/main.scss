@@ -229,14 +229,12 @@ Last change:	29/06/2021
     font-display: swap;
 }
 
-
 /******** 2.2 Rubik Mono One Font ********/
 @font-face {
     font-family: 'Rubik Mono One';
     src: url('../fonts/rubik-mono/RubikMonoOne-Regular.ttf') format('truetype');
     font-style: normal;
 }
-
 
 
 /************************************************
@@ -269,11 +267,11 @@ body {
 		background: $red;
 	}
 	&.subscribe-page {
-		background: $card-bg-light;
+		background: $dark-bg;
 		display: flex;
 	}
 	&.maintenance-page {
-		background: $card-bg;
+		background: $primary-color-dark;
 		display: flex;
 		align-items: center;
 	}
@@ -397,14 +395,16 @@ body {
 	************************************************
 ************************************************/
 
-/******** 5.1 Anchor Reset ********/a {
-	color: $primary-color;
+/******** 5.1 Anchor Reset ********/
+a {
+	color: $black;
 	text-decoration: none;
 	&:hover {
 		text-decoration: none;
-		color: $main-font-color;
+		color: inherit;
 	}
 }
+
 
 /******** 5.2 Image Default Radius ********/
 img {
@@ -484,7 +484,6 @@ p {
 }
 
 
-
 /******** 5.6 BG Colors ********/
 .bg-primary {
 	background: $primary-color !important;
@@ -535,9 +534,6 @@ p {
 .text-lighter {
 	color: $font-color-lighter !important;
 }
-.text-muted {
-	color: #494e6b !important;
-}
 
 
 /******** 5.8 Custom Height ********/
@@ -563,6 +559,13 @@ p {
 	min-height: 180px;
 }
 
+
+/******** 5.9 Icon Shadow ********/
+[class^="icon-"], [class*=" icon-"] {
+	text-shadow: 1px 1px $white;
+}
+
+
 /************************************************
 	************************************************
 					6. Layout CSS
@@ -572,7 +575,7 @@ p {
 /******** 6.1 Page Wrapper ********/
 .page-wrapper {
 	padding: 10px;
-	background: $page-wrapper-bg;
+	background: $primary-color-dark;
 }
 
 
@@ -627,13 +630,13 @@ p {
 				&.active {
 					background: $sidebar-active-bg;					
 					i {
-						color: $white;
+						color: $primary-color;
 					}
 				}
 				.nav-link-text {
 					padding: 3px 12px;
-					background: $primary-color;
-					color: $white;
+					background: $nav-tooltip-bg;
+					color: $nav-tooltip-text;
 					display: none;
 					position: absolute;
 					left: 60px;
@@ -650,12 +653,12 @@ p {
 						height: 0;
 						border-top: 5px solid transparent;
 						border-bottom: 5px solid transparent;
-						border-right: 5px solid $primary-color;
+						border-right: 5px solid $nav-tooltip-bg;
 					}
 				}
 				&.settings {
 					margin-top: auto;
-					background: $sidebar-active-link-bg;
+					background: $sidebar-hover-bg;
 					@include roundedCorners(50);
 					position: relative;
 				}
@@ -671,7 +674,7 @@ p {
 					padding: 1.5rem 20px;
 					font-size: 1.2rem;
 					font-weight: 600;
-					color: $font-color;
+					color: $primary-color;
 				}
 			}
 		}
@@ -701,7 +704,7 @@ p {
 	padding: 0;	
 	.list-heading {
 		padding: 0 20px 10px 20px;
-		color: $sidebar-text-color-dark;
+		color: $font-color;
 		font-size: .75rem;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -716,7 +719,7 @@ p {
 				position: relative;
 				min-height: 36px;
 				padding: 10px 20px 10px 20px;
-				color: $sidebar-text-color;
+				color: $font-color-light;
 				font-size: .825rem;
 				-webkit-transition: all 0.5s ease-in-out;
 				-moz-transition: all 0.5s ease-in-out;
@@ -725,25 +728,14 @@ p {
 				transition: all 0.5s ease-in-out;
 				position: relative;
 				&:hover {
-					color: $sidebar-text-color;
-					background: $sidebar-hover-bg;
+					color: $primary-color;
+					background: rgba(255, 255, 255, 0.5);
 				}
 				&.current-page {
 					color: $primary-color;
-					background: $sidebar-active-link-bg;
-					box-shadow: inset 2px 0 0 $primary-color;
+					background: $white;
+					box-shadow: inset 3px 0 0 $primary-color;
 					position: relative;
-					&:after {
-						content: '';
-						position: absolute;
-						width: 0;
-						height: 0;
-						top: 50%;
-						right: 0px;
-						margin: -8px 0 0 0;
-						border: 8px solid;
-						border-color: transparent $content-wrapper-bg transparent transparent;
-					}
 				}
 			}
 		}
@@ -755,10 +747,10 @@ p {
 		justify-content: space-between;
 		li {
 			width: 48%;
-			background: $sidebar-icon-bg;
+			background: $white;
 			@include roundedCorners(5);
 			padding: 0;
-			border: 1px solid $sidebar-icon-bg;
+			border: 1px solid $border-bg;
 			margin: 4px 0;
 			a {
 				justify-content: center;
@@ -779,15 +771,9 @@ p {
 					}
 				}
 				&.current-page {
-					background: $primary-color;
-					border: 1px solid $primary-color;
-					@include roundedCorners(5);
-					color: $white;
+					color: $primary-color;
 					i {
-						color: $white;
-					}
-					&::after {
-						border: 0;
+						color: $primary-color;
 					}
 				}
 			}
@@ -818,7 +804,8 @@ p {
 		margin-right: 10px;
 		display: flex;
 		flex-direction: column;
-		background: $sidebar-active-link-bg;
+		background: $white;
+		box-shadow: 5px 5px 10px $card-shadow;
 		.bg-avatar {
 			width: 40px;
 			height: 40px;
@@ -836,15 +823,33 @@ p {
 			font-weight: 400;
 			color: $font-color-light;
 		}
+		&:hover {
+			background: $blue;
+			color: $white;
+			> h5 {
+				color: $white;
+			}
+			> h6 {
+				color: $white;
+			}
+		}
 		&.red {
 			.bg-avatar {
+				background: $light-red;
+				color: $dark-red;
+			}
+			&:hover {
 				background: $red;
 				color: $white;
 			}
 		}
 		&.blue {
 			.bg-avatar {
-				background: $green;
+				background: $light-blue;
+				color: $dark-blue;
+			}
+			&:hover {
+				background: $blue;
 				color: $white;
 			}
 		}
@@ -863,7 +868,7 @@ p {
 		background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.1) 75%,transparent 75%,transparent) !important;
 		background-size: .4rem .4rem !important;
 		i {
-			background: rgba(0, 0, 0, 0.2);
+			background: $white;
 			width: 50px;
 			height: 50px;
 			display: flex;
@@ -871,21 +876,33 @@ p {
 			justify-content: center;
 			@include roundedCorners(50);
 			text-shadow: none;
-			color: $white;
+			color: $primary-color;
 			font-size: 1.4rem;
 			margin-right: 10px;
 		}
 		&.green {
 			background: $green;
+			i {
+				color: $green;
+			}
 		}
 		&.red {
 			background: $red;
+			i {
+				color: $red;
+			}
 		}
 		&.yellow {
 			background: $dark-yellow;
+			i {
+				color: $dark-yellow;
+			}
 		}
 		&.pink {
 			background: $pink;
+			i {
+				color: $pink;
+			}
 		}
 		.btn {
 			display: block;
@@ -919,18 +936,10 @@ p {
 				width: 1rem;
 				height: 1rem;
 				background-size: 1rem;
-				filter: invert(1);
 			}
 		}
 		.accordion-body {
 			padding: .6rem .8rem;
-			background: $card-bg;
-		}
-		.accordion-item {
-			border: 1px solid $card-bg-light;
-		}
-		.accordion-button {
-			background: $card-bg;
 		}
 	}	
 	.noti-container {
@@ -1006,7 +1015,7 @@ p {
 						font-size: 1rem;
 						background-color: $sidebar-icon-bg;
 						text-shadow: none;
-						color: $sidebar-text-color;
+						color: $primary-color;
 						width: 36px;
 						height: 36px;
 						display: flex;
@@ -1307,7 +1316,7 @@ p {
 /******** 6.9 App Footer ********/
 .app-footer {
 	font-size: .65rem;
-	color: $font-color-light;
+	color: rgba(0, 0, 0, 0.5);
 	margin: 0;
 	padding: 1rem 1.5rem 1rem 1.5rem;
 }
@@ -1465,11 +1474,12 @@ p {
 .page-header {
 	padding: 0 1.5rem;
 	margin: 0 0 20px 0;
-	border-bottom: 1px solid lighten($content-wrapper-bg, 5%);
+	border-bottom: 1px solid darken($content-wrapper-bg, 5%);
 	.toggle-sidebar {
 		border: 2px solid $primary-color;
-		background: $card-bg;
+		background: $pearl-bg;
 		@include roundedCorners(30);
+		box-shadow: inset -1px -1px 0px $white;
 		cursor: pointer;
 		display: none;
 		align-items: center;
@@ -1619,7 +1629,7 @@ p {
 		}
 		&:hover, &:focus {
 			> a {
-				background: $card-bg-light;
+				background: $white;
 				i {
 					color: $primary-color;
 				}
@@ -1717,7 +1727,7 @@ ul.header-notifications {
 				}
 			}
 			&:hover {
-				background: $card-bg;
+				background: $light-bg;
 			}
 		}
 	}
@@ -1732,7 +1742,7 @@ ul.activity {
 		position: relative;
 		border-left: 1px solid $border-bg;
 		&:after {
-			background-color: $card-bg-light;
+			background-color: $white;
 			border: 2px solid lighten($blue, 10%);
 			@include roundedCorners(30);
 			bottom: 0;
@@ -1745,7 +1755,7 @@ ul.activity {
 			top: 6px;
 		}
 		&:before {
-			border: 4px solid $card-bg-light;
+			border: 4px solid lighten($blue, 45%);
 			@include roundedCorners(30);
 			bottom: 0;
 			content: "";
@@ -1779,20 +1789,32 @@ ul.activity {
 			&:after {
 				border: 2px solid $blue;
 			}
+			&:before {
+				border: 4px solid lighten($blue, 50%);
+			}
 		}
 		&.success {
 			&:after {
 				border: 2px solid $green;
+			}
+			&:before {
+				border: 4px solid lighten($green, 50%);
 			}
 		}
 		&.danger {
 			&:after {
 				border: 2px solid $red;
 			}
+			&:before {
+				border: 4px solid lighten($red, 35%);
+			}
 		}
 		&.warning {
 			&:after {
 				border: 2px solid $yellow;
+			}
+			&:before {
+				border: 4px solid lighten($yellow, 35%);
 			}
 		}
 	}
@@ -1814,7 +1836,7 @@ ul.activity {
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		color: $font-color-lighter;
+		color: $font-color-light;
 		font-size: .725rem;
 		font-weight: 400;
 		&:hover {
@@ -1866,7 +1888,7 @@ ul.activity {
 	padding: 1rem;
 	margin: 0 0 20px 0;
 	@include roundedCorners(4);
-	background: $card-bg;
+	background: $white;
 	display: flex;
 	align-items: center;
 	flex-direction: row;
@@ -1879,17 +1901,11 @@ ul.activity {
 		justify-content: center;
 		margin-right: 15px;
 		text-align: center;
-		background: $card-bg-light;
+		background: $primary-color-light;
 		@include roundedCorners(50);
 		i {
 			font-size: 1.5rem;
 			color: $primary-color;
-		}
-		&.light-blue {
-			background: lighten($blue, 5%);
-		}
-		&.lighter-blue {
-			background: lighten($blue, 10%);
 		}
 	}
 	.sale-details {
@@ -1900,7 +1916,7 @@ ul.activity {
 		}
 		p {
 			margin: 0;
-			color: $font-color;
+			color: $font-color-light;
 		}
 		h5 {
 			font-size: .75rem;
@@ -1938,7 +1954,7 @@ ul.activity {
 	padding: 1rem;
 	margin: 0 0 20px 0;
 	@include roundedCorners(4);
-	background: $card-bg;
+	background: $white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1954,14 +1970,16 @@ ul.activity {
 		justify-content: center;
 		margin-bottom: 15px;
 		text-align: center;
-		background: $card-bg-light;
+		background: $primary-color-light;
+		border: 5px solid lighten($primary-color-light, 2%);
 		@include roundedCorners(100);
 		i {
 			font-size: 1.5rem;
-			color: $white;
+			color: $primary-color;
 		}
 	}
 	.sale-details {
+		color: $primary-color;
 		h2 {
 			margin: 0;
 			line-height: 100%;
@@ -1979,7 +1997,7 @@ ul.activity {
 	padding: 1.5rem 1rem 1rem 1rem;
 	margin: 0 0 20px 0;
 	@include roundedCorners(4);
-	background: $card-bg;
+	background: $white;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -2058,25 +2076,25 @@ ul.activity {
 /******** 6.23 Stats Tile List ********/
 .stats-tiles-list {
 	@include roundedCorners(3);
-	border-top: 1px solid $card-bg-lighten;
-	border-bottom: 1px solid $card-bg-lighten;
+	border-top: 1px solid $border-bg;
+	border-bottom: 1px solid $border-bg;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: row;
 	text-align: center;
-margin: 1rem 0 0 0;
+	margin: 1rem 0 0 0;
 	.tiles-list {
 		width: 100%;
-		padding: 5px;	
-		border-right: 1px solid $card-bg-lighten;
+		padding: 5px;
+		border-right: 1px solid $border-bg;
 		img {
 			width: 30px;
 			height: 30px;
 			margin: 10px 0;
 		}
 		h2 {
-			color: $blue;
+			color: $primary-color;
 			font-size: 1.4rem;
 			margin: 0;
 		}
@@ -2085,7 +2103,7 @@ margin: 1rem 0 0 0;
 			color: $font-color-light;
 		}
 		&:first-child {
-			border-left: 1px solid $card-bg-lighten;
+			border-left: 1px solid $border-bg;
 		}
 	}
 }
@@ -2123,7 +2141,7 @@ margin: 1rem 0 0 0;
 			margin: 0;
 			font-weight: 600;
 			font-size: .9rem;
-			color: $font-color;
+			color: $font-color-dark;
 		}
 	}
 	.weekly-graph-details {
@@ -2149,7 +2167,7 @@ margin: 1rem 0 0 0;
 	}
 	.earnings-icon {
 		border: 1px solid $green;
-		background: $card-bg;
+		background: lighten($light-green, 5%);
 		width: 36px;
 		height: 36px;
 		@include roundedCorners(30);
@@ -2162,6 +2180,7 @@ margin: 1rem 0 0 0;
 		}
 		&.blue {
 			border: 1px solid $blue;
+			background: lighten($light-blue, 5%);
 			i {
 				font-size: 1rem;
 				color: $blue;
@@ -2169,6 +2188,7 @@ margin: 1rem 0 0 0;
 		}
 		&.red {
 			border: 1px solid $red;
+			background: lighten($light-red, 5%);
 			i {
 				font-size: 1rem;
 				color: $red;
@@ -2279,7 +2299,7 @@ ul.customer-rating {
 		&::after {
 			min-height: 38px;
 			background: $light-bg;
-    		padding: 10px 12px;
+			padding: 10px 12px;
     		@include roundedCorners(2);
 		}
 	}
@@ -2296,9 +2316,9 @@ ul.customer-rating {
 		position: absolute;
 		box-sizing: border-box;
 		color: $primary-color;
-		background: $card-bg;
+		background: $white;
 		@include roundedCorners(30);
-		font-size: .7rem;
+		font-size: .75rem;
 		font-weight: 600;
 		top: -12px;
 		left: 7px;
@@ -2309,7 +2329,6 @@ ul.customer-rating {
 	input, select, textarea {
 		border: 1px solid $form-border;
 		padding: 9px 12px;
-		background-color: $card-bg;
 		@include roundedCorners(2);
 		width: 100%;
 		min-height: 40px;
@@ -2319,11 +2338,8 @@ ul.customer-rating {
 	input:hover, textarea:hover {
 		border: 1px solid $primary-color;
 	}
-	input:focus, textarea:focus, select:focus {
+	input:focus, textarea:focus {
 		outline-color: $primary-color;
-		background: $card-bg;
-		color: $input-color;
-		outline: none !important;
 	}
 	.input-group {
 		.btn {
@@ -2350,20 +2366,20 @@ ul.customer-rating {
 }
 .form-section-header {
 	@include roundedCorners(3);
-	background: $card-bg-lighten;
+	background: $primary-color-light;
 	margin: .5rem 0 1rem 0;
 	padding: .6rem .9rem;
 	font-size: .8rem;
 	font-weight: 600;
-	color: $white;
+	color: $font-color;
 	span.title-info {
 		font-size: .7rem;
 		font-weight: 400;
-		color: $white;
+		color: $font-color-lighter;
 		margin: 0 0 0 5px;
 	}
 	&.light-bg {
-		background-color: $card-bg-lighten !important;
+		background-color: $light-bg;
 	}
 }
 
@@ -2382,7 +2398,7 @@ ul.customer-rating {
 
 /******** 6.31 Form Actions Footer ********/
 .form-actions-footer {
-	background: $card-bg-light;
+	background: $form-label-bg;
 	padding: 1rem;
 	@include roundedCorners(2);
 }
@@ -2433,20 +2449,15 @@ ul.customer-rating {
 		font-weight: 600;
 		padding: .2rem .8rem;
 		border: 0;
-		color: $font-color-lighter;
+		color: $font-color;
 		background: transparent;
 		@include roundedCorners(30);
 		&.active {
-			background: $primary-color;
-			color: $white;
-			&:hover {
-				background: $primary-color;
-				color: $white;
-			}
+			background: $primary-color-light;
+			color: $primary-color;
 		}
 		&:hover {
-			background: $card-bg-light;
-			color: $white;
+			background: $light-bg;
 		}
 		&:focus {
 			outline: none;
@@ -2526,7 +2537,7 @@ ul.customer-rating {
 		}
 		&.primary {
 			.stats-icon {
-				background: $card-bg-light;
+				background: $primary-color-light;
 				i {
 					color: $primary-color;
 				}
@@ -2565,7 +2576,7 @@ ul.customer-rating {
 .monthly-earnings {
 	text-align: center;
 	margin: 1rem 0 0 0;
-	background: lighten($card-bg, 5%);
+	background: lighten($primary-color-light, 2%);
 	color: $primary-color;
 	padding: .8rem 1rem;
 	@include roundedCorners(5);
@@ -2927,7 +2938,7 @@ ul.customer-rating {
 					font-size: 1.2rem;
 					content: "\e836";
 					font-family: 'icomoon';
-					background: $card-bg;
+					background: $white;
 					@include roundedCorners(5);
 				}
 			}
@@ -2955,7 +2966,7 @@ ul.customer-rating {
 			&.done {
 				text-decoration: line-through;
 				@include transition(all, 0.3s, ease-out);
-				color: $primary-color;
+				color: rgba(0, 0, 0, 0.4);
 				.dot {
 					&:before {
 						content: "\e86c";
@@ -3002,7 +3013,7 @@ ul.statistics {
 /******** 6.47 Daily Goal ********/
 .goal-container {
 	margin-bottom: 20px;
-	background: $card-bg;
+	background: $white;
 	padding: 1rem;
 	@include roundedCorners(4);
 	min-height: 140px;
@@ -3047,7 +3058,7 @@ ul.statistics {
 .payments-card {
 	margin-bottom: 20px;
 	padding: 1rem;
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	min-height: 140px;
 	h4 {
@@ -3083,7 +3094,7 @@ ul.statistics {
 	margin-bottom: 20px;
 	position: relative;
 	padding: 1rem;
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(5);
 	min-height: 140px;
 	overflow: hidden;
@@ -3110,7 +3121,7 @@ ul.statistics {
 
 /******** 6.50 Product Cards ********/
 .product-card {
-	background: $card-bg;
+	background: $white;
 	border: 0;
 	box-shadow: none;
 	@include roundedCorners(4);
@@ -3205,7 +3216,7 @@ ul.statistics {
 
 /******** 6.52 Product Table ********/
 table.products-table {
-	background: $table-bg;
+	background: $white;
 	margin-bottom: 0;
 	padding: .6rem;
 	thead {
@@ -3251,6 +3262,8 @@ table.products-table {
 					@include roundedCorners(30);
 					padding: .35rem .5rem;
 					min-width: 60px;
+					background: $primary-color-light;
+					color: $primary-color;
 				}
 			}
 		}
@@ -3318,7 +3331,7 @@ table.products-table td .media-box {
 /******** 6.54 Social Stats ********/
 .social-tile {
 	position: relative;
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	margin-bottom: 20px;
 	padding: 1.25rem 1rem;
@@ -3406,7 +3419,7 @@ ul.recent-orders {
 		content: '';
 		min-height: 280px;
 		@include roundedCornersAll(10px, 10px, 100px, 100px);
-		background: $card-bg;
+		background: $primary-color;	
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -3423,7 +3436,7 @@ ul.recent-orders {
 
 			h1 {
 				font-weight: 300;
-				color: $main-font-color;	
+				color: $white;	
 				margin: 0 auto;
 				display: inline-block;
 				position: relative;
@@ -3445,10 +3458,10 @@ ul.recent-orders {
 		// Transparent Buttons
 		.btn {
 			margin: 0 0 0 .3rem;
-			background-color: $card-bg-lighten;
+			background-color: rgba(255, 255, 255, 0.1);
 			color: rgba(255, 255, 255, 0.8);
 			&:hover {
-				background-color: $card-bg-light;
+				background-color: rgba(255, 255, 255, 0.2);
 				color: rgba(255, 255, 255, 0.8);
 			}
 		}
@@ -3456,7 +3469,7 @@ ul.recent-orders {
 		// DateRange
 		.field-wrapper {
 			input {
-				border: 1px solid $form-border;
+				border:1px solid rgba(255, 255, 255, 0.2);
 				color: rgba(255, 255, 255, 0.5);
 				background: transparent;
 				min-width: 170px;
@@ -3465,7 +3478,7 @@ ul.recent-orders {
 				}
 			}
 			.input-group-text {
-				border: 1px solid $form-border;
+				border: 1px solid rgba(255, 255, 255, 0.2);
 				background: transparent;
 				border-left: 0px;
 				i {
@@ -3474,14 +3487,13 @@ ul.recent-orders {
 				}
 			}
 			.field-placeholder {
-				background-color:  $card-bg;
+				background-color:  $primary-color;
 				font-size: .65rem;
 				font-weight: 400;
-				color: rgba(255, 255, 255, 0.5);
+				color:  rgba(255, 255, 255, 0.5);
 				padding: 2px 10px;
 			}
 		}
-
 		// Tiles
 		.sales-tile-container {
 			display: flex;
@@ -3491,8 +3503,7 @@ ul.recent-orders {
 			flex-wrap: wrap;
 			margin: 0 auto 1rem auto;
 			.sales-tile {
-				background-color: $purple;
-				color: $white;
+				background-color: $white;
 				@include roundedCorners(10);
 				padding: 1rem;
 				margin: .5rem;
@@ -3504,11 +3515,12 @@ ul.recent-orders {
 				flex-direction: column;
 				h1 {
 					margin: 0 0 .3rem 0;
+					color: $primary-color;
 					font-weight: 400;
 				}
 				h6 {
 					font-size: .8rem;
-					font-weight: 400;					
+					font-weight: 400;
 				}
 			}
 		}
@@ -3567,7 +3579,7 @@ ul.recent-orders {
 			margin: 0;
 			font-weight: 400;
 			font-size: .75rem;
-			color: $font-color-light;
+			color: $font-color-lighter;
 		}
 	}
 }
@@ -3592,7 +3604,7 @@ ul.recent-orders {
 	}
 	.profile-header-content {
 		@include roundedCorners(4);
-		background: $card-bg;
+		background: lighten($pink, 15%);
 		padding: 1rem 1.5rem 1rem 1.5rem;
 		display: flex;
 		align-items: center;
@@ -3616,7 +3628,7 @@ ul.recent-orders {
 			z-index: 100;
 			// Profile Tiles
 			.profile-tile {
-				background-color: $card-bg;
+				background-color: $white;
 				@include roundedCorners(4);
 				padding: .6rem;
 				margin: .2rem 0;
@@ -3631,7 +3643,7 @@ ul.recent-orders {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					background: rgba(255, 255, 255, .2);
+					background: $pink;
 					i {
 						font-size: 1rem;
 						color: $white;
@@ -3643,15 +3655,16 @@ ul.recent-orders {
 					line-height: 150%;
 					font-weight: 400;
 					font-size: .8rem;
-					color: $white;
+					color: $font-color-light;
 					span {
 						font-weight: 600;
+						color: $font-color;
 					}
 				}
 			}
 		}
 		.profile-avatar-tile {
-			background-color: $card-bg;
+			background-color: $white;
 			@include roundedCorners(4);
 			padding: .7rem;
 			margin: -60px 0 0 auto;
@@ -3737,7 +3750,7 @@ ul.recent-orders {
 	}
 }
 .consulting-card {
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	padding: 1.25rem 1.25rem;
 	margin: 0 0 20px 0;
@@ -3875,11 +3888,11 @@ ul.recent-orders {
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		background: $card-bg-light;
+		background: $white;
 		border: 1px solid $border-bg;
 		&:hover {
-			background-color: lighten($card-bg-light, 5%);
-			border: 1px solid $border-bg;
+			background-color: lighten($light-blue, 5%);
+			border: 1px solid $light-blue;
 		}
 		> h5 {
 			font-size: .9rem;
@@ -3950,7 +3963,7 @@ ul.recent-orders {
 			top: 5px;
 			left: 0px;
 			background: $primary-color;
-			border: 3px solid $card-bg;
+			border: 3px solid $light-color;
 			width: 15px;
 			height: 15px;
 			@include roundedCorners(50);
@@ -4111,13 +4124,13 @@ ul.recent-orders {
 		width: 60px;
 		height: 60px;
 		line-height: 60px;
-		color: $font-color-light;
+		color:$font-color-light;
 		-webkit-transition: all 0.5s ease-in-out;
 		-moz-transition: all 0.5s ease-in-out;
 		-ms-transition: all 0.5s ease-in-out;
 		-o-transition: all 0.5s ease-in-out;
 		transition: all 0.5s ease-in-out;
-		background: $card-bg-light;
+		background: $light-color;
 		@include roundedCorners(3);
 		margin: 2px;
 	  	&:hover {
@@ -4127,7 +4140,6 @@ ul.recent-orders {
 		}
 	}
 }
-
 
 
 /******** 6.67 Chart Heights ********/
@@ -4235,9 +4247,8 @@ ul.recent-orders {
 }
 .login-screen {
 	position: relative;
-	background: $card-bg;
+	background: $white;
 	border: 1px solid $border-bg;
-	color: $font-color-lighter;
 	@include roundedCorners(20);
 	box-shadow: 0 30px 15px -20px rgba(0, 0, 0, 0.2);
 	min-width: 320px;
@@ -4253,6 +4264,20 @@ ul.recent-orders {
 	}
 	.login-body {
 		padding: 1.5rem 1.5rem 0 1.5rem;
+		.field-wrapper {
+			input {
+				border: 1px solid darken($white, 20%);
+				&:hover {
+					border: 1px solid darken($white, 30%);
+				}
+				&:focus {
+					outline-color: darken($white, 30%);
+				}
+			}
+			.field-placeholder {
+				color: darken($white, 40%);
+			}
+		}
 	}
 	.login-footer {
 		border-top: 1px solid $border-bg;
@@ -4265,7 +4290,7 @@ ul.recent-orders {
 		justify-content: flex-end;
     	align-items: center;
 		a {
-			color: $main-font-color;
+			color: lighten($black, 60%);
 			font-size: .7rem;
 			line-height: 200%;
 			border-bottom: 1px dashed !important;
@@ -4279,7 +4304,7 @@ ul.recent-orders {
 		text-decoration: none;
 		margin: 0 auto;
 		display: inline-block;
-		color: $main-font-color;
+		color: lighten($black, 60%);
 		font-size: .7rem;
 		a {
 			margin-left: 5px;
@@ -4318,7 +4343,7 @@ ul.recent-orders {
 	}
 	.carousel-control-next-icon,
 	.carousel-control-prev-icon {
-		background-color: lighten($red, 10%);
+		background-color: lighten($red, 30%);
 		@include roundedCorners(10);
 		background-size: 50%;
 		padding: 20px;		
@@ -4444,6 +4469,8 @@ ul.recent-orders {
 		-webkit-transform: rotate(-900deg);
 	}
 }
+
+
 /******** 7.5 Login Screen 2 ********/
 .error-screen2 {
 	position: relative;
@@ -4557,7 +4584,7 @@ ul.recent-orders {
 	text-align: center;
 	@include roundedCorners(3);
 	color: $font-color;
-	background: $card-bg;
+	background: $white;
 	min-width: 320px;
 	max-width: 320px;
 	margin: auto;
@@ -4618,6 +4645,7 @@ ul.recent-orders {
 
 /******** 7.7 Maintenance Screen ********/
 .maintenance-message {
+	color: $white;
 	display: flex;
     justify-content: flex-end;
     flex-direction: column;
@@ -4627,7 +4655,6 @@ ul.recent-orders {
 		margin: 0 0 1rem 0;
 		line-height: 100%;
 		font-weight: 700;
-		color: $primary-color;
 	}
 	h4 {
 		font-size: 2rem;
@@ -4643,6 +4670,12 @@ ul.recent-orders {
 	.btn {
 		padding: .7rem 1.8rem;
 		@include roundedCorners(50);
+		color: $white;
+		border: 1px solid $white;
+		&:hover {
+			color: $secondary-color;
+			background: $white;
+		}
 	}
 }
 
@@ -4674,7 +4707,7 @@ ul.recent-orders {
 	flex-direction: column;
 	padding: 2rem 1.5rem;
 	@include roundedCorners(3);
-	background: $card-bg-light;
+	background: $lighter-bg;
 	margin: 0 0 1rem 0;
 	.doc-icon {
 		width: 100px;
@@ -4685,7 +4718,7 @@ ul.recent-orders {
 		justify-content: center;
 		@include roundedCorners(100);
 		margin: 0 0 1rem 0;
-		background: $card-bg;
+		background: $white;
 		img {
 			width: 50px;
 			height: 50px;
@@ -4701,7 +4734,7 @@ ul.recent-orders {
 
 /******** 8.2 Contacts App ********/
 figure.user-card {
-	background: $card-bg-light;
+	background: $lighter-bg;
 	padding: 2rem 1rem;
 	@include roundedCorners(3);
 	text-align: center;
@@ -4716,7 +4749,7 @@ figure.user-card {
 		justify-content: center;
 		align-items: center;
 		@include roundedCorners(30);
-		background: $card-bg;
+		background: $white;
 		margin: 0 0 0 5px;
 		i {
 			font-size: 1rem;
@@ -4744,7 +4777,7 @@ figure.user-card {
 		margin: 0;
 		background: transparent;
 		.list-group-item {
-			background: $card-bg;
+			background: rgba(255, 255, 255, 0.5);
 			display: flex;
 			justify-content: space-between;
 		}
@@ -4806,7 +4839,7 @@ figure.user-card {
 			height: 20px;
 			@include roundedCorners(100);
 			z-index: 100;
-			background: $card-bg;
+			background: $white;
 			border: 2px dashed $border-bg;
 		}
 		h4 {
@@ -4846,12 +4879,12 @@ figure.user-card {
 	}
 	&:nth-child(even) {
 		.timeline-content {
-			background: $card-bg-light;
+			background: $light-bg;
 			margin-left: 40px;
 			text-align: left;
 			&:after {
 				left: -39px;
-				border-right: 18px solid $card-bg-light;
+				border-right: 18px solid $light-bg;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
 			}
@@ -4872,13 +4905,13 @@ figure.user-card {
 			margin-left: 20px;
 		}
 		.timeline-content {
-			background: $card-bg-light;
+			background: $light-bg;
 			margin-right: 40px;
 			margin-left: 0;
 			text-align: right;
 			&:after {
 				right: -39px;
-				border-left: 18px solid $card-bg-light;
+				border-left: 18px solid $light-bg;
 				border-top: 10px solid transparent;
 				border-bottom: 10px solid transparent;
 			}
@@ -4958,7 +4991,7 @@ figure.user-card {
 
 /******** 8.4 Chat App ********/
 .empty-chat-screen {
-	background: $card-bg;
+	background: $white;
 	z-index: 100;
 	@include roundedCornersAll(0, 10px, 10px, 0);
 	display: flex;
@@ -5015,7 +5048,9 @@ figure.user-card {
 		}
 	}
 	.form-control {
-		@include roundedCorners(3);
+		border: 2px solid $form-border;
+		@include roundedCorners(5);
+		background: $white;
 		height: 40px;
 		padding: .375rem 0 .375rem 3rem;			
 		&:focus, &:hover {
@@ -5025,12 +5060,12 @@ figure.user-card {
 	}
 }
 .chat-wrapper {
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	display: flex;
 }
 .chat-users-container {
-	border-right: 1px solid lighten($content-wrapper-bg, 12%);
+	border-right: 1px solid lighten($border-bg, 3%);
 	width: 330px;
 	padding: 20px 0;
 	.users-container {
@@ -5039,7 +5074,7 @@ figure.user-card {
 			padding: 0;
 			list-style-type: none;			
 			li {
-				border-bottom: 1px solid lighten($content-wrapper-bg, 12%);
+				border-bottom: 1px solid lighten($border-bg, 3%);
 				a {
 					padding: 15px 20px;
 					display: flex;
@@ -5084,30 +5119,37 @@ figure.user-card {
 							display: flex;
 							align-items: center;
 							justify-content: center;
-							color: $white;
 							&.blue {
-								background: $blue;
+								background: $light-blue;
+								color: $dark-blue;
 							}
 							&.yellow {
-								background: $yellow;
+								background: $light-yellow;
+								color: $dark-yellow;
 							}
 							&.red {
-								background: $red;
+								background: $light-red;
+								color: $dark-red;
 							}
 							&.green {
-								background: $green;
+								background: $light-green;
+								color: $dark-green;
 							}
 							&.pink {
-								background: $pink;
+								background: $light-pink;
+								color: $dark-pink;
 							}
 							&.orange {
-								background: $orange;
+								background: $light-orange;
+								color: $dark-orange;
 							}
 							&.violet {
-								background: $violet;
+								background: $light-violet;
+								color: $dark-violet;
 							}
 							&.brown {
-								background: $brown;
+								background: $light-brown;
+								color: $dark-brown;
 							}
 						}
 					}
@@ -5145,7 +5187,7 @@ figure.user-card {
 								@include roundedCorners(50);
 								width: 16px;
 								height: 16px;
-								background: $green;
+								background: $blue;
 								color: $white;
 								font-size: .6rem;
 								font-weight: 600;
@@ -5159,16 +5201,16 @@ figure.user-card {
 					&:hover {
 						@include transition(all, 0.5s, ease);
 						color: $font-color;
-						background: $card-bg-light;
+						background: $light-bg;
 					}					
 				}
 				&.active-chat {
 					color: $font-color;
-					background: $card-bg-lighten;
+					background: $light-color;
 					a {
 						&:hover {
 							color: $font-color;
-							background: $card-bg-lighten;
+							background: $light-color;
 						}
 					}
 				}
@@ -5202,34 +5244,41 @@ figure.user-card {
 			@include roundedCorners(50);
 			font-size: 14px;
 			font-weight: 600;
-			color: $white;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			margin: 0 15px 0 0;
 			&.blue {
-				background: $blue;
+				background: $light-blue;
+				color: $dark-blue;
 			}
 			&.yellow {
-				background: $yellow;
+				background: $light-yellow;
+				color: $dark-yellow;
 			}
 			&.red {
-				background: $red;
+				background: $light-red;
+				color: $dark-red;
 			}
 			&.green {
-				background: $green;
+				background: $light-green;
+				color: $dark-green;
 			}
 			&.pink {
-				background: $pink;
+				background: $light-pink;
+				color: $dark-pink;
 			}
 			&.orange {
-				background: $orange;
+				background: $light-orange;
+				color: $dark-orange;
 			}
 			&.violet {
-				background: $violet;
+				background: $light-violet;
+				color: $dark-violet;
 			}
 			&.brown {
-				background: $brown;
+				background: $light-brown;
+				color: $dark-brown;
 			}
 		}
 		> .avatar-info {
@@ -5256,13 +5305,13 @@ figure.user-card {
 			justify-content: center;
 			align-items: center;
 			@include roundedCorners(50);
-			background: $card-bg-light;
+			box-shadow: 5px 5px 10px $card-shadow;
 			margin: 0 0 0 10px;
 			i {
 				font-size: .8rem;
 			}
 			&:hover {
-				background: $card-bg-lighten;
+				box-shadow: 5px 5px 20px darken($card-shadow, 10%);
 			}
 		}
 	}
@@ -5313,7 +5362,7 @@ figure.user-card {
 				align-items: flex-start;
 				.chat-text {
 					padding: .7rem 1rem;					
-					background: $card-bg-light;
+					background: $primary-color-light;
 					@include roundedCorners(3);
 					line-height: 150%;
 					align-self: flex-start;
@@ -5333,7 +5382,7 @@ figure.user-card {
 							top: 14px;
 							left: -16px;
 							border: 8px solid;
-							border-color: transparent $card-bg-light $card-bg-light transparent;
+							border-color: transparent $primary-color-light $primary-color-light transparent;
 						}
 					}
 					.chat-img-thumbnail {
@@ -5359,7 +5408,7 @@ figure.user-card {
 								display: flex;
 								align-items: center;
 								justify-content: center;
-								background: rgba(255, 255, 255, 0.1);
+								background: rgba(255, 255, 255, 0.3);
 								@include roundedCorners(50);
 								i {
 									color: $white;
@@ -5391,8 +5440,7 @@ figure.user-card {
 				a.shared-files {
 					display: flex;
 					align-items: center;
-					background: $card-bg-light;
-					color: $main-font-color;
+					background: $white;
 					@include roundedCorners(3);
 					padding: 7px 15px;
 					.attached-folder {
@@ -5408,7 +5456,7 @@ figure.user-card {
 						font-weight: 600;
 					}
 					&:hover {
-						color: $main-font-color;
+						color: $black;
 					}
 				}
 			}			
@@ -5421,11 +5469,11 @@ figure.user-card {
 				.chat-text-wrapper {
 					> .chat-text {
 						text-align: right;
-						background: $card-bg-lighten;
+						background: $light-color;
 						align-self: flex-end;
 						&:before {
 							right: -16px;
-							border-color: transparent transparent $card-bg-lighten $card-bg-lighten;
+							border-color: transparent transparent $light-color $light-color;
 							left: inherit;
 						}
 					}
@@ -5520,7 +5568,7 @@ figure.user-card {
 			.action-icon-popup {
 				padding: 5px;
 				margin-bottom: 10px;
-				background: $card-bg-light;
+				background: $white;
 				border: 1px solid $border-bg;
 				display: none;
 				position: absolute;
@@ -5537,9 +5585,9 @@ figure.user-card {
 					width: 12px;
 					height: 12px;
 					transform: rotate(45deg);
-					background: $card-bg-light;
-					border-bottom: 1px solid $card-bg-light;
-					border-right: 1px solid $card-bg-light;
+					background: $white;
+					border-bottom: 1px solid $border-bg;
+					border-right: 1px solid $border-bg;
 				}
 				.emoji-list {
 					display: flex;
@@ -5557,14 +5605,14 @@ figure.user-card {
 						align-items: center;
 						justify-content: center;
 						&:hover {
-							background: $card-bg-lighten;
+							background: $light-bg;
 							@include roundedCorners(3);
 						}
 					}
 				}
 			}
 			&:hover {
-				background: $card-bg-lighten;
+				background: $light-blue;
 				@include roundedCorners(4);
 				.action-icon-tooltip {
 					display: block;
@@ -5766,7 +5814,7 @@ figure.user-card {
 
 /******** 8.5 Tasks App ********/
 .tasks-section {
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	display: flex;
 }
@@ -5775,7 +5823,7 @@ figure.user-card {
 /******** 8.6 Labels Container ********/
 .labels-container {
 	position: relative;
-	border-right: 1px solid lighten($content-wrapper-bg, 12%);
+	border-right: 1px solid lighten($border-bg, 3%);
 	width: 160px;
 	padding: 20px 0;
 	display: flex;	
@@ -5805,11 +5853,11 @@ figure.user-card {
 					color: $font-color-lighter;
 				}
 				&:hover {
-					background: $card-bg-light;
+					background: $light-color;
 					color: $primary-color;
 				}
 				&.active {
-					background: $card-bg-lighten;
+					background: $light-color;
 					color: $font-color;
 				}
 			}
@@ -5838,7 +5886,7 @@ figure.user-card {
 					margin: 0 .5rem 0 0;
 				}
 				&:hover {
-					background: $card-bg-light;
+					background: $light-color;
 					color: $primary-color;
 				}
 			}
@@ -5886,7 +5934,7 @@ figure.user-card {
 		justify-content: space-between;
 		flex-direction: row;
 		padding: .8rem 1.5rem;
-		border-bottom: 1px solid lighten($content-wrapper-bg, 8%);
+		border-bottom: 1px solid lighten($border-bg, 3%);
 		@include roundedCornersAll(0, 3px, 0, 0);
 		h3 {
 			margin: 0;
@@ -5924,7 +5972,7 @@ figure.user-card {
 		align-items: center;
 		flex-direction: row;
 		padding: 1.5rem 1rem;
-		border-bottom: 1px solid lighten($content-wrapper-bg, 8%);
+		border-bottom: 1px solid lighten($border-bg, 3%);
 		.task-checkbox {
 			margin: 0 2rem 0 0;
 			position: relative;
@@ -6055,7 +6103,7 @@ figure.user-card {
 			}
 		}
 		&.task-checked {
-			background: $card-bg-light;
+			background: $light-color;
 			.task-details {
 				opacity: 0.7;
 				text-decoration: line-through;
@@ -6133,8 +6181,7 @@ figure.user-card {
 		margin: 1rem 0 .5rem 0;
 		padding: 1rem;
 		line-height: 180%;
-		background: $primary-color;
-		color: $white;
+		background: $primary-color-light;
 		.invoice-num {
 			text-align: right;
 			margin-left: auto;
@@ -6163,7 +6210,7 @@ figure.user-card {
 	margin: 0 0 1.5rem 0;
 	width: 100%;
 	position: relative;
-	background: $card-bg;	
+	background: $white;	
 	@include roundedCorners(3);
 	.pricing-header {		
 		padding: 20px 0;
@@ -6195,7 +6242,6 @@ figure.user-card {
 	}
 	.pricing-body {
 		border: 1px solid $border-bg;
-		border-top: 0;
 	}
 	.pricing-features {
 		padding: 20px 0;
@@ -6213,6 +6259,7 @@ figure.user-card {
 				left: 15px;
 				top: 15px;
 				font-size: 1rem;
+				color: $black;
 				content: "\e9ec";
 				font-family: 'icomoon';
 			}
@@ -6240,7 +6287,7 @@ figure.user-card {
 
 /******** 8.11 Search Results Page ********/
 .search-results-container {
-	background: $card-bg;
+	background: $white;
 	padding: 2rem 1.5rem;
 	@include roundedCorners(3);
 	position: relative;
@@ -6280,7 +6327,7 @@ figure.user-card {
 
 /******** 8.12 FAQ Page ********/
 .submit-request-card {
-	background: $card-bg;
+	background: $white;
 	@include roundedCorners(4);
 	margin-bottom: 20px;
 	padding: 1.5rem;
@@ -6328,7 +6375,7 @@ figure.user-card {
 .dropzone {
 	border: 2px dashed $primary-color !important;
 	@include roundedCorners(3);
-	background: $card-bg !important;
+	background: $white !important;
 	min-height: 250px !important;
 	.dz-message {
 		font-weight: 400;
@@ -6351,7 +6398,7 @@ figure.user-card {
 	.dropzone {
 		border: 1px dashed $primary-color !important;
 		@include roundedCorners(3);
-		background: $card-bg-light!important;
+		background: $white !important;
 		min-height: 174px !important;
 		.dz-message {
 			font-weight: 400;
@@ -6458,17 +6505,16 @@ img.hover-tabs-img {
 
 /******** 10.1 Accordion ********/
 .accordion {
-	background: $card-bg;
+	background: $white;
 	.accordion-button {
-		color: $font-color-light;
 		text-align: left;
 		font-size: .9rem;
 		&.collapsed {
 			border-bottom-width: 0;
 		}
 		&:not(.collapsed) {
-			color: $white;
-			background-color: $primary-color;
+			color: $primary-color;
+			background-color: $primary-color-light;
 		}
 		&:focus {
 			box-shadow: none;
@@ -6489,7 +6535,7 @@ img.hover-tabs-img {
 
 /******** 10.2 Cards ********/
 .card {
-	background: $card-bg;
+	background: $white;
 	border: 0;
 	box-shadow: none;
 	@include roundedCorners(4);
@@ -6889,7 +6935,7 @@ button {
 		background-color: darken($primary-color, 5%);
 		border-color: darken($primary-color, 5%);
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem rgb(88, 140, 228);
+		box-shadow: 0 0 0 0.2rem rgb(228, 240, 255);
 	}
 	&.dropdown-toggle.show,
 	.btn-check:checked + &,
@@ -6899,12 +6945,12 @@ button {
 		color: $primary-text-color;
 		background-color: darken($primary-color, 5%);
 		border-color: darken($primary-color, 5%);
-		box-shadow: 0 0 0 0.2rem rgb(88, 140, 228);
+		box-shadow: 0 0 0 0.2rem rgb(228, 240, 255);
 		&:focus {
 			color: $primary-text-color;
 			background-color: darken($primary-color, 5%);
 			border-color: darken($primary-color, 5%);
-			box-shadow: 0 0 0 0.2rem rgb(88, 140, 228);
+			box-shadow: 0 0 0 0.2rem rgb(228, 240, 255);
 		}
 	}
 	&:disabled,
@@ -7397,23 +7443,22 @@ button {
 
 /******** 10.7 Forms ********/
 ::-webkit-input-placeholder {
-	color: #9ba6b5;
-}
-::-moz-placeholder {
-	color: #9ba6b5;
-}
-:-ms-input-placeholder {
-	color: #9ba6b5;
+  color: #9ba6b5;
 }
 :-moz-placeholder {
-	color: #9ba6b5;
+  color: #9ba6b5;
+}
+::-moz-placeholder {
+  color: #9ba6b5;
+}
+:-ms-input-placeholder {
+  color: #9ba6b5;
 }
 
 
 /******** 10.7.1 Controls ********/
 .form-control {
 	border: 1px solid $form-border;
-	background: $card-bg;
 	@include roundedCorners(2);
 	color: $input-color;
 	font-size: .725rem;
@@ -7423,14 +7468,13 @@ button {
 	}
 	&:focus {
 		border-color: $primary-color;
-		background-color: $card-bg;
 		box-shadow: none;
-		color: $input-color;
 		@include roundedCorners(2);
-		outline: none !important;
+		outline: auto !important;
+		outline-color: $primary-color !important;
 	}
 	&:disabled, &[readonly] {
-		background: $card-bg-light;
+		background: $form-label-bg;
 		cursor: not-allowed;
 	}
 }
@@ -7440,19 +7484,18 @@ button {
 	min-height: 40px;
 }
 .form-select:disabled {
-	background-color: $card-bg-light;
+	background-color: $form-label-bg;
 	cursor: not-allowed;
 }
 .input-group-text {
 	border: 1px solid $form-border;
-	background-color: $card-bg;
-	color: $input-color;
+	background: $form-label-bg;
 	@include roundedCorners(2);
 	font-size: .75rem;	
 	min-height: 40px;
 	margin: 0;
 	i {
-		color: $input-color;
+		color: $input-color-dark;
 	}
 }
 .form-text {
@@ -7463,7 +7506,6 @@ label {
 	font-size: .8rem;
 	font-weight: 600;
 }
-
 
 /******** 10.7.2 Validations ********/
 .form-control.is-valid, .was-validated .form-control:valid {
@@ -7523,8 +7565,6 @@ label {
 	margin-top: .15em;
 	min-height: auto;
 	padding: 0;
-	background-color: $card-bg;
-	border-color: $form-border;
 }
 .form-check .form-check-input[type=radio] {
 	@include roundedCorners(50);
@@ -7533,22 +7573,20 @@ label {
 	margin-top: .15em;
 	min-height: auto;
 	padding: 0;
-	background-color: $card-bg;
-	border-color: $form-border;
 }
 
 
 /******** 10.8 List Group ********/
 .list-group {
-	margin-bottom: 2rem;	
+	margin-bottom: 2rem;
+	background: $white;
 	border: 0;
 	@include roundedCorners(2);
 	margin-bottom: 1rem;
 	.list-group-item {
 		font-size: .725rem;
 		padding: .7rem .75rem;
-		background: $card-bg;
-		border: 1px solid $card-bg-lighten;
+		border: 1px solid $border-bg;
 		color: $font-color;
 		&:first-child {
 			@include roundedCornersAll(2px, 2px, 0, 0);
@@ -7576,7 +7614,6 @@ label {
 	text-align: left;	
 	.modal-content {
 		@include roundedCorners(3);
-		background-color: $card-bg;
 		border: 0;
 	}
 	.modal-header {
@@ -7590,7 +7627,7 @@ label {
 		max-height: calc(100vh - 180px);
 	}
 	.modal-footer {
-		border-top: 1px solid $card-bg-light;
+		border-top: 1px solid $border-bg;
 		padding: .2rem .75rem;
 	}
 }
@@ -7617,8 +7654,6 @@ label {
 	box-shadow: 20px 30px 30px rgba(0, 0, 0, 0.2);
 	width: 11rem;
 	font-size: .75rem;
-	background: $card-bg-light;
-	color: $main-font-color;
 	&:before {
 		position: absolute;
 		top: -9px;
@@ -7626,7 +7661,7 @@ label {
 		content: '';
 		border-left: 8px solid transparent;
 		border-right: 8px solid transparent;
-		border-bottom: 9px solid $card-bg-light;
+		border-bottom: 9px solid $white;
 	}
 	&.dropdown-menu-end {
 		right: 0;
@@ -7675,8 +7710,7 @@ label {
 	.dropdown-menu-header {
 		padding: .7rem 1rem;
 		margin-bottom: .5rem;
-		background: $card-bg;
-		color: $main-font-color;
+		background: $light-bg;
 		font-size: .85rem;
 		font-weight: 700;
 	}
@@ -7710,14 +7744,10 @@ label {
 			padding: .6rem 1rem;
 			@include roundedCorners(0);
 			color: $font-color-light;
-			&:hover {
-				border-color: $border-bg $border-bg $border-bg;
-			}
 			&.active {
-				border-color: transparent $border-bg $card-bg;
+				border-color: transparent $border-bg $white;
 				box-shadow: 0 -3px 0 0 $primary-color;
-				background-color: $card-bg;
-				color: $primary-color;
+				color: $font-color;
 			}
 		}
 		.nav-item:first-child {
@@ -7742,7 +7772,6 @@ label {
 /******** 10.13 Popovers ********/
 .popover {
 	border: 1px solid $border-bg;
-	background-color: $card-bg-light;
 }
 .popover-body {
 	color: $font-color-light;
@@ -7754,24 +7783,11 @@ label {
 	padding: .7rem 1rem;
 	border-bottom: 1px solid $border-bg;
 }
-.bs-popover-top > .popover-arrow::after {
-	border-top-color: $border-bg;
-}
-.bs-popover-bottom > .popover-arrow::after {
-	border-bottom-color: $border-bg;
-}
-.bs-popover-end > .popover-arrow::after {
-	border-right-color: $border-bg;
-}
-.bs-popover-start > .popover-arrow::after {
-	border-left-color: $border-bg;
-}
 
 
 /******** 10.14 Tables ********/
 .table {
-	background: $table-bg;
-	color: $table-color;
+	color: $table-color-light;
 	font-size: .725rem;
 	border-color: $table-border;
 	th, td {
@@ -7780,8 +7796,7 @@ label {
 	th {
 		font-size: .725rem;
 		font-weight: 600;
-		color: $table-color-light;
-		background: $table-header;
+		color: $table-color;
 		border-bottom: 1px solid $table-border-dark !important;
 	}
 	.td-actions {
@@ -7828,11 +7843,12 @@ label {
 	}
 }
 .table-hover > tbody > tr:hover {
-	background-color: $table-td-hover;
+	background-color: $light-color;
+	--bs-table-accent-bg: $light-color;
 }
 .table-striped>tbody>tr:nth-of-type(odd) {
-	background-color: $table-bg-odd;
-	color: $table-color;
+	background-color: $light-color;
+	--bs-table-accent-bg: $light-color;
 }
 .table-actions {
 	display: flex;
@@ -7849,11 +7865,13 @@ label {
 	@include roundedCorners(4);
 	margin-bottom: 20px;
 	&.light-green {
-		background: $green;
+		background: $white;
 		.table {
 			th {
-				background: darken($green, 10%);
-				color: $white;
+				color: $green;
+			}
+			td {
+				border-bottom: 1px solid darken($light-green, 2%);
 			}
 			a {
 				color: $green;
@@ -7861,11 +7879,13 @@ label {
 		}
 	}
 	&.light-blue {
-		background: $blue;
+		background: $white;
 		.table {
 			th {
-				background: darken($blue, 10%);
-				color: $white;
+				color: $blue;
+			}
+			td {
+				border-bottom: 1px solid darken($light-blue, 2%);
 			}
 			a {
 				color: $blue;
@@ -7886,19 +7906,22 @@ label {
 			border-top-right-radius: 2px;
 			border-bottom-right-radius: 2px;
 		}
-		&.disabled .page-link {
-			color: $font-color-dark;
-			border: 1px solid $border-bg;
-			background: $card-bg-light;
+		&.active {
+			.page-link {
+				background: $primary-color;
+				border: 1px solid $primary-color;
+				color: $white;
+				&:hover {
+					background: $primary-color;
+				}
+			}
 		}
 	}
 	.page-link {
-		color: $main-font-color;
+		color: $primary-color;
 		border: 1px solid $border-bg;
-		background: $card-bg-light;
 		&:hover {
 			background: $light-bg;
-			color: $primary-color;
 		}
 	}
 }

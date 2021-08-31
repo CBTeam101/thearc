@@ -14,7 +14,7 @@ var options = {
 			top: 10
 		},
 	},
-	colors: ['#4285F4', '#63a9ff'],
+	colors: ['#1273eb', '#63a9ff'],
 	plotOptions: {
 		bar: {
 			horizontal: true,
@@ -39,7 +39,7 @@ var options = {
 		}
 	],
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {

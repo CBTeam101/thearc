@@ -48,7 +48,7 @@ var options = {
 			fill: {
 				type: 'gradient',
 				gradient: {
-					colorFrom: '#4285F4',
+					colorFrom: '#1273eb',
 					colorTo: '#95c5ff',
 					stops: [0, 100],
 					opacityFrom: 0.4,
@@ -97,7 +97,7 @@ var options = {
 		}
 	},
 	grid: {
-    borderColor: '#47496f',
+    borderColor: '#e0e6ed',
     strokeDashArray: 5,
     xaxis: {
       lines: {
@@ -116,7 +116,7 @@ var options = {
       left: 0
     }, 
   },
-	colors: ['#4285F4', '#2b86f5', '#63a9ff', '#95c5ff', '#c6e0ff'],
+	colors: ['#1273eb', '#2b86f5', '#63a9ff', '#95c5ff', '#c6e0ff'],
 }
 var chart = new ApexCharts(
 	document.querySelector("#basic-column-graph-datalables"),

@@ -1,7 +1,7 @@
 .daterangepicker {
 	position: absolute;
 	color: inherit;
-	background-color: #242644;
+	background-color: #fff;
 	border-radius: 4px;
 	width: 280px;
 	max-width: none;
@@ -23,7 +23,7 @@
 	content: '';
 	top: -9px;
 	border-right: 9px solid transparent;
-	border-bottom: 9px solid #242644;
+	border-bottom: 9px solid #fff;
 	border-left: 9px solid transparent;
 }
 
@@ -116,7 +116,7 @@
 
 .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span {
 	color: #fff;
-	border: solid #4285f4;
+	border: solid black;
 	border-width: 0 2px 2px 0;
 	border-radius: 0;
 	display: inline-block;
@@ -150,13 +150,13 @@
 	padding: 5px;
 	white-space: nowrap;
 	cursor: pointer;
-	color: #7980a2;
+	color: #61657b;
 }
 
 .daterangepicker .calendar-table {
-	border: 1px solid #242644;
+	border: 1px solid #fff;
 	border-radius: 4px;
-	background-color: #242644;
+	background-color: #fff;
 }
 
 .daterangepicker .calendar-table table {
@@ -167,8 +167,7 @@
 }
 
 .daterangepicker td.available:hover, .daterangepicker th.available:hover {
-	background-color: #373a5f;
-	border-radius: 4px;
+	background-color: #f4f5fb;
 	color: inherit;
 }
 
@@ -178,14 +177,14 @@
 }
 
 .daterangepicker td.off, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date, .daterangepicker td.off.end-date {
-	background-color: #242644;
+	background-color: #fff;
 	border-color: transparent;
-	color: #495075;
+	color: #999;
 }
 
 .daterangepicker td.in-range {
-	background-color: #1e203a;
-	color: #7980a2;
+	background-color: #f4f5fb;
+	color: #000;
 	border-radius: 0;
 }
 
@@ -202,7 +201,7 @@
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-	background-color: #34a853;
+	background-color: #27b963;
 	color: #fff;
 }
 
@@ -262,8 +261,8 @@
 	display: none;
 	line-height: 12px;
 	vertical-align: middle;
-	background: #242644;
-	border-top: 1px solid #3a3d63;
+	background: #f4f5fb;
+	border-top: 1px solid #eaebf3;
 	border-radius: 0 0 4px 4px;
 }
 
@@ -289,7 +288,7 @@
 }
 
 .daterangepicker.show-ranges .drp-calendar.left {
-	border-left: 1px solid #3a3d63;
+	border-left: 1px solid #eaebf3;
 }
 
 .daterangepicker .ranges {
@@ -317,11 +316,11 @@
 }
 
 .daterangepicker .ranges li:hover {
-	background-color: #1e203a;
+	background-color: #f4f5fb;
 }
 
 .daterangepicker .ranges li.active {
-	background: #4285F4;
+	background: #1173eb;
 	color: #fff;
 }
 

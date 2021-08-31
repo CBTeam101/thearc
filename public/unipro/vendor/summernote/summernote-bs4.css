@@ -6,10 +6,6 @@
 
 
 /* Overwrite Styles */
-.note-editor.note-frame .note-editing-area .note-editable {
-	background-color: #1e203a;
-	color: #dadde8;
-}
 .note-editor.note-frame.card {
 	margin: 0;
 }
@@ -21,10 +17,10 @@
 }
 .note-btn-group .btn {
 	font-size: .75rem;
-	background-color: #1e203a;
-	border-color: #424665;
+	background-color: #fff;
+	border-color: #e7eaef;
 	padding: 5px 10px;
-	color: #7980a2;
+	color: #696c6f;
 	display: flex;
 	font-weight: 400;
 	align-items: center;
@@ -34,13 +30,13 @@
 	vertical-align: initial;
 	margin: 0;
 	font-size: .7rem;
-	color: #7980a2;
+	color: #696c6f;
 }
 .note-btn-group .btn:hover {
-	color: #7980a2;
+	color: #696c6f;
 }
 .note-btn-group .btn:hover i {
-	color: #7980a2;
+	color: #696c6f;
 }
 .note-btn-group .dropdown-toggle::after {
 	background: none;
@@ -94,30 +90,21 @@
 .note-popover .popover-content, .card-header.note-toolbar {
 	padding: 0 0 5px 5px;
 	margin: 0;
-	background-color: #242644;
+	background: #f6f8fa;
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
 }
-.note-editor.note-frame .note-status-output {
-	border-top: 1px solid #424665;
-}
 .note-editor.note-frame {
-	border: 1px solid #424665;
+	border: 1px solid #dbdaea;
 	padding-top: 16px;
 }
 .note-editor.note-frame .note-statusbar {
-	background-color: #242644;
-	border-top: 1px solid #424665;
+	background-color: #f6f8fa;
+	border-top: 1px solid #e2ecf2;
 }
 .editor-container {
 	padding: .5rem;
 	background: #ffffff;
 	margin: 10px;
-}
-.note-editor.note-frame .note-statusbar .note-resizebar {
-	background-color: #242644;
-}
-.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
-	border-top: 1px solid #4285F4;
 }
