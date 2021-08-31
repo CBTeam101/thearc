@@ -28,4 +28,8 @@
 <link rel="stylesheet" href="{{asset('unipro/vendor/datatables/buttons.bs.css')}}" />
 <!-- Uploader CSS -->
 <link rel="stylesheet" href="{{asset('unipro/vendor/dropzone/dropzone.min.css')}}" />
+<!-- Bootstrap Select CSS -->
+<link rel="stylesheet" href="{{asset('unipro/vendor/bs-select/bs-select.css')}}">
+<!-- Date Range CSS -->
+<link rel="stylesheet" href="{{asset('unipro/vendor/daterange/daterange.css')}}">
 @yield('styles')

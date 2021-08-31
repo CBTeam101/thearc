@@ -21,6 +21,7 @@ class Transaction extends Model
         'description',
         'token_id',
         'status_id',
+        'encoded_by',
         'approved_at'
     ];
 

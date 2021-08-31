@@ -68,4 +68,12 @@
 <!-- Dropzone JS -->
 <script src="{{asset('unipro/vendor/dropzone/dropzone.min.js')}}"></script>
 
+
+<!-- Bootstrap Select JS -->
+<script src="{{asset('unipro/vendor/bs-select/bs-select.min.js')}}"></script>
+<script src="{{asset('unipro/vendor/bs-select/bs-select-custom.js')}}"></script>
+
+<!-- Date Range -->
+<script src="{{asset('unipro/vendor/daterange/daterange.js')}}"></script>
+<script src="{{asset('unipro/vendor/daterange/custom-daterange.js')}}"></script>
 @yield('scripts')

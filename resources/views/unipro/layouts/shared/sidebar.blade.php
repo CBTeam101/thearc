@@ -11,15 +11,15 @@
     </a>
     <a class="nav-link {{\Request::is('settings/*') ? 'active' : ''}}" id="menu-tab" data-bs-toggle="tab" href="#tab-menus" role="tab" aria-controls="tab-menus" aria-selected="false">
       <i class="icon-sliders"></i>
-      <span class="nav-link-text">Menus</span>
+      <span class="nav-link-text">Settings</span>
     </a>
     <a class="nav-link {{\Request::is('dashboard/*') || \Request::is('dashboard') ? 'active' : ''}}" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
       <i class="icon-home2"></i>
       <span class="nav-link-text">Dashboards</span>
     </a>
-    <a class="nav-link" id="product-tab" data-bs-toggle="tab" href="#tab-product" role="tab" aria-controls="tab-product" aria-selected="false">
+    <a class="nav-link {{\Request::is('operations/*') || \Request::is('transations') ? 'active' : ''}}"" id="product-tab" data-bs-toggle="tab" href="#tab-operations" role="tab" aria-controls="tab-operations" aria-selected="false">
       <i class="icon-layers2"></i>
-      <span class="nav-link-text">Product</span>
+      <span class="nav-link-text">Operations</span>
     </a>
     <a class="nav-link" id="pages-tab" data-bs-toggle="tab" href="#tab-pages" role="tab" aria-controls="tab-pages" aria-selected="false">
       <i class="icon-book-open"></i>
@@ -52,7 +52,7 @@
   <div class="tab-content">
 
     <!-- Chat tab -->
-    <div class="tab-pane fade show {{\Request::is('settings/*') ? 'active' : ''}}" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
+    <div class="tab-pane fade {{\Request::is('settings/*') ? 'active' : ''}}" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
 
       <!-- Tab content header start -->
       <div class="tab-pane-header">
@@ -156,11 +156,11 @@
     </div>
 
     <!-- Pages tab -->
-    <div class="tab-pane fade" id="tab-product" role="tabpanel" aria-labelledby="product-tab">
+    <div class="tab-pane fade {{\Request::is('operations/*') ? 'active' : ''}}" id="tab-operations" role="tabpanel" aria-labelledby="product-tab">
       
       <!-- Tab content header start -->
       <div class="tab-pane-header">
-        Product
+        Operations
       </div>
       <!-- Tab content header end -->
 
@@ -169,41 +169,11 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="products.html">Products Grid</a>
-            </li>
-            <li>
-              <a href="products-list.html">Products List</a>
-            </li>
-            <li>
-              <a href="add-product.html">Add Product</a>
-            </li>
-            <li>
-              <a href="orders.html">Orders</a>
-            </li>
-            <li>
-              <a href="customers-list.html">Customers</a>
-            </li>
-            <li>
-              <a href="products-reviews.html">Reviews</a>
+              <a href="{{url('/operations/transactions')}}" class="{{\Request::is('operations/transactions') ? 'current-page' : ''}}">Transactions</a>
             </li>
           </ul>
           <ul>
             <li class="list-heading">Calendars</li>
-            <li>
-              <a href="calendar-daygrid-view.html">Daygrid View</a>
-            </li>
-            <li>
-              <a href="calendar-list-view.html">List View</a>
-            </li>
-            <li>
-              <a href="calendar-external-dragging.html">Draggable</a>
-            </li>
-            <li>
-              <a href="calendar-google-view.html">Google View</a>
-            </li>
-            <li>
-              <a href="calendar-selectable.html">Selectable</a>
-            </li>
           </ul>
         </div>
       </div>
