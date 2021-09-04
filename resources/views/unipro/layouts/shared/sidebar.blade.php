@@ -17,7 +17,7 @@
       <i class="icon-home2"></i>
       <span class="nav-link-text">Dashboards</span>
     </a>
-    <a class="nav-link {{\Request::is('operations/*') || \Request::is('transations') ? 'active' : ''}}"" id="product-tab" data-bs-toggle="tab" href="#tab-operations" role="tab" aria-controls="tab-operations" aria-selected="false">
+    <a class="nav-link {{\Request::is('operations/*') || \Request::is('transations') ? 'active' : ''}}" id="product-tab" data-bs-toggle="tab" href="#tab-operations" role="tab" aria-controls="tab-operations" aria-selected="false">
       <i class="icon-layers2"></i>
       <span class="nav-link-text">Operations</span>
     </a>
@@ -51,8 +51,8 @@
   <!-- Tabs content start -->
   <div class="tab-content">
 
-    <!-- Chat tab -->
-    <div class="tab-pane fade {{\Request::is('settings/*') ? 'active' : ''}}" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
+    <!-- Settings tab -->
+    <div class="tab-pane fade show {{\Request::is('settings/*') ? 'active' : ''}}" id="tab-menus" role="tabpanel" aria-labelledby="menus-tab">
 
       <!-- Tab content header start -->
       <div class="tab-pane-header">
@@ -77,12 +77,18 @@
             <li>
               <a href="{{url('/settings/permissions')}}" class="{{\Request::is('settings/permissions') ? 'current-page' : ''}}">Permissions</a>
             </li>
+            <li>
+              <a href="{{url('/settings/api-access')}}" class="{{\Request::is('settings/api-access') ? 'current-page' : ''}}">API Access</a>
+            </li>
             <li class="list-heading">Others</li>
             <li>
               <a href="{{url('/settings/tokens')}}" class="{{\Request::is('settings/tokens') ? 'current-page' : ''}}">Tokens</a>
             </li>
             <li>
               <a href="{{url('/settings/users')}}" class="{{\Request::is('settings/users') ? 'current-page' : ''}}">Users</a>
+            </li>
+            <li>
+              <a href="{{url('/settings/payment-methods')}}" class="{{\Request::is('settings/payment-methods') ? 'current-page' : ''}}">Payment Methods</a>
             </li>
           </ul>
         </div>
@@ -156,7 +162,7 @@
     </div>
 
     <!-- Pages tab -->
-    <div class="tab-pane fade {{\Request::is('operations/*') ? 'active' : ''}}" id="tab-operations" role="tabpanel" aria-labelledby="product-tab">
+    <div class="tab-pane fade show {{\Request::is('operations/*')  ? 'active' : ''}}" id="tab-operations" role="tabpanel" aria-labelledby="product-tab">
       
       <!-- Tab content header start -->
       <div class="tab-pane-header">

@@ -72,12 +72,18 @@
     events: function() {
       this.table.on('click', '.transaction-edit', function(e) {
         const options = {
-          url: `/settings/users/${e.currentTarget.id}`,
+          url: `/operations/transactions/${e.currentTarget.id}`,
           method: 'GET'
         }
         this.http(options)
           .then(function(res) {
-            
+            updateModule.useraccount.val(res.user_id)
+            updateModule.tokentype.val(res.token_id)
+            updateModule.trno.val(res.tr_no)
+            updateModule.amount.val(res.amount)
+            updateModule.tokens.val(res.token)
+            updateModule.approve.checked = typeof res.approved_at !== null
+            updateModule.modal.modal('show')
           })
       }.bind(this))
       this.table.on('click', '.transaction-delete', function(e) {
@@ -89,6 +95,60 @@
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.http(options)
+                .done(function(res) {
+                  swal('Success!', res.message, 'success')
+                    .then(function() {
+                      this.datatable.ajax.reload()
+                    }.bind(this))
+                }.bind(this))
+            } else {
+              swal("Operation cancelled!");
+            }
+          });
+      }.bind(this))
+      this.table.on('click', '.transaction-reject', function(e) {
+        const options = {
+          url: `/operations/transactions/buy-reject/${e.currentTarget.id}`,
+          method: 'POST'
+        }
+
+        swal({
+            title: "Are you sure?",
+            text: "Once rejected, cannot be undo!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.http(options)
+                .done(function(res) {
+                  swal('Success!', res.message, 'success')
+                    .then(function() {
+                      this.datatable.ajax.reload()
+                    }.bind(this))
+                }.bind(this))
+            } else {
+              swal("Operation cancelled!");
+            }
+          });
+      }.bind(this))
+      this.table.on('click', '.transaction-accept', function(e) {
+        const options = {
+          url: `/operations/transactions/buy-approve/${e.currentTarget.id}`,
+          method: 'POST'
+        }
+
+        swal({
+            title: "Are you sure?",
+            text: "Once approve, cannot be undo!",
             icon: "warning",
             buttons: true,
             dangerMode: true,

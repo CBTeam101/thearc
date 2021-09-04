@@ -3,11 +3,11 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalFullScreenTitle">New User</h5>
+        <h5 class="modal-title" id="exampleModalFullScreenTitle">New Transaction</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="needs-validation was-validated" novalidate="" id="user-update-form">
+        <form class="needs-validation was-validated" novalidate="" id="transaction-update-form">
           <div class="row gutters">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
               <!-- Card start -->
@@ -24,8 +24,11 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required="" name="update-first_name" autofocus>
-                        <div class="field-placeholder">First Name</div>
+                        <select class="select-single" name="update-user-account" required data-live-search="true">
+                          <!-- Select2 -->
+                        </select>
+                        <!-- <input type="text" class="form-control" required="" name="update-user-account" autofocus> -->
+                        <div class="field-placeholder">User Account</div>
                       </div>
                       <!-- Field wrapper end -->
 
@@ -35,8 +38,10 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" name="update-middle_name">
-                        <div class="field-placeholder">Middle Name</div>
+                        <select name="update-token-type" class="single-select" required>
+                          <!-- Select 2 -->
+                        </select>
+                        <div class="field-placeholder">Token Type</div>
                       </div>
                       <!-- Field wrapper end -->
 
@@ -46,8 +51,8 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required="" name="update-last_name">
-                        <div class="field-placeholder">Last Name</div>
+                        <input type="text" class="form-control" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}" name="update-tr-no" required readonly />
+                        <div class="field-placeholder">Tr. No.</div>
                       </div>
                       <!-- Field wrapper end -->
 
@@ -57,8 +62,19 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" id="inputPwd" required="" name="update-contact_no">
-                        <div class="field-placeholder">Phone</div>
+                        <input type="number" class="form-control" required name="update-amount">
+                        <div class="field-placeholder">Amount</div>
+                      </div>
+                      <!-- Field wrapper end -->
+
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <input type="text" class="form-control" required name="update-tokens">
+                        <div class="field-placeholder">Tokens</div>
                       </div>
                       <!-- Field wrapper end -->
 
@@ -80,65 +96,6 @@
               <!-- Card start -->
               <div class="card">
                 <div class="card-header">
-                  <div class="card-title">User Acount</div>
-                </div>
-                <div class="card-body">
-                  <!-- Row start -->
-                  <div class="row gutters">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                      <!-- Field wrapper start -->
-                      <div class="field-wrapper">
-                        <input type="email" class="form-control" name="update-email">
-                        <div class="field-placeholder">Email</div>
-                      </div>
-                      <!-- Field wrapper end -->
-
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                      <!-- Field wrapper start -->
-                      <div class="field-wrapper">
-                        <input type="text" class="form-control" name="update-username" required="">
-                        <div class="field-placeholder">Username</div>
-                      </div>
-                      <!-- Field wrapper end -->
-
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                      <!-- Field wrapper start -->
-                      <div class="field-wrapper">
-                        <input type="password" class="form-control" name="update-password">
-                        <div class="field-placeholder">Password</div>
-                      </div>
-                      <!-- Field wrapper end -->
-
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                      <!-- Field wrapper start -->
-                      <div class="field-wrapper">
-                        <input type="password" class="form-control" name="update-password_confirmation">
-                        <div class="field-placeholder">Confirm Password</div>
-                      </div>
-                      <!-- Field wrapper end -->
-
-                    </div>
-                  </div>
-                  <!-- Row end -->
-
-                </div>
-              </div>
-              <!-- Card end -->
-
-            </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-
-              <!-- Card start -->
-              <div class="card">
-                <div class="card-header">
                   <div class="card-title">Others</div>
                 </div>
                 <div class="card-body">
@@ -148,23 +105,27 @@
 
                       <div class="noti-container">
                         <div class="noti-block">
-                          <div>Active</div>
+                          <div>Approve</div>
                           <div class="form-switch">
-                            <input class="form-check-input" type="checkbox" id="showAlertss" checked name="update-is_active">
-                            <label class="form-check-label" for="showAlertss"></label>
+                            <input class="form-check-input" type="checkbox" id="approve" value="1" checked name="update-approve">
+                            <label class="form-check-label" for="approve"></label>
                           </div>
                         </div>
                       </div>
 
                     </div>
+
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                      <div class="field-wrapper mt-4">
-                        <input type="file" class="" name="update-upload-profile">
-                        <div class="field-placeholder">Profile</div>
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <input type="file" class="" required name="update-photo">
+                        <div class="field-placeholder">Proof Of Payment</div>
                       </div>
+                      <!-- Field wrapper end -->
 
                     </div>
+
                   </div>
                   <!-- Row end -->
 

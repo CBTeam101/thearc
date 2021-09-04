@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\Select2Controller;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
@@ -139,14 +140,26 @@ Route::group(['middleware' => 'auth'], function() {
             Route::post('/{id}', [UserController::class, 'update']);
             Route::delete('/{id}', [UserController::class, 'destroy']);
         });
+
+        Route::group(['prefix' => 'payment-methods'], function() {
+            Route::get('datatable', [PaymentMethodController::class, 'datatable']);
+            Route::get('/', [PaymentMethodController::class, 'index'])->name('Payment Methods');
+            Route::post('/', [PaymentMethodController::class, 'store']);
+            Route::get('/{id}', [PaymentMethodController::class, 'edit']);
+            Route::put('/{id}', [PaymentMethodController::class, 'update']);
+            Route::delete('/{id}', [PaymentMethodController::class, 'destroy']);
+        });
     });
 
     Route::group(['prefix' => 'operations'], function() {
         Route::group(['prefix' => 'transactions'], function() {
             Route::get('datatable', [TransactionController::class, 'datatable']);
             Route::get('/', [TransactionController::class, 'index'])->name('Transactions');
+            Route::get('/{id}', [TransactionController::class, 'edit']);
             Route::get('/get-tokens', [TransactionController::class, 'gettokens']);
             Route::post('/buy', [TransactionController::class, 'buy']);
+            Route::post('/buy-approve/{id}', [TransactionController::class, 'approve']);
+            Route::post('/buy-reject/{id}', [TransactionController::class, 'reject']);
         });
     });
 

@@ -50,7 +50,7 @@
 @endsection
 
 @section('scripts')
-@include('unipro.pages.transactions.index-scripts')
 @include('unipro.pages.transactions.modals.create-scripts')
 @include('unipro.pages.transactions.modals.update-scripts')
+@include('unipro.pages.transactions.index-scripts')
 @endsection

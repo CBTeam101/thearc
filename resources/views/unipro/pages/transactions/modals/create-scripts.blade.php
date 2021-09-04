@@ -59,13 +59,13 @@
       })
     },
     cache: function() {
-      this.useraccount = this.container.find('[name=user-account]')
-      this.tokentype = this.container.find('[name=token-type]')
-      this.trno = this.container.find('[name=tr-no]')
-      this.amount = this.container.find('[name=amount]')
-      this.tokens = this.container.find('[name=tokens]')
-      this.approve = this.container.find('[name=approve]')
-      this.photo = this.container.find('[name=photo]')
+      this.useraccount = this.container.find('[name=create-user-account]')
+      this.tokentype = this.container.find('[name=create-token-type]')
+      this.trno = this.container.find('[name=create-tr-no]')
+      this.amount = this.container.find('[name=create-amount]')
+      this.tokens = this.container.find('[name=create-tokens]')
+      this.approve = this.container.find('[name=create-approve]')
+      this.photo = this.container.find('[name=create-photo]')
       this.modal = this.container.find('#transaction-create-modal')
       this.transactionForm = this.container.find('#transaction-create-form')
     },

@@ -1,27 +1,73 @@
 <script type="text/javascript">
   const updateModule = {
     init: function() {
+      this.variables()
       this.cache()
       this.events()
       this.plugin()
-      this.variables()
     },
     container: $('.content-wrapper'),
     variables: function() {},
-    plugin: function() {},
+    plugin: function() {
+      this.useraccount.select2({
+        ajax: {
+        url: '/select2/user-accounts',
+          data: function (params) {
+            var query = {
+              search: params.term
+            }
+            // Query parameters will be ?search=[term]&type=public
+            return query;
+          },
+          processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+            return {
+              results: data.map(function(item) {
+                return {
+                  id: item.id,
+                  text: item.full_name
+                }
+              })
+            }
+          }
+        }
+      })
+      .change()
+      this.tokentype.select2({
+        ajax: {
+        url: '/select2/tokens',
+          data: function (params) {
+            var query = {
+              search: params.term
+            }
+            // Query parameters will be ?search=[term]&type=public
+            return query;
+          },
+          processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+            return {
+              results: data.map(function(item) {
+                return {
+                  id: item.id,
+                  text: item.name
+                }
+              })
+            }
+          }
+        }
+      })
+      .change()
+    },
     cache: function() {
-      this.firstname = this.container.find('[name=update-first_name]')
-      this.middlename= this.container.find('[name=update-middle_name]')
-      this.lastname  = this.container.find('[name=update-last_name]')
-      this.phone = this.container.find('[name=update-contact_no]')
-      this.email = this.container.find('[name=update-email]')
-      this.username = this.container.find('[name=update-username]')
-      this.password = this.container.find('[name=update-password]')
-      this.password_confirmation = this.container.find('[name=update-password_confirmation]')
-      this.active = this.container.find('[name=update-is_active]')
-      this.profile = this.container.find('[name=update-upload-profile]')
-      this.userForm = this.container.find('#user-update-form')
-      this.modal = this.container.find('#user-update-modal')
+      this.useraccount = this.container.find('[name=update-user-account]')
+      this.tokentype = this.container.find('[name=update-token-type]')
+      this.trno = this.container.find('[name=update-tr-no]')
+      this.amount = this.container.find('[name=update-amount]')
+      this.tokens = this.container.find('[name=update-tokens]')
+      this.approve = this.container.find('[name=update-approve]')
+      this.photo = this.container.find('[name=update-photo]')
+      this.modal = this.container.find('#transaction-update-modal')
+      this.transactionForm = this.container.find('#transaction-update-form')
     },
     http: function(options) {
       $.ajaxSetup({
@@ -55,23 +101,20 @@
       this.profile.val('')
     },
     events: function() {
-      this.userForm.on('submit', function(e) {
+      this.transactionForm.on('submit', function(e) {
         e.preventDefault()
         const isValid = this.validate(e.currentTarget, e)
         if(!isValid) return
         const form = new FormData()
-        form.append('first_name', this.firstname.val())
-        form.append('middle_name', this.middlename.val())
-        form.append('last_name', this.lastname.val())
-        form.append('contact_no', this.phone.val())
-        form.append('username', this.username.val())
-        form.append('email', this.email.val())
-        form.append('password', this.password.val())
-        form.append('password_confirmation', this.password_confirmation.val())
-        form.append('is_active', this.active[0].checked ? 1 : 0)
-        form.append('profile', this.profile[0].files.length > 0 ? this.profile[0].files[0] : '')
+        form.append('account_id', this.useraccount.val())
+        form.append('token_id', this.tokentype.val())
+        form.append('trno', this.trno.val())
+        form.append('amount', this.amount.val())
+        form.append('tokens', this.tokens.val())
+        form.append('approve', this.approve.val())
+        form.append('photo', this.photo[0].files[0])
         const options = {
-          url: `/settings/users/${this.user_id}`,
+          url: `/operations/transactions/buy/${this.user_id}`,
           method: 'POST',
           processData: false,
           contentType: false,
@@ -81,12 +124,14 @@
           .done(function(res) {
             swal('Success', res.message, 'success')
               .then(function() {
-                indexModule.datatable.ajax.reload()
+                // indexModule.datatable.ajax.reload()
                 this.modal.modal('hide')
-                this.clear()
+                window.location.reload()
               }.bind(this))
           }.bind(this))
       }.bind(this))
+
+
     }
   }
   updateModule.init()

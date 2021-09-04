@@ -56,6 +56,8 @@ class TransactionService
   public function edit($id)
   {
     try {
+      $transaction = Transaction::findOrFail($id);
+      return response()->json($transaction);
     } catch (Exception $e) {
       $bug = $e->getMessage();
       return response()->json(['message' => $bug], 500);
@@ -85,18 +87,18 @@ class TransactionService
     $users = Transaction::all();
     return DataTables::of($users)
       ->addColumn('tr_details', function ($q) {
-        return '<a href="'.url('/operations/transactions/'.$q->id).'" target="_blank">'.$q->tr_no.'</a>';
+        return '<a href="' . url('/operations/transactions/' . $q->id) . '" target="_blank">' . $q->tr_no . '</a>';
       })
       ->addColumn('status', function ($q) {
         $color = '';
         if ($q->status->id === Status::CANCEL) {
-          $color = 'bg-danger';
+          $color = 'bg-primary';
         } else if ($q->status->id === Status::PENDING) {
           $color = 'bg-warning';
         } else if ($q->status->id === Status::COMPLETED) {
           $color = 'bg-success';
         } else if ($q->status->id === Status::REJECTED) {
-          $color = 'bg-default';
+          $color = 'bg-danger';
         }
 
         return '<span class="badge ' . $color . '">' . $q->status->name . '</span>';
@@ -112,17 +114,83 @@ class TransactionService
         ';
       })
       ->addColumn('options', function ($q) {
-        return '<div class="td-actions">
-        <a href="javascript:void(0);" id="' . $q->id . '" class="icon blue transaction-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Add Row">
-          <i class="icon-edit-2"></i>
-        </a>
-        <a href="javascript:void(0);" id="' . $q->id . '" class="icon red transaction-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Delete Row">
-          <i class="icon-cancel"></i>
-        </a>
-      </div>';
+        $edit = '';
+        $accept = '';
+        $reject = '';
+        $delete = '';
+
+        if ($q->status->id === Status::COMPLETED || $q->status->id === Status::REJECTED) {
+          $delete = '<a href="javascript:void(0);" id="' . $q->id . '" class="icon red transaction-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject" data-bs-original-title="Delete Row">
+            <i class="icon-trash"></i>
+          </a>';
+        }
+
+        if ($q->status->id === Status::PENDING) {
+          // $edit = '<a href="javascript:void(0);" id="' . $q->id . '" class="icon blue transaction-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-bs-original-title="Add Row">
+          //   <i class="icon-edit-2"></i>
+          // </a>';
+          $accept = '<a href="javascript:void(0);" id="' . $q->id . '" class="icon green transaction-accept" data-bs-toggle="tooltip" data-bs-placement="top" title="Accept" data-bs-original-title="Add Row">
+            <i class="icon-check"></i>
+          </a>';
+          $reject = '<a href="javascript:void(0);" id="' . $q->id . '" class="icon red transaction-reject" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject" data-bs-original-title="Delete Row">
+            <i class="icon-cancel"></i>
+          </a>';
+        }
+
+        return '<div class="td-actions">' . $edit . '' . $accept . '' . $reject . '' . $delete . '</div>';
       })
       ->rawColumns(['name', 'tr_details', 'status', 'options'])
       ->make(true);
+  }
+
+  public function approve($id)
+  {
+    // $bank = $this->bank;
+    //         DB::transaction(function() use ($id, $bank) {
+    //             $transaction = Transaction::findOrFail($id);
+    //             $transaction->status_id = Status::COMPLETED;
+    //             $transaction->approved_at = \Carbon\Carbon::now();
+    //             $transaction->save();
+
+    //             $userWallet = $transaction->wallet;
+    //             $userWallet->balance = ($userWallet->balance+$transaction->token);
+    //             $userWallet->save();
+
+    //             $bankWallet = $bank->wallets()->where('token_id', $transaction->token_id)->first();
+    //             $bankWallet->balance = ($bankWallet->balance-$transaction->token);
+    //             $bankWallet->save();
+
+    //             $bankToken = $bankWallet->token()->findOrFail($transaction->token_id);
+    //             $bankToken->price = $bankToken->price+(Increment::ADD_PRICE*$transaction->token);
+    //             $bankToken->save();
+    //         });
+
+    //         return response()->json(['message' => 'Successfully approved.'], 200);
+
+    try {
+      $transaction = Transaction::findOrFail($id);
+      $transaction->status_id = Status::COMPLETED;
+      $transaction->approved_at = \Carbon\Carbon::now();
+      $transaction->save();
+
+      return response()->json(['message' => 'Successfully approved.'], 200);
+    } catch (Exception $e) {
+      $bug = $e->getMessage();
+      return response()->json(['message' => $bug], 500);
+    }
+  }
+
+  public function reject($id)
+  {
+    try {
+      $transaction = Transaction::findOrFail($id);
+      $transaction->status_id = Status::REJECTED;
+      $transaction->save();
+      return response()->json(['message' => 'Successfully rejected.'], 200);
+    } catch (Exception $e) {
+      $bug = $e->getMessage();
+      return response()->json(['message' => $bug], 500);
+    }
   }
 
   public function gettokens(Request $request)

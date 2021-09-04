@@ -24,7 +24,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <select class="select-single" name="user-account" required data-live-search="true">
+                        <select class="select-single" name="create-user-account" required data-live-search="true">
                           <!-- Select2 -->
                         </select>
                         <!-- <input type="text" class="form-control" required="" name="create-user-account" autofocus> -->
@@ -38,7 +38,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <select name="token-type" class="single-select" required>
+                        <select name="create-token-type" class="single-select" required>
                           <!-- Select 2 -->
                         </select>
                         <div class="field-placeholder">Token Type</div>
@@ -51,7 +51,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}"name="tr-no" required readonly />
+                        <input type="text" class="form-control" value="{{\Carbon\Carbon::now()->format('YHis')}} - {{strtoupper(\Illuminate\Support\Str::random(16))}}"name="create-tr-no" required readonly />
                         <div class="field-placeholder">Tr. No.</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -62,7 +62,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="number" class="form-control" required name="amount">
+                        <input type="number" class="form-control" required name="create-amount">
                         <div class="field-placeholder">Amount</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -73,7 +73,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="text" class="form-control" required name="tokens">
+                        <input type="text" class="form-control" required name="create-tokens">
                         <div class="field-placeholder">Tokens</div>
                       </div>
                       <!-- Field wrapper end -->
@@ -107,7 +107,7 @@
                         <div class="noti-block">
                           <div>Approve</div>
                           <div class="form-switch">
-                            <input class="form-check-input" type="checkbox" id="approve" value="1" checked name="approve">
+                            <input class="form-check-input" type="checkbox" id="approve" value="1" checked name="create-approve">
                             <label class="form-check-label" for="approve"></label>
                           </div>
                         </div>
@@ -119,7 +119,7 @@
 
                       <!-- Field wrapper start -->
                       <div class="field-wrapper">
-                        <input type="file" class="" required name="photo">
+                        <input type="file" class="" required name="create-photo">
                         <div class="field-placeholder">Proof Of Payment</div>
                       </div>
                       <!-- Field wrapper end -->
