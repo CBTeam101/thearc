@@ -9,11 +9,11 @@
       <!-- Card start -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Role</div>
+          <div class="card-title">Status</div>
         </div>
         <div class="card-body mt-4">
 
-          <form class="needs-validation" novalidate id="role-form">
+          <form class="needs-validation" novalidate id="status-form">
             <!-- Row start -->
             <div class="row gutters">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -42,11 +42,11 @@
       <!-- Card start -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Roles</div>
+          <div class="card-title">Statuses</div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table id="roles-table" class="table custom-table">
+            <table id="statuses-table" class="table custom-table">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -70,5 +70,5 @@
 @endsection
 
 @section('scripts')
-@include('unipro.pages.roles.index-scripts')
+@include('unipro.pages.statuses.index-scripts')
 @endsection

@@ -60,7 +60,7 @@
 <script src="{{asset('unipro/vendor/circliful/circliful.custom.js')}}"></script>
 
 <!-- Sweet Alert -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{asset('unipro/vendor/sweetalert/sweetalert.min.js')}}"></script>
 
 <!-- Main Js Required -->
 <script src="{{asset('unipro/js/main.js')}}"></script>

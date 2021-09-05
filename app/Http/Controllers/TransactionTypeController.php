@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransactionType;
+use App\Services\TransactionTypeService;
 use Illuminate\Http\Request;
 
 class TransactionTypeController extends Controller
 {
+    private $service;
+
+    public function __construct(TransactionTypeService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class TransactionTypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('unipro.pages.transaction-types.index');
     }
 
     /**
@@ -35,7 +43,7 @@ class TransactionTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
@@ -55,9 +63,9 @@ class TransactionTypeController extends Controller
      * @param  \App\Models\TransactionType  $transactionType
      * @return \Illuminate\Http\Response
      */
-    public function edit(TransactionType $transactionType)
+    public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
@@ -67,9 +75,9 @@ class TransactionTypeController extends Controller
      * @param  \App\Models\TransactionType  $transactionType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransactionType $transactionType)
+    public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
@@ -81,5 +89,10 @@ class TransactionTypeController extends Controller
     public function destroy(TransactionType $transactionType)
     {
         //
+    }
+
+    public function datatable()
+    {
+        return $this->service->datatable();
     }
 }

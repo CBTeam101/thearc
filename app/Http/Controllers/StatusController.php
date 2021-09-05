@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use App\Services\StatusService;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
+    private $service;
+
+    public function __construct(StatusService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        return view('unipro.pages.statuses.index');
     }
 
     /**
@@ -35,7 +43,7 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
@@ -55,9 +63,9 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Status $status)
+    public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
@@ -67,9 +75,9 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
@@ -81,5 +89,10 @@ class StatusController extends Controller
     public function destroy(Status $status)
     {
         //
+    }
+
+    public function datatable()
+    {
+        return $this->service->datatable();
     }
 }

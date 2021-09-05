@@ -7,6 +7,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TransactionTypeController;
+use App\Http\Controllers\WalletController;
 use App\Http\Controllers\Select2Controller;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
@@ -148,6 +151,33 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('/{id}', [PaymentMethodController::class, 'edit']);
             Route::put('/{id}', [PaymentMethodController::class, 'update']);
             Route::delete('/{id}', [PaymentMethodController::class, 'destroy']);
+        });
+
+        Route::group(['prefix' => 'statuses'], function() {
+            Route::get('datatable', [StatusController::class, 'datatable']);
+            Route::get('/', [StatusController::class, 'index'])->name('Statuses');
+            Route::post('/', [StatusController::class, 'store']);
+            Route::get('/{id}', [StatusController::class, 'edit']);
+            Route::put('/{id}', [StatusController::class, 'update']);
+            // Route::delete('/{id}', [StatusController::class, 'destroy']);
+        });
+
+        Route::group(['prefix' => 'transaction-types'], function() {
+            Route::get('datatable', [TransactionTypeController::class, 'datatable']);
+            Route::get('/', [TransactionTypeController::class, 'index'])->name('Transaction Types');
+            Route::post('/', [TransactionTypeController::class, 'store']);
+            Route::get('/{id}', [TransactionTypeController::class, 'edit']);
+            Route::put('/{id}', [TransactionTypeController::class, 'update']);
+            // Route::delete('/{id}', [TransactionTypeController::class, 'destroy']);
+        });
+
+        Route::group(['prefix' => 'wallets'], function() {
+            Route::get('datatable', [WalletController::class, 'datatable']);
+            Route::get('/', [WalletController::class, 'index'])->name('Wallets');
+            Route::post('/', [WalletController::class, 'store']);
+            Route::get('/{id}', [WalletController::class, 'edit']);
+            Route::put('/{id}', [WalletController::class, 'update']);
+            // Route::delete('/{id}', [TransactionTypeController::class, 'destroy']);
         });
     });
 

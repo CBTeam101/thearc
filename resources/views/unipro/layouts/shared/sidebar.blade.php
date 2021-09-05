@@ -82,13 +82,19 @@
             </li>
             <li class="list-heading">Others</li>
             <li>
+              <a href="{{url('/settings/payment-methods')}}" class="{{\Request::is('settings/payment-methods') ? 'current-page' : ''}}">Payment Methods</a>
+            </li>
+            <li>
+              <a href="{{url('/settings/statuses')}}" class="{{\Request::is('settings/statuses') ? 'current-page' : ''}}">Statuses</a>
+            </li>
+            <li>
               <a href="{{url('/settings/tokens')}}" class="{{\Request::is('settings/tokens') ? 'current-page' : ''}}">Tokens</a>
             </li>
             <li>
-              <a href="{{url('/settings/users')}}" class="{{\Request::is('settings/users') ? 'current-page' : ''}}">Users</a>
+              <a href="{{url('/settings/transaction-types')}}" class="{{\Request::is('settings/transaction-types') ? 'current-page' : ''}}">Transaction Types</a>
             </li>
             <li>
-              <a href="{{url('/settings/payment-methods')}}" class="{{\Request::is('settings/payment-methods') ? 'current-page' : ''}}">Payment Methods</a>
+              <a href="{{url('/settings/users')}}" class="{{\Request::is('settings/users') ? 'current-page' : ''}}">Users</a>
             </li>
           </ul>
         </div>
@@ -110,7 +116,7 @@
 
     </div>
         
-    <!-- Chat tab -->
+    <!-- Dashboard tab -->
     <div class="tab-pane fade show {{\Request::is('dashboard/*') || \Request::is('dashboard') ? 'active' : ''}}" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
 
       <!-- Tab content header start -->
@@ -161,7 +167,7 @@
 
     </div>
 
-    <!-- Pages tab -->
+    <!-- Operations tab -->
     <div class="tab-pane fade show {{\Request::is('operations/*')  ? 'active' : ''}}" id="tab-operations" role="tabpanel" aria-labelledby="product-tab">
       
       <!-- Tab content header start -->

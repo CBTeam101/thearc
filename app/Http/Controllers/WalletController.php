@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Wallet;
 use Illuminate\Http\Request;
-use App\Models\Tokens as Token;
+use App\Services\WalletService;
 
 class WalletController extends Controller
 {
-    public function __construct()
+
+    private $service;
+
+    public function __construct(WalletService $service)
     {
-        view()->share('page_title', 'Title');
-        view()->share('page_description', 'Description');
+        $this->service = $service;
     }
 
     /**
@@ -21,7 +23,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        
+        return view('unipro.pages.wallets.index');
     }
 
     /**
@@ -42,7 +44,7 @@ class WalletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
@@ -62,9 +64,9 @@ class WalletController extends Controller
      * @param  \App\Models\Wallet  $wallet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Wallet $wallet)
+    public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
@@ -74,9 +76,9 @@ class WalletController extends Controller
      * @param  \App\Models\Wallet  $wallet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Wallet $wallet)
+    public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
@@ -88,5 +90,10 @@ class WalletController extends Controller
     public function destroy(Wallet $wallet)
     {
         //
+    }
+
+    public function datatable()
+    {
+        return $this->service->datatable();
     }
 }
