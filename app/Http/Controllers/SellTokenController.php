@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Select2Service;
+use App\Services\SellTokenService;
+use DataTables;
 
-class Select2Controller extends Controller
+class SellTokenController extends Controller
 {
     private $service;
 
-    public function __construct(Select2Service $service)
+    public function __construct(SellTokenService $service)
     {
         $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +22,7 @@ class Select2Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('unipro.pages.sell-tokens.index');
     }
 
     /**
@@ -41,13 +43,13 @@ class Select2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\SellToken  $sellToken
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,49 +60,49 @@ class Select2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\SellToken  $sellToken
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\SellToken  $sellToken
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\SellToken  $sellToken
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        return $this->service->destroy($id);
     }
 
-    public function useraccounts(Request $request)
+    public function datatable()
     {
-        return $this->service->useraccounts($request);
+        return $this->service->datatable();
     }
 
-    public function tokens(Request $request)
+    public function approve($id)
     {
-        return $this->service->tokens($request);
+        return $this->service->approve($id);
     }
 
-    public function paymentMethods(Request $request)
+    public function cancel($id)
     {
-        return $this->service->paymentMethods($request);
+        return $this->service->cancel($id);
     }
 }

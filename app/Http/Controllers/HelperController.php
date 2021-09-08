@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Select2Service;
+use App\Services\HelperService;
 
-class Select2Controller extends Controller
+class HelperController extends Controller
 {
     private $service;
 
-    public function __construct(Select2Service $service)
+    public function __construct(HelperService $service)
     {
         $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -89,18 +90,8 @@ class Select2Controller extends Controller
         //
     }
 
-    public function useraccounts(Request $request)
+    public function currentPrice($id)
     {
-        return $this->service->useraccounts($request);
-    }
-
-    public function tokens(Request $request)
-    {
-        return $this->service->tokens($request);
-    }
-
-    public function paymentMethods(Request $request)
-    {
-        return $this->service->paymentMethods($request);
+        return $this->service->currentPrice($id);
     }
 }

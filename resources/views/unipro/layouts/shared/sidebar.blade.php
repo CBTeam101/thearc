@@ -183,6 +183,15 @@
             <li>
               <a href="{{url('/operations/transactions')}}" class="{{\Request::is('operations/transactions') ? 'current-page' : ''}}">Transactions</a>
             </li>
+            <li>
+              <a href="{{url('/operations/sell-tokens')}}" class="{{\Request::is('operations/sell-tokens') ? 'current-page' : ''}}">Sell Tokens</a>
+            </li>
+            <li>
+              <a href="{{url('/operations/gift-tokens')}}" class="{{\Request::is('operations/gift-tokens') ? 'current-page' : ''}}">Gift Tokens</a>
+            </li>
+            <li>
+              <a href="{{url('/operations/transfer-tokens')}}" class="{{\Request::is('operations/transfer-tokens') ? 'current-page' : ''}}">Transfer Tokens</a>
+            </li>
           </ul>
           <ul>
             <li class="list-heading">Calendars</li>

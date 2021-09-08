@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tokens;
+use App\Models\PaymentMethod;
 use App\Enums\Role;
 use Exception;
 use DataTables;
@@ -74,6 +75,20 @@ class Select2Service
         ['name','LIKE','%'.$request->search.'%'],
         ['is_interest', '=', 0]
         ])
+        ->get();
+
+      return response()->json($tokens, 200);
+    }
+    catch (Exception $e) {
+      $bug = $e->getMessage();
+      return response()->json(['message' => $bug], 500);
+    }
+  }
+
+  public function paymentMethods(Request $request)
+  {
+    try {
+      $tokens = PaymentMethod::where('name','LIKE','%'.$request->search.'%')
         ->get();
 
       return response()->json($tokens, 200);

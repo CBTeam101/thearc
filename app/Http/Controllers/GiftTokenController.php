@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GiftToken;
+use App\Services\GiftTokenService;
 use Illuminate\Http\Request;
-use App\Services\Select2Service;
 
-class Select2Controller extends Controller
+class GiftTokenController extends Controller
 {
+
     private $service;
 
-    public function __construct(Select2Service $service)
+    public function __construct(GiftTokenService $service)
     {
         $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +23,7 @@ class Select2Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('unipro.pages.gift-tokens.index');
     }
 
     /**
@@ -41,16 +44,16 @@ class Select2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\GiftToken  $giftToken
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(GiftToken $giftToken)
     {
         //
     }
@@ -58,10 +61,10 @@ class Select2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\GiftToken  $giftToken
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(GiftToken $giftToken)
     {
         //
     }
@@ -70,10 +73,10 @@ class Select2Controller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\GiftToken  $giftToken
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GiftToken $giftToken)
     {
         //
     }
@@ -81,26 +84,16 @@ class Select2Controller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\GiftToken  $giftToken
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        return $this->service->destroy($id);
     }
 
-    public function useraccounts(Request $request)
+    public function datatable()
     {
-        return $this->service->useraccounts($request);
-    }
-
-    public function tokens(Request $request)
-    {
-        return $this->service->tokens($request);
-    }
-
-    public function paymentMethods(Request $request)
-    {
-        return $this->service->paymentMethods($request);
+        return $this->service->datatable();
     }
 }
