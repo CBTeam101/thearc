@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tokens;
 use App\Models\PaymentMethod;
+use App\Models\Menu;
 use App\Enums\Role;
 use Exception;
 use DataTables;
@@ -92,6 +93,20 @@ class Select2Service
         ->get();
 
       return response()->json($tokens, 200);
+    }
+    catch (Exception $e) {
+      $bug = $e->getMessage();
+      return response()->json(['message' => $bug], 500);
+    }
+  }
+
+  public function menus(Request $request)
+  {
+    try {
+      $menus = Menu::where('name','LIKE','%'.$request->search.'%')
+        ->get();
+
+      return response()->json($menus, 200);
     }
     catch (Exception $e) {
       $bug = $e->getMessage();

@@ -65,10 +65,7 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="{{url('/settings/menu')}}" class="{{\Request::is('settings/menu') ? 'current-page' : ''}}">Menus</a>
-            </li>
-            <li>
-              <a href="{{url('/settings/sub-menu')}}" class="{{\Request::is('settings/sub-menu') ? 'current-page' : ''}}">Sub Menus</a>
+              <a href="{{url('/settings/menus')}}" class="{{\Request::is('settings/menus') ? 'current-page' : ''}}">Menus</a>
             </li>
             <li class="list-heading">Access</li>
             <li>

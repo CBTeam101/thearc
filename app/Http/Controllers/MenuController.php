@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Select2Service;
+use App\Services\MenuService;
 
-class Select2Controller extends Controller
+class MenuController extends Controller
 {
     private $service;
 
-    public function __construct(Select2Service $service)
+    public function __construct(MenuService $service)
     {
         $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +21,7 @@ class Select2Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('unipro.pages.menus.index');
     }
 
     /**
@@ -41,13 +42,13 @@ class Select2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,54 +59,39 @@ class Select2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        return $this->service->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        return $this->service->destroy($id);
     }
 
-    public function useraccounts(Request $request)
+    public function datatable()
     {
-        return $this->service->useraccounts($request);
-    }
-
-    public function tokens(Request $request)
-    {
-        return $this->service->tokens($request);
-    }
-
-    public function paymentMethods(Request $request)
-    {
-        return $this->service->paymentMethods($request);
-    }
-
-    public function menus(Request $request)
-    {
-        return $this->service->menus($request);
+        return $this->service->datatable();
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\GiftTokenController;
 use App\Http\Controllers\TransferTokenController;
 use App\Http\Controllers\HelperController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,10 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function() {
+  return redirect('/dashboard');
+});
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm']);
 
@@ -95,6 +99,15 @@ Route::group(['middleware' => 'auth'], function() {
             Route::put('/{id}', [WalletController::class, 'update']);
             // Route::delete('/{id}', [TransactionTypeController::class, 'destroy']);
         });
+
+        Route::group(['prefix' => 'menus'], function() {
+            Route::get('/', [MenuController::class, 'index'])->name('Menus');
+            Route::get('datatable', [MenuController::class, 'datatable']);
+            Route::post('/', [MenuController::class, 'store']);
+            Route::get('/{id}', [MenuController::class, 'edit']);
+            Route::put('/{id}', [MenuController::class, 'update']);
+            Route::delete('/{id}', [MenuController::class, 'destroy']);
+        });
     });
 
     Route::group(['prefix' => 'operations'], function() {
@@ -137,6 +150,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'select2'], function() {
         Route::get('/user-accounts', [Select2Controller::class, 'useraccounts']);
         Route::get('/tokens', [Select2Controller::class, 'tokens']);
+        Route::get('/menus', [Select2Controller::class, 'menus']);
         Route::get('/payment-methods', [Select2Controller::class, 'paymentMethods']);
     });
 
